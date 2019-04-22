@@ -37,6 +37,7 @@ class AlbumDetailViewController: UIViewController {
     private func fillTracklist(_ tracks: [Track]) {
         var stringValue = String()
         var count = 0
+        // Build multiline string
         for track in tracks {
             count = count + 1
             stringValue = stringValue + "\(count). \(track.name) (\(track.length))\n"
@@ -44,7 +45,7 @@ class AlbumDetailViewController: UIViewController {
         let attrString = NSMutableAttributedString(string: stringValue)
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        style.lineSpacing = 12 // change line spacing between paragraph like 36 or 48
+        style.lineSpacing = 8 // change line spacing between paragraph like 36 or 48
         //style.minimumLineHeight = 0 // change line spacing between each line like 30 or 40
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle,
                                 value: style,
