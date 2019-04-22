@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6917960E226C97450034079A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6917960D226C97450034079A /* AppDelegate.swift */; };
+		69179613226C97450034079A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69179611226C97450034079A /* Main.storyboard */; };
+		69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69179614226C97450034079A /* Jarvis.xcdatamodeld */; };
+		69179618226C97460034079A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69179617226C97460034079A /* Assets.xcassets */; };
+		6917961B226C97460034079A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69179619226C97460034079A /* LaunchScreen.storyboard */; };
+		69179623226C98110034079A /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179622226C98110034079A /* Album.swift */; };
+		69179625226C9A420034079A /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179624226C9A420034079A /* Track.swift */; };
+		69179628226C9FDD0034079A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179627226C9FDD0034079A /* MainViewController.swift */; };
+		6917962A226CA3860034079A /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179629226CA3860034079A /* AlbumCell.swift */; };
+		6917962E226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6917962D226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg */; };
+		69179631226CCB0D0034079A /* AlbumStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179630226CCB0D0034079A /* AlbumStore.swift */; };
+		69179633226CE5E60034079A /* CS679029-01A-BIG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179632226CE5E60034079A /* CS679029-01A-BIG.jpg */; };
+		69179635226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */; };
+		69179637226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */; };
+		69179639226CF8FD0034079A /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179638226CF8FD0034079A /* AlbumDetailViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6917960A226C97450034079A /* Jarvis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jarvis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6917960D226C97450034079A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		69179612226C97450034079A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69179615226C97450034079A /* Jarvis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jarvis.xcdatamodel; sourceTree = "<group>"; };
+		69179617226C97460034079A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6917961A226C97460034079A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6917961C226C97460034079A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69179622226C98110034079A /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		69179624226C9A420034079A /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		69179627226C9FDD0034079A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		69179629226CA3860034079A /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		6917962D226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "OutKast-Aquemini-1537995335-640x634.jpg"; sourceTree = "<group>"; };
+		69179630226CCB0D0034079A /* AlbumStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumStore.swift; sourceTree = "<group>"; };
+		69179632226CE5E60034079A /* CS679029-01A-BIG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "CS679029-01A-BIG.jpg"; sourceTree = "<group>"; };
+		69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg"; sourceTree = "<group>"; };
+		69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = A1hIUHqDK3L._SS500_.jpg; sourceTree = "<group>"; };
+		69179638226CF8FD0034079A /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		69179607226C97450034079A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		69179601226C97450034079A = {
+			isa = PBXGroup;
+			children = (
+				6917960C226C97450034079A /* Jarvis */,
+				6917960B226C97450034079A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6917960B226C97450034079A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6917960A226C97450034079A /* Jarvis.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6917960C226C97450034079A /* Jarvis */ = {
+			isa = PBXGroup;
+			children = (
+				6917960D226C97450034079A /* AppDelegate.swift */,
+				69179626226C9AA60034079A /* Model */,
+				69179611226C97450034079A /* Main.storyboard */,
+				69179627226C9FDD0034079A /* MainViewController.swift */,
+				69179638226CF8FD0034079A /* AlbumDetailViewController.swift */,
+				69179629226CA3860034079A /* AlbumCell.swift */,
+				69179630226CCB0D0034079A /* AlbumStore.swift */,
+				69179617226C97460034079A /* Assets.xcassets */,
+				6917962F226CCA8B0034079A /* Art */,
+				69179619226C97460034079A /* LaunchScreen.storyboard */,
+				6917961C226C97460034079A /* Info.plist */,
+				69179614226C97450034079A /* Jarvis.xcdatamodeld */,
+			);
+			path = Jarvis;
+			sourceTree = "<group>";
+		};
+		69179626226C9AA60034079A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				69179622226C98110034079A /* Album.swift */,
+				69179624226C9A420034079A /* Track.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6917962F226CCA8B0034079A /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */,
+				69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */,
+				6917962D226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg */,
+				69179632226CE5E60034079A /* CS679029-01A-BIG.jpg */,
+			);
+			path = Art;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		69179609226C97450034079A /* Jarvis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6917961F226C97460034079A /* Build configuration list for PBXNativeTarget "Jarvis" */;
+			buildPhases = (
+				69179606226C97450034079A /* Sources */,
+				69179607226C97450034079A /* Frameworks */,
+				69179608226C97450034079A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jarvis;
+			productName = Jarvis;
+			productReference = 6917960A226C97450034079A /* Jarvis.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		69179602226C97450034079A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "DanLo Interactive";
+				TargetAttributes = {
+					69179609226C97450034079A = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 69179605226C97450034079A /* Build configuration list for PBXProject "Jarvis" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 69179601226C97450034079A;
+			productRefGroup = 6917960B226C97450034079A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				69179609226C97450034079A /* Jarvis */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		69179608226C97450034079A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6917961B226C97460034079A /* LaunchScreen.storyboard in Resources */,
+				69179635226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg in Resources */,
+				69179633226CE5E60034079A /* CS679029-01A-BIG.jpg in Resources */,
+				69179618226C97460034079A /* Assets.xcassets in Resources */,
+				69179637226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg in Resources */,
+				6917962E226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg in Resources */,
+				69179613226C97450034079A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		69179606226C97450034079A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69179623226C98110034079A /* Album.swift in Sources */,
+				69179625226C9A420034079A /* Track.swift in Sources */,
+				6917962A226CA3860034079A /* AlbumCell.swift in Sources */,
+				69179628226C9FDD0034079A /* MainViewController.swift in Sources */,
+				6917960E226C97450034079A /* AppDelegate.swift in Sources */,
+				69179639226CF8FD0034079A /* AlbumDetailViewController.swift in Sources */,
+				69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */,
+				69179631226CCB0D0034079A /* AlbumStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		69179611226C97450034079A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				69179612226C97450034079A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		69179619226C97460034079A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6917961A226C97460034079A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6917961D226C97460034079A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6917961E226C97460034079A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		69179620226C97460034079A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PFK7KA32NQ;
+				INFOPLIST_FILE = Jarvis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = danlointeractive.com.Jarvis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		69179621226C97460034079A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PFK7KA32NQ;
+				INFOPLIST_FILE = Jarvis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = danlointeractive.com.Jarvis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		69179605226C97450034079A /* Build configuration list for PBXProject "Jarvis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6917961D226C97460034079A /* Debug */,
+				6917961E226C97460034079A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6917961F226C97460034079A /* Build configuration list for PBXNativeTarget "Jarvis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				69179620226C97460034079A /* Debug */,
+				69179621226C97460034079A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		69179614226C97450034079A /* Jarvis.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				69179615226C97450034079A /* Jarvis.xcdatamodel */,
+			);
+			currentVersion = 69179615226C97450034079A /* Jarvis.xcdatamodel */;
+			path = Jarvis.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 69179602226C97450034079A /* Project object */;
+}
