@@ -15,18 +15,46 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var releaseYearLabel: UILabel!
+    @IBOutlet weak var tracklistLabel: UILabel!
+    @IBOutlet weak var tracklistHeightConstraint: NSLayoutConstraint!
     
     public var selectedAlbum: Album?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Populate UI
         if let album = selectedAlbum {
             imageView.image = album.image
             albumTitleLabel.text = album.name
             artistNameLabel.text = album.artist
             releaseYearLabel.text = String(album.year)
+            // Set tracklist content
+            fillTracklist(album.tracks)
         }
+    }
+    
+    private func fillTracklist(_ tracks: [Track]) {
+        var stringValue = String()
+        var count = 0
+        for track in tracks {
+            count = count + 1
+            stringValue = stringValue + "\(count). \(track.name) (\(track.length))\n"
+        }
+        let attrString = NSMutableAttributedString(string: stringValue)
+        let style = NSMutableParagraphStyle()
+        style.alignment = .center
+        style.lineSpacing = 12 // change line spacing between paragraph like 36 or 48
+        //style.minimumLineHeight = 0 // change line spacing between each line like 30 or 40
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                value: style,
+                                range: NSRange(location: 0, length: stringValue.count))
+        
+        tracklistLabel.attributedText = attrString
+        tracklistLabel.numberOfLines = tracks.count
+        // Set height of tracklist label
+        let labelSize = attrString.size()
+        tracklistHeightConstraint.constant = ceil(labelSize.height)
     }
     
 
