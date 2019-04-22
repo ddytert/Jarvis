@@ -18,6 +18,9 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet weak var tracklistLabel: UILabel!
     @IBOutlet weak var tracklistHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
     public var selectedAlbum: Album?
 
     override func viewDidLoad() {
@@ -29,12 +32,29 @@ class AlbumDetailViewController: UIViewController {
             albumTitleLabel.text = album.name
             artistNameLabel.text = album.artist
             releaseYearLabel.text = String(album.year)
-            // Set tracklist content
+            // Set content of tracklist label
             fillTracklist(album.tracks)
         }
+        // Put content view into scroll view
+        scrollView.addSubview(contentView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        let newContentSize = CGSize(width: scrollView.frame.size.width,
+                                    height: contentView.frame.size.height)
+        contentView.frame.size = newContentSize
+        scrollView.contentSize = newContentSize
+        
+//        var contentRect = CGRect.zero
+//        for view in contentView.subviews {
+//            contentRect = contentRect.union(view.frame)
+//        }
+//        scrollView.contentSize = contentRect.size
     }
     
     private func fillTracklist(_ tracks: [Track]) {
+        
         var stringValue = String()
         var count = 0
         // Build multiline string
@@ -45,12 +65,10 @@ class AlbumDetailViewController: UIViewController {
         let attrString = NSMutableAttributedString(string: stringValue)
         let style = NSMutableParagraphStyle()
         style.alignment = .center
-        style.lineSpacing = 8 // change line spacing between paragraph like 36 or 48
-        //style.minimumLineHeight = 0 // change line spacing between each line like 30 or 40
+        style.lineSpacing = 8
         attrString.addAttribute(NSAttributedString.Key.paragraphStyle,
                                 value: style,
                                 range: NSRange(location: 0, length: stringValue.count))
-        
         tracklistLabel.attributedText = attrString
         tracklistLabel.numberOfLines = tracks.count
         // Set height of tracklist label
