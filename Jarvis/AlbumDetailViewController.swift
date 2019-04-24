@@ -11,6 +11,9 @@ import UIKit
 class AlbumDetailViewController: UIViewController {
     
     // MARK: - Properties
+    public var selectedAlbum: Album?
+
+    // MARK: - IBOutlets
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
@@ -21,8 +24,7 @@ class AlbumDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
     
-    public var selectedAlbum: Album?
-
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +35,7 @@ class AlbumDetailViewController: UIViewController {
             artistNameLabel.text = album.artist
             releaseYearLabel.text = String(album.year)
             // Set content of tracklist label
-            fillTracklist(album.tracks)
+            fillTracklistLabel(album.tracks)
         }
         // Put content view into scroll view
         scrollView.addSubview(contentView)
@@ -46,6 +48,8 @@ class AlbumDetailViewController: UIViewController {
         contentView.frame.size = newContentSize
         scrollView.contentSize = newContentSize
         
+        // TODO: Set height of content view
+        
 //        var contentRect = CGRect.zero
 //        for view in contentView.subviews {
 //            contentRect = contentRect.union(view.frame)
@@ -53,8 +57,7 @@ class AlbumDetailViewController: UIViewController {
 //        scrollView.contentSize = contentRect.size
     }
     
-    private func fillTracklist(_ tracks: [Track]) {
-        
+    private func fillTracklistLabel(_ tracks: [Track]) {
         var stringValue = String()
         var count = 0
         // Build multiline string

@@ -18,7 +18,7 @@ final class MainViewController: UICollectionViewController {
                                              bottom: 20.0,
                                              right: 15.0)
     private let itemsPerRow: CGFloat = 3.0
-    private var cellAspectRatio: CGFloat = 174.0 / 150.0
+    private var cellAspectRatio: CGFloat = 174.0 / 150.0    // Values taken from storyboard
 
     private var albums: [Album] = AlbumStore.generateAlbumsData()
     

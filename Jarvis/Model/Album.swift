@@ -9,7 +9,6 @@
 import UIKit
 
 class Album {
-    
     let lastfmID: String
     let name: String
     let artist: String
@@ -20,7 +19,6 @@ class Album {
     
     init (lastfmID: String, name: String, artist: String, year: Int,
           tracks: [Track], imageURL: String, image: UIImage?) {
-        
         self.lastfmID = lastfmID
         self.name = name
         self.artist = artist

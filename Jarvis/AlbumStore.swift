@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: Make class a singleton class
+
 final class AlbumStore {
     
     static func generateAlbumsData() -> [Album] {
