@@ -16,6 +16,7 @@ class ArtistSearchViewController: UITableViewController {
     // MARK: - Properties
     var foundArtists:[Artist] = []
     
+    // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,7 +98,18 @@ extension ArtistSearchViewController: UISearchBarDelegate {
         guard let artistName = searchBar.text else { return }
         
         searchBar.resignFirstResponder()
-        searchForArtist(artistName) { tags in
+        searchForArtist(artistName) { artists in
+            
+            if let artists = artists {
+                print("\(artists.count) artist found")
+                artists.forEach() {
+                    print("Name: \($0.name)")
+                    print("Images: ")
+                    $0.images.forEach() {
+                        print($0)
+                    }
+                }
+            }
         }
     }
 }
@@ -105,22 +117,27 @@ extension ArtistSearchViewController: UISearchBarDelegate {
 // MARK: Download data
 extension ArtistSearchViewController {
     
-    func searchForArtist(_ artistName: String, completion: @escaping ([String]?) -> Void) {
-        
-        print("Search for artist: \(artistName)")
-
+    func searchForArtist(_ artistName: String, completion: @escaping ([Artist]?) -> Void) {
+                
         Alamofire.request("http://ws.audioscrobbler.com/2.0/",
-                          parameters: ["method": "artistSearch",
-                                       "artist": artistName],
-                          headers: ["Authorization": lastfmAuthKey])
-            .responseJSON { response in
+                          parameters: ["method": "artist.search",
+                                       "artist": artistName,
+                                       "api_key": lastfmAuthKey,
+                                       "format": "json"])
+            .responseData { response in
                 guard response.result.isSuccess,
-                    let value = response.result.value else {
+                    let data = response.data else {
                         print("Error while fetching artists: \(String(describing: response.result.error))")
                         completion(nil)
                         return
                 }
-                completion(nil)
+                do {
+                    let searchResult = try JSONDecoder().decode(ArtistSearchResults.self, from: data)
+                    let artists = searchResult.results.artistMatches.artists
+                    completion(artists)
+                } catch {
+                    print(error.localizedDescription)
+                }
         }
     }
 }

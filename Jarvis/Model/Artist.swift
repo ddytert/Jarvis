@@ -8,15 +8,26 @@
 
 import Foundation
 
-class Artist {
-    
-    let lastfmID: String
+/// Artist data model which corresponds to lastfms json representation of an artist
+
+class Artist: Decodable {
     let name: String
-    let albums: [Album]?
+    let images: [Image]
+    let url: URL
     
-    init (lastfmID: String, name: String, albums: [Album]) {
-        self.lastfmID = lastfmID
-        self.name = name
-        self.albums = albums
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case images = "image"
+        case url
+    }
+}
+
+struct Image: Decodable {
+    let text: String
+    let size: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case text = "#text"
+        case size
     }
 }

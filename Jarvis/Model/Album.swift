@@ -9,6 +9,7 @@
 import UIKit
 
 class Album {
+    
     let lastfmID: String
     let name: String
     let artist: String

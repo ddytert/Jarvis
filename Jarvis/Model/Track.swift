@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Track {
+struct Track: Codable {
     let name: String
     let length: TimeInterval
 }
