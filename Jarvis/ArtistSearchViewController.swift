@@ -28,6 +28,9 @@ final class ArtistSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Hide separator line
+        tableView.separatorStyle = .none
+        
         activityIndicator.isHidden = true
         searchInfoLabel.isHidden = false
         searchBar.becomeFirstResponder()
@@ -50,6 +53,9 @@ extension ArtistSearchViewController: UITableViewDataSource {
                                                  for: indexPath) as! ArtistCell
         let artist = foundArtists[indexPath.row]
         cell.nameLabel.text = artist.name
+        // Alternating background colors
+        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 33.0 / 255.0, alpha: 1.0) : UIColor(white: 40.0 / 255.0, alpha: 1.0)
+
         return cell
     }
     

@@ -17,7 +17,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mJ4-Gd-8UX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZGT-c9-Suj">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -87,81 +87,9 @@
             <point key="canvasLocation" x="1897.1014492753625" y="129.91071428571428"/>
         </scene>
         <!--Search Artist-->
-        <scene sceneID="261-H0-CMM">
-            <objects>
-                <tableViewController title="Search Artist" id="PtV-NA-TJA" customClass="ArtistSearchViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z9G-rQ-b7L">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.15294358129999999" green="0.14894938469999999" blue="0.1529418528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="kHH-ir-1kV">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fZw-JX-xU3">
-                                    <rect key="frame" x="197" y="54" width="20" height="20"/>
-                                </activityIndicatorView>
-                                <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" placeholder="Enter Artist Name" translatesAutoresizingMaskIntoConstraints="NO" id="rcH-BU-4KE">
-                                    <rect key="frame" x="0.0" y="23" width="414" height="56"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                    <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
-                                    <scopeButtonTitles>
-                                        <string>Title</string>
-                                        <string>Title</string>
-                                    </scopeButtonTitles>
-                                    <connections>
-                                        <outlet property="delegate" destination="PtV-NA-TJA" id="83U-0D-xMX"/>
-                                    </connections>
-                                </searchBar>
-                            </subviews>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="fZw-JX-xU3" firstAttribute="centerY" secondItem="kHH-ir-1kV" secondAttribute="centerY" id="2m8-H2-y8M"/>
-                                <constraint firstItem="fZw-JX-xU3" firstAttribute="centerX" secondItem="kHH-ir-1kV" secondAttribute="centerX" id="Ccx-eX-7EG"/>
-                            </constraints>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistCell" rowHeight="76" id="wRH-dP-FTS" customClass="ArtistCell" customModule="Jarvis" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="156" width="414" height="76"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wRH-dP-FTS" id="BF6-dR-qFT">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idK-vc-NcL">
-                                            <rect key="frame" x="20" y="27.5" width="374" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="idK-vc-NcL" firstAttribute="trailing" secondItem="BF6-dR-qFT" secondAttribute="trailingMargin" id="4Pg-25-xCF"/>
-                                        <constraint firstItem="idK-vc-NcL" firstAttribute="leading" secondItem="BF6-dR-qFT" secondAttribute="leadingMargin" id="Oc3-Sj-gWM"/>
-                                        <constraint firstItem="idK-vc-NcL" firstAttribute="centerY" secondItem="BF6-dR-qFT" secondAttribute="centerY" id="r3o-ak-JTh"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.15294358129999999" green="0.14894938469999999" blue="0.1529418528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <outlet property="nameLabel" destination="idK-vc-NcL" id="Fyo-zK-2Yh"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="PtV-NA-TJA" id="48j-hN-fg1"/>
-                            <outlet property="delegate" destination="PtV-NA-TJA" id="Mce-sY-Qp2"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yMt-Ok-gSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3234.7826086956525" y="499.55357142857139"/>
-        </scene>
-        <!--Artist Search View Controller-->
         <scene sceneID="8Ue-Eh-uDr">
             <objects>
-                <viewController id="6B7-wU-1eq" customClass="ArtistSearchViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search Artist" id="6B7-wU-1eq" customClass="ArtistSearchViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I6D-oG-ms0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,7 +99,7 @@
                                 <subviews>
                                     <searchBar contentMode="redraw" barStyle="black" placeholder="Enter Artist Name" translatesAutoresizingMaskIntoConstraints="NO" id="uz8-uw-aTQ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                                        <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <color key="barTintColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                         <scopeButtonTitles>
                                             <string>Title</string>
@@ -182,7 +110,7 @@
                                         </connections>
                                     </searchBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDJ-bj-8Io">
-                                        <rect key="frame" x="12" y="73.5" width="390" height="21"/>
+                                        <rect key="frame" x="12" y="74.5" width="390" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
@@ -191,14 +119,14 @@
                                         <rect key="frame" x="197" y="74" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.12955307960510254" green="0.13703769445419312" blue="0.14902153611183167" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.15686274509803921" green="0.15686274509803921" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="uz8-uw-aTQ" firstAttribute="top" secondItem="0tf-PM-M6h" secondAttribute="top" id="6LG-hL-A9a"/>
                                     <constraint firstAttribute="bottom" secondItem="O2k-dh-5tu" secondAttribute="bottom" constant="18" id="DOu-Rq-TqW"/>
                                     <constraint firstItem="uz8-uw-aTQ" firstAttribute="leading" secondItem="0tf-PM-M6h" secondAttribute="leading" id="KEW-6z-gUd"/>
                                     <constraint firstAttribute="trailing" secondItem="uz8-uw-aTQ" secondAttribute="trailing" id="OTp-mD-CtV"/>
                                     <constraint firstItem="zDJ-bj-8Io" firstAttribute="leading" secondItem="0tf-PM-M6h" secondAttribute="leading" constant="12" id="OaT-i8-wjK"/>
-                                    <constraint firstAttribute="bottom" secondItem="zDJ-bj-8Io" secondAttribute="bottom" constant="17.5" id="aq8-OM-MBp"/>
+                                    <constraint firstAttribute="bottom" secondItem="zDJ-bj-8Io" secondAttribute="bottom" constant="17" id="aq8-OM-MBp"/>
                                     <constraint firstAttribute="trailing" secondItem="zDJ-bj-8Io" secondAttribute="trailing" constant="12" id="eb6-0i-hBL"/>
                                     <constraint firstAttribute="height" constant="112" id="jxJ-OJ-dmg"/>
                                     <constraint firstItem="O2k-dh-5tu" firstAttribute="centerX" secondItem="0tf-PM-M6h" secondAttribute="centerX" id="n4r-JW-hMk"/>
@@ -206,24 +134,24 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3dn-8v-vKM">
                                 <rect key="frame" x="0.0" y="200" width="414" height="696"/>
-                                <color key="backgroundColor" red="0.12955307960000001" green="0.1370376945" blue="0.14902153609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistCell" rowHeight="76" id="zKa-2w-WEo" customClass="ArtistCell" customModule="Jarvis" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ArtistCell" rowHeight="76" id="zKa-2w-WEo" customClass="ArtistCell" customModule="Jarvis" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zKa-2w-WEo" id="7Ta-Hf-Jgu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="75.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MR7-OH-lNx">
-                                                    <rect key="frame" x="86" y="27.5" width="308" height="21"/>
+                                                    <rect key="frame" x="86" y="27.5" width="282" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Exg-fc-WKs">
                                                     <rect key="frame" x="12" y="7" width="62" height="62"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="62" id="63h-JL-07o"/>
                                                         <constraint firstAttribute="width" constant="62" id="q7u-jo-vWX"/>
@@ -243,7 +171,8 @@
                                                 <constraint firstItem="Exg-fc-WKs" firstAttribute="leading" secondItem="7Ta-Hf-Jgu" secondAttribute="leading" constant="12" id="fcm-FS-gvm"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.15294358129999999" green="0.14894938469999999" blue="0.1529418528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <inset key="separatorInset" minX="32" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="artistImageView" destination="Exg-fc-WKs" id="2B0-no-dam"/>
                                             <outlet property="nameLabel" destination="MR7-OH-lNx" id="t9B-6I-kM1"/>
@@ -256,7 +185,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="0tf-PM-M6h" firstAttribute="leading" secondItem="Gay-xI-Z39" secondAttribute="leading" id="116-VA-j68"/>
                             <constraint firstItem="3dn-8v-vKM" firstAttribute="top" secondItem="0tf-PM-M6h" secondAttribute="bottom" id="2WF-e6-ghd"/>
@@ -277,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jk6-fb-sTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4085.507246376812" y="496.875"/>
+            <point key="canvasLocation" x="3235" y="514"/>
         </scene>
         <!--Details-->
         <scene sceneID="gRH-iJ-D4w">
@@ -291,7 +220,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vsO-t5-DWu" firstAttribute="bottom" secondItem="xMc-xL-DAe" secondAttribute="bottom" id="1ge-gU-zhT"/>
                             <constraint firstItem="vsO-t5-DWu" firstAttribute="trailing" secondItem="xMc-xL-DAe" secondAttribute="trailing" id="ZRB-zE-3fS"/>
@@ -438,7 +367,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JcO-RC-4FC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="barTintColor" red="0.12941176470588234" green="0.12941176469999999" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
