@@ -22,6 +22,8 @@
 		69179635226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */; };
 		69179637226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */; };
 		69179639226CF8FD0034079A /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179638226CF8FD0034079A /* AlbumDetailViewController.swift */; };
+		692215252273260C00B0314E /* LastFMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215242273260C00B0314E /* LastFMService.swift */; };
+		692215272273284A00B0314E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215262273284A00B0314E /* Constants.swift */; };
 		694463392270423100FA4282 /* ArtistSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694463382270423100FA4282 /* ArtistSearchViewController.swift */; };
 		6944633B227043B900FA4282 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944633A227043B900FA4282 /* Artist.swift */; };
 		69D4EB1C2272306100AFB189 /* ArtistSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D4EB1B2272306100AFB189 /* ArtistSearchResults.swift */; };
@@ -47,6 +49,8 @@
 		69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg"; sourceTree = "<group>"; };
 		69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = A1hIUHqDK3L._SS500_.jpg; sourceTree = "<group>"; };
 		69179638226CF8FD0034079A /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
+		692215242273260C00B0314E /* LastFMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMService.swift; sourceTree = "<group>"; };
+		692215262273284A00B0314E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		694463382270423100FA4282 /* ArtistSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSearchViewController.swift; sourceTree = "<group>"; };
 		6944633A227043B900FA4282 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		69D4EB1B2272306100AFB189 /* ArtistSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSearchResults.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				69179638226CF8FD0034079A /* AlbumDetailViewController.swift */,
 				69179629226CA3860034079A /* AlbumCell.swift */,
 				694463382270423100FA4282 /* ArtistSearchViewController.swift */,
+				692215242273260C00B0314E /* LastFMService.swift */,
+				692215262273284A00B0314E /* Constants.swift */,
 				69D4EB212272503200AFB189 /* ArtistCell.swift */,
 				69179630226CCB0D0034079A /* AlbumStore.swift */,
 				69179617226C97460034079A /* Assets.xcassets */,
@@ -281,7 +287,9 @@
 				6917960E226C97450034079A /* AppDelegate.swift in Sources */,
 				694463392270423100FA4282 /* ArtistSearchViewController.swift in Sources */,
 				69179639226CF8FD0034079A /* AlbumDetailViewController.swift in Sources */,
+				692215252273260C00B0314E /* LastFMService.swift in Sources */,
 				69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */,
+				692215272273284A00B0314E /* Constants.swift in Sources */,
 				6944633B227043B900FA4282 /* Artist.swift in Sources */,
 				69179631226CCB0D0034079A /* AlbumStore.swift in Sources */,
 			);

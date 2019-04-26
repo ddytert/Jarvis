@@ -55,7 +55,7 @@ extension ArtistSearchViewController: UITableViewDataSource {
         cell.nameLabel.text = artist.name
         // Alternating background colors
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 33.0 / 255.0, alpha: 1.0) : UIColor(white: 40.0 / 255.0, alpha: 1.0)
-
+        
         return cell
     }
     
@@ -119,53 +119,23 @@ extension ArtistSearchViewController: UISearchBarDelegate {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        searchForArtist(artistName) { artists in
+        LastFMService.shared.searchForArtist(artistName) { artists, message in
             
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.searchInfoLabel.isHidden = false
+            self.searchInfoLabel.text = message
             
-            if let artists = artists {
-                self.foundArtists = artists
-                self.tableView.reloadData()
-                if artists.count > 0 {
-                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0),
-                                               at: .top,
-                                               animated: true)
-                }
+            guard let artists = artists else { return }
+            
+            self.foundArtists = artists
+            self.tableView.reloadData()
+            if artists.count > 0 {
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0),
+                                           at: .top,
+                                           animated: true)
             }
         }
     }
 }
 
-// MARK: Download data
-extension ArtistSearchViewController {
-    
-    func searchForArtist(_ artistName: String, completion: @escaping ([Artist]?) -> Void) {
-        
-        Alamofire.request("http://ws.audioscrobbler.com/2.0/",
-                          parameters: ["method": "artist.search",
-                                       "limit": 100,
-                                       "artist": artistName,
-                                       "api_key": lastfmAuthKey,
-                                       "format": "json"])
-            .responseData { response in
-                guard response.result.isSuccess,
-                    let data = response.data else {
-                        print("Error while fetching artists: \(String(describing: response.result.error))")
-                        completion(nil)
-                        return
-                }
-                do {
-                    let searchResult = try JSONDecoder().decode(ArtistSearchResults.self, from: data)
-                    let artists = searchResult.results.artistMatches.artists
-                    if let numberResults = Int(searchResult.results.count) {
-                        self.searchInfoLabel.text = "Artists found: \(numberResults)"
-                    }
-                    completion(artists)
-                } catch {
-                    print(error.localizedDescription)
-                }
-        }
-    }
-}
