@@ -77,7 +77,7 @@
                     <navigationItem key="navigationItem" title="My Albums" id="F5D-zh-ta0">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="FkN-2C-eA1">
                             <connections>
-                                <segue destination="PtV-NA-TJA" kind="show" id="Xon-hU-ikj"/>
+                                <segue destination="6B7-wU-1eq" kind="show" id="hdh-bu-GIM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -90,32 +90,62 @@
         <scene sceneID="261-H0-CMM">
             <objects>
                 <tableViewController title="Search Artist" id="PtV-NA-TJA" customClass="ArtistSearchViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z9G-rQ-b7L">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="z9G-rQ-b7L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.15294358129999999" green="0.14894938469999999" blue="0.1529418528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" placeholder="Enter Artist Name" id="rcH-BU-4KE">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                            <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
-                            <scopeButtonTitles>
-                                <string>Title</string>
-                                <string>Title</string>
-                            </scopeButtonTitles>
-                            <connections>
-                                <outlet property="delegate" destination="PtV-NA-TJA" id="83U-0D-xMX"/>
-                            </connections>
-                        </searchBar>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="kHH-ir-1kV">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="fZw-JX-xU3">
+                                    <rect key="frame" x="197" y="54" width="20" height="20"/>
+                                </activityIndicatorView>
+                                <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" placeholder="Enter Artist Name" translatesAutoresizingMaskIntoConstraints="NO" id="rcH-BU-4KE">
+                                    <rect key="frame" x="0.0" y="23" width="414" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                    <scopeButtonTitles>
+                                        <string>Title</string>
+                                        <string>Title</string>
+                                    </scopeButtonTitles>
+                                    <connections>
+                                        <outlet property="delegate" destination="PtV-NA-TJA" id="83U-0D-xMX"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="fZw-JX-xU3" firstAttribute="centerY" secondItem="kHH-ir-1kV" secondAttribute="centerY" id="2m8-H2-y8M"/>
+                                <constraint firstItem="fZw-JX-xU3" firstAttribute="centerX" secondItem="kHH-ir-1kV" secondAttribute="centerX" id="Ccx-eX-7EG"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wRH-dP-FTS">
-                                <rect key="frame" x="0.0" y="84" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistCell" rowHeight="76" id="wRH-dP-FTS" customClass="ArtistCell" customModule="Jarvis" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="156" width="414" height="76"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wRH-dP-FTS" id="BF6-dR-qFT">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idK-vc-NcL">
+                                            <rect key="frame" x="20" y="27.5" width="374" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="idK-vc-NcL" firstAttribute="trailing" secondItem="BF6-dR-qFT" secondAttribute="trailingMargin" id="4Pg-25-xCF"/>
+                                        <constraint firstItem="idK-vc-NcL" firstAttribute="leading" secondItem="BF6-dR-qFT" secondAttribute="leadingMargin" id="Oc3-Sj-gWM"/>
+                                        <constraint firstItem="idK-vc-NcL" firstAttribute="centerY" secondItem="BF6-dR-qFT" secondAttribute="centerY" id="r3o-ak-JTh"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.15294358129999999" green="0.14894938469999999" blue="0.1529418528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="idK-vc-NcL" id="Fyo-zK-2Yh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -126,7 +156,128 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMt-Ok-gSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3236" y="500"/>
+            <point key="canvasLocation" x="3234.7826086956525" y="499.55357142857139"/>
+        </scene>
+        <!--Artist Search View Controller-->
+        <scene sceneID="8Ue-Eh-uDr">
+            <objects>
+                <viewController id="6B7-wU-1eq" customClass="ArtistSearchViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I6D-oG-ms0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tf-PM-M6h" userLabel="Info View">
+                                <rect key="frame" x="0.0" y="88" width="414" height="112"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" barStyle="black" placeholder="Enter Artist Name" translatesAutoresizingMaskIntoConstraints="NO" id="uz8-uw-aTQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                        <color key="barTintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                        <scopeButtonTitles>
+                                            <string>Title</string>
+                                            <string>Title</string>
+                                        </scopeButtonTitles>
+                                        <connections>
+                                            <outlet property="delegate" destination="6B7-wU-1eq" id="uNV-Hz-3vU"/>
+                                        </connections>
+                                    </searchBar>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDJ-bj-8Io">
+                                        <rect key="frame" x="12" y="73.5" width="390" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="O2k-dh-5tu">
+                                        <rect key="frame" x="197" y="74" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12955307960510254" green="0.13703769445419312" blue="0.14902153611183167" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="uz8-uw-aTQ" firstAttribute="top" secondItem="0tf-PM-M6h" secondAttribute="top" id="6LG-hL-A9a"/>
+                                    <constraint firstAttribute="bottom" secondItem="O2k-dh-5tu" secondAttribute="bottom" constant="18" id="DOu-Rq-TqW"/>
+                                    <constraint firstItem="uz8-uw-aTQ" firstAttribute="leading" secondItem="0tf-PM-M6h" secondAttribute="leading" id="KEW-6z-gUd"/>
+                                    <constraint firstAttribute="trailing" secondItem="uz8-uw-aTQ" secondAttribute="trailing" id="OTp-mD-CtV"/>
+                                    <constraint firstItem="zDJ-bj-8Io" firstAttribute="leading" secondItem="0tf-PM-M6h" secondAttribute="leading" constant="12" id="OaT-i8-wjK"/>
+                                    <constraint firstAttribute="bottom" secondItem="zDJ-bj-8Io" secondAttribute="bottom" constant="17.5" id="aq8-OM-MBp"/>
+                                    <constraint firstAttribute="trailing" secondItem="zDJ-bj-8Io" secondAttribute="trailing" constant="12" id="eb6-0i-hBL"/>
+                                    <constraint firstAttribute="height" constant="112" id="jxJ-OJ-dmg"/>
+                                    <constraint firstItem="O2k-dh-5tu" firstAttribute="centerX" secondItem="0tf-PM-M6h" secondAttribute="centerX" id="n4r-JW-hMk"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3dn-8v-vKM">
+                                <rect key="frame" x="0.0" y="200" width="414" height="696"/>
+                                <color key="backgroundColor" red="0.12955307960000001" green="0.1370376945" blue="0.14902153609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistCell" rowHeight="76" id="zKa-2w-WEo" customClass="ArtistCell" customModule="Jarvis" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="76"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zKa-2w-WEo" id="7Ta-Hf-Jgu">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MR7-OH-lNx">
+                                                    <rect key="frame" x="86" y="27.5" width="308" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Exg-fc-WKs">
+                                                    <rect key="frame" x="12" y="7" width="62" height="62"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="62" id="63h-JL-07o"/>
+                                                        <constraint firstAttribute="width" constant="62" id="q7u-jo-vWX"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="7"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Exg-fc-WKs" firstAttribute="centerY" secondItem="7Ta-Hf-Jgu" secondAttribute="centerY" id="2os-zX-H1T"/>
+                                                <constraint firstItem="MR7-OH-lNx" firstAttribute="leading" secondItem="Exg-fc-WKs" secondAttribute="trailing" constant="12" id="CJP-bY-LWc"/>
+                                                <constraint firstItem="MR7-OH-lNx" firstAttribute="trailing" secondItem="7Ta-Hf-Jgu" secondAttribute="trailingMargin" id="FvF-bB-SbT"/>
+                                                <constraint firstItem="MR7-OH-lNx" firstAttribute="centerY" secondItem="7Ta-Hf-Jgu" secondAttribute="centerY" id="eAL-rh-ujZ"/>
+                                                <constraint firstItem="Exg-fc-WKs" firstAttribute="leading" secondItem="7Ta-Hf-Jgu" secondAttribute="leading" constant="12" id="fcm-FS-gvm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.15294358129999999" green="0.14894938469999999" blue="0.1529418528" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="artistImageView" destination="Exg-fc-WKs" id="2B0-no-dam"/>
+                                            <outlet property="nameLabel" destination="MR7-OH-lNx" id="t9B-6I-kM1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6B7-wU-1eq" id="bUp-hf-lH9"/>
+                                    <outlet property="delegate" destination="6B7-wU-1eq" id="yiw-PY-u7V"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0tf-PM-M6h" firstAttribute="leading" secondItem="Gay-xI-Z39" secondAttribute="leading" id="116-VA-j68"/>
+                            <constraint firstItem="3dn-8v-vKM" firstAttribute="top" secondItem="0tf-PM-M6h" secondAttribute="bottom" id="2WF-e6-ghd"/>
+                            <constraint firstItem="0tf-PM-M6h" firstAttribute="trailing" secondItem="Gay-xI-Z39" secondAttribute="trailing" id="YoD-Vd-OIo"/>
+                            <constraint firstItem="0tf-PM-M6h" firstAttribute="top" secondItem="Gay-xI-Z39" secondAttribute="top" id="hqt-Xk-I4p"/>
+                            <constraint firstAttribute="bottom" secondItem="3dn-8v-vKM" secondAttribute="bottom" id="nGQ-1U-fNf"/>
+                            <constraint firstItem="3dn-8v-vKM" firstAttribute="leading" secondItem="Gay-xI-Z39" secondAttribute="leading" id="qY2-Mn-4jx"/>
+                            <constraint firstItem="Gay-xI-Z39" firstAttribute="trailing" secondItem="3dn-8v-vKM" secondAttribute="trailing" id="ykd-FX-bo7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gay-xI-Z39"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="O2k-dh-5tu" id="8D1-8W-ah7"/>
+                        <outlet property="searchBar" destination="uz8-uw-aTQ" id="73u-F0-JHY"/>
+                        <outlet property="searchInfoLabel" destination="zDJ-bj-8Io" id="MkS-I4-njM"/>
+                        <outlet property="tableView" destination="3dn-8v-vKM" id="M5P-0M-9dn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jk6-fb-sTs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4085.507246376812" y="496.875"/>
         </scene>
         <!--Details-->
         <scene sceneID="gRH-iJ-D4w">

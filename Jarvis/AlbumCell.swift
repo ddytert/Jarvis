@@ -8,8 +8,9 @@
 
 import UIKit
 
-class AlbumCell: UICollectionViewCell {
+final class AlbumCell: UICollectionViewCell {
     
+    // MARK: Properties
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 }

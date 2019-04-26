@@ -16,9 +16,11 @@ struct ArtistSearchResults: Decodable {
 
 struct Results: Decodable {
     let artistMatches: ArtistMatches
+    let count: String
     
     private enum CodingKeys: String, CodingKey {
         case artistMatches = "artistmatches"
+        case count = "opensearch:totalResults"
     }
 }
 

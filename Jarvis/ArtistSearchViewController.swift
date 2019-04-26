@@ -10,8 +10,16 @@ import UIKit
 import Alamofire
 
 let lastfmAuthKey = "1f5c01f4a1139c3ccc96eaab9042a83d"
+private let ArtistCellIdentifier = "ArtistCell"
 
-class ArtistSearchViewController: UITableViewController {
+
+final class ArtistSearchViewController: UIViewController {
+    
+    // MARK: IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var searchInfoLabel: UILabel!
     
     // MARK: - Properties
     var foundArtists:[Artist] = []
@@ -20,25 +28,28 @@ class ArtistSearchViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndicator.isHidden = true
+        searchInfoLabel.isHidden = false
+        searchBar.becomeFirstResponder()
     }
 }
 
 // MARK: - Table view data source
-extension ArtistSearchViewController {
+extension ArtistSearchViewController: UITableViewDataSource {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return foundArtists.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        
-        // Configure the cell...
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ArtistCellIdentifier,
+                                                 for: indexPath) as! ArtistCell
+        let artist = foundArtists[indexPath.row]
+        cell.nameLabel.text = artist.name
         return cell
     }
     
@@ -98,16 +109,23 @@ extension ArtistSearchViewController: UISearchBarDelegate {
         guard let artistName = searchBar.text else { return }
         
         searchBar.resignFirstResponder()
+        searchInfoLabel.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
         searchForArtist(artistName) { artists in
             
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.searchInfoLabel.isHidden = false
+            
             if let artists = artists {
-                print("\(artists.count) artist found")
-                artists.forEach() {
-                    print("Name: \($0.name)")
-                    print("Images: ")
-                    $0.images.forEach() {
-                        print($0)
-                    }
+                self.foundArtists = artists
+                self.tableView.reloadData()
+                if artists.count > 0 {
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0),
+                                               at: .top,
+                                               animated: true)
                 }
             }
         }
@@ -118,9 +136,10 @@ extension ArtistSearchViewController: UISearchBarDelegate {
 extension ArtistSearchViewController {
     
     func searchForArtist(_ artistName: String, completion: @escaping ([Artist]?) -> Void) {
-                
+        
         Alamofire.request("http://ws.audioscrobbler.com/2.0/",
                           parameters: ["method": "artist.search",
+                                       "limit": 100,
                                        "artist": artistName,
                                        "api_key": lastfmAuthKey,
                                        "format": "json"])
@@ -134,6 +153,9 @@ extension ArtistSearchViewController {
                 do {
                     let searchResult = try JSONDecoder().decode(ArtistSearchResults.self, from: data)
                     let artists = searchResult.results.artistMatches.artists
+                    if let numberResults = Int(searchResult.results.count) {
+                        self.searchInfoLabel.text = "Artists found: \(numberResults)"
+                    }
                     completion(artists)
                 } catch {
                     print(error.localizedDescription)

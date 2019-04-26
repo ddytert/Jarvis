@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let cellReuseIdentifier = "AlbumCell"
+private let AlbumCellIdentifier = "AlbumCell"
 
 final class MainViewController: UICollectionViewController {
     
@@ -55,8 +55,8 @@ extension MainViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier,
-                                                            for: indexPath) as? AlbumCell else { preconditionFailure("Invalid cell type") }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCellIdentifier,
+                                                      for: indexPath) as! AlbumCell
         let album = albums[indexPath.row]
         cell.imageView.image = album.image
         cell.nameLabel.text = album.name
