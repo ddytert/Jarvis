@@ -110,8 +110,8 @@
                                         </connections>
                                     </searchBar>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDJ-bj-8Io">
-                                        <rect key="frame" x="12" y="65.5" width="390" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="12" y="68" width="390" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -229,15 +229,9 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTi-gE-ZOo">
-                                        <rect key="frame" x="206" y="112" width="184" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year of Release" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzj-pe-0k5">
-                                        <rect key="frame" x="206" y="130" width="178" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzj-pe-0k5">
+                                        <rect key="frame" x="206" y="164" width="178" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -247,19 +241,21 @@
                                             <constraint firstAttribute="width" secondItem="gsi-Ef-2Q0" secondAttribute="height" multiplier="1:1" id="uG0-wt-Blk"/>
                                         </constraints>
                                     </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lrD-2n-C2U">
+                                        <rect key="frame" x="285" y="163" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.15084172749999999" green="0.1501130235" blue="0.15157043149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="fTi-gE-ZOo" firstAttribute="top" secondItem="JLG-CM-WHH" secondAttribute="bottom" constant="12" id="7XE-Dl-1fI"/>
                                     <constraint firstItem="JLG-CM-WHH" firstAttribute="top" secondItem="zbX-kZ-AbJ" secondAttribute="top" constant="12" id="8Fl-bc-kLU"/>
                                     <constraint firstAttribute="height" constant="194" id="EB8-bq-weG"/>
-                                    <constraint firstAttribute="trailing" secondItem="fTi-gE-ZOo" secondAttribute="trailing" id="PA3-bh-xPC"/>
                                     <constraint firstItem="zbX-kZ-AbJ" firstAttribute="bottom" secondItem="gsi-Ef-2Q0" secondAttribute="bottom" id="WDp-Vy-lC8"/>
+                                    <constraint firstItem="lrD-2n-C2U" firstAttribute="centerY" secondItem="yzj-pe-0k5" secondAttribute="centerY" id="WbH-Hj-Mna"/>
                                     <constraint firstItem="gsi-Ef-2Q0" firstAttribute="leading" secondItem="zbX-kZ-AbJ" secondAttribute="leading" id="YbD-Cq-uvk"/>
-                                    <constraint firstItem="fTi-gE-ZOo" firstAttribute="leading" secondItem="gsi-Ef-2Q0" secondAttribute="trailing" constant="12" id="Ydr-oI-FId"/>
                                     <constraint firstItem="yzj-pe-0k5" firstAttribute="leading" secondItem="gsi-Ef-2Q0" secondAttribute="trailing" constant="12" id="e9P-dy-Fxz"/>
                                     <constraint firstAttribute="trailing" secondItem="JLG-CM-WHH" secondAttribute="trailing" constant="6" id="gLV-Wo-n6N"/>
-                                    <constraint firstItem="yzj-pe-0k5" firstAttribute="top" secondItem="fTi-gE-ZOo" secondAttribute="bottom" constant="2" id="qXB-nP-7Rb"/>
+                                    <constraint firstItem="zbX-kZ-AbJ" firstAttribute="bottom" secondItem="yzj-pe-0k5" secondAttribute="bottom" constant="12" id="h16-uV-iJC"/>
+                                    <constraint firstItem="lrD-2n-C2U" firstAttribute="centerX" secondItem="yzj-pe-0k5" secondAttribute="centerX" id="r4u-aa-vrY"/>
                                     <constraint firstItem="JLG-CM-WHH" firstAttribute="leading" secondItem="gsi-Ef-2Q0" secondAttribute="trailing" constant="12" id="yhC-NI-U21"/>
                                     <constraint firstItem="gsi-Ef-2Q0" firstAttribute="top" secondItem="zbX-kZ-AbJ" secondAttribute="top" id="zpR-c0-ZUR"/>
                                     <constraint firstAttribute="trailing" secondItem="yzj-pe-0k5" secondAttribute="trailing" constant="6" id="zwa-2G-wSn"/>
@@ -272,7 +268,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="egM-zJ-492">
-                                <rect key="frame" x="0.0" y="306" width="414" height="590"/>
+                                <rect key="frame" x="0.0" y="318" width="414" height="578"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SmallAlbumCell" rowHeight="76" id="Vy2-9f-ORx" userLabel="SmallAlbumCell" customClass="SmallAlbumCell" customModule="Jarvis" customModuleProvider="target">
@@ -329,7 +325,7 @@
                             <constraint firstItem="pBJ-wP-3Va" firstAttribute="leading" secondItem="Log-N2-WHV" secondAttribute="leading" constant="12" id="Bu3-lk-ivw"/>
                             <constraint firstAttribute="bottom" secondItem="egM-zJ-492" secondAttribute="bottom" id="Kjk-4x-T68"/>
                             <constraint firstItem="Log-N2-WHV" firstAttribute="trailing" secondItem="pBJ-wP-3Va" secondAttribute="trailing" constant="12" id="UfF-fn-o9q"/>
-                            <constraint firstItem="egM-zJ-492" firstAttribute="top" secondItem="pBJ-wP-3Va" secondAttribute="bottom" constant="12" id="YSh-Na-mfd"/>
+                            <constraint firstItem="egM-zJ-492" firstAttribute="top" secondItem="pBJ-wP-3Va" secondAttribute="bottom" constant="24" id="YSh-Na-mfd"/>
                             <constraint firstItem="egM-zJ-492" firstAttribute="leading" secondItem="Log-N2-WHV" secondAttribute="leading" id="Zb5-Pe-zwQ"/>
                             <constraint firstItem="egM-zJ-492" firstAttribute="trailing" secondItem="Log-N2-WHV" secondAttribute="trailing" id="vLE-lc-oFl"/>
                             <constraint firstItem="pBJ-wP-3Va" firstAttribute="top" secondItem="Log-N2-WHV" secondAttribute="top" constant="12" id="yTh-DO-X5g"/>
@@ -337,8 +333,10 @@
                         <viewLayoutGuide key="safeArea" id="Log-N2-WHV"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="lrD-2n-C2U" id="GG2-nZ-yWI"/>
                         <outlet property="artistImageView" destination="gsi-Ef-2Q0" id="gVF-MA-lb4"/>
                         <outlet property="artistNameLabel" destination="JLG-CM-WHH" id="4FZ-sl-Kfe"/>
+                        <outlet property="numberAlbumsLabel" destination="yzj-pe-0k5" id="yMj-Qv-5y2"/>
                         <outlet property="tableView" destination="egM-zJ-492" id="4XP-MS-Mlp"/>
                     </connections>
                 </viewController>

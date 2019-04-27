@@ -20,14 +20,17 @@ final class ArtistDetailViewController: UIViewController {
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var numberAlbumsLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Hide separator line
         tableView.separatorStyle = .none
-        
+        activityIndicator.isHidden = true
+
         populateUI()
     }
     
@@ -44,9 +47,19 @@ final class ArtistDetailViewController: UIViewController {
         }
         
         // Load top albums of artist
+        numberAlbumsLabel.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
         LastFMService.shared.fetchTopAlbumsOfArtist(artist.name) { [weak self] albums, message in
-            guard let self = self,
-                let albums = albums else { return }
+            guard let self = self else { return }
+            
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.numberAlbumsLabel.isHidden = false
+            self.numberAlbumsLabel.text = message
+
+            guard let albums = albums else { return }
             self.topAlbums = albums
             self.tableView.reloadData()
         }
@@ -90,40 +103,25 @@ extension ArtistDetailViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
+}
+
+// MARK: - Table view delegate
+extension ArtistDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let artist = selectedArtist else { return }
+        let album = topAlbums[indexPath.row]
+        LastFMService.shared.fetchDetailsForAlbum(album.title, artist.name) { album, message in
+            print(message)
+            if let album = album {
+                print(album.title)
+                var count = 0
+                for track in album.tracks.tracks {
+                    count = count + 1
+                    print("\(count). \(track.name) (\(track.duration))")
+                }
+            }
+
+        }
+    }
 }

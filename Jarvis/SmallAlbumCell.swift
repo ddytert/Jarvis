@@ -19,7 +19,7 @@ class SmallAlbumCell: UITableViewCell {
         didSet {
             guard let album = album else { return }
             albumTitleLabel.text = album.title
-            // Set image to default image first
+            // Set album image to default image first
             albumImageView.image = UIImage(named: "IconUnknownAlbum.png")
             requestImageForAlbum(album)
         }

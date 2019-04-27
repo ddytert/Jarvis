@@ -21,13 +21,3 @@ class Artist: Decodable {
         case url
     }
 }
-
-struct ArtistImage: Decodable {
-    let imageURL: String
-    let size: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case imageURL = "#text"
-        case size
-    }
-}
