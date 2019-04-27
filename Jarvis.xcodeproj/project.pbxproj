@@ -24,6 +24,10 @@
 		69179639226CF8FD0034079A /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179638226CF8FD0034079A /* AlbumDetailViewController.swift */; };
 		692215252273260C00B0314E /* LastFMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215242273260C00B0314E /* LastFMService.swift */; };
 		692215272273284A00B0314E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215262273284A00B0314E /* Constants.swift */; };
+		6922152922735EE500B0314E /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152822735EE500B0314E /* ArtistDetailViewController.swift */; };
+		6922152D2273781400B0314E /* AlbumSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152C2273781400B0314E /* AlbumSearchResults.swift */; };
+		6922152F22737D4B00B0314E /* JarvisAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152E22737D4B00B0314E /* JarvisAlbum.swift */; };
+		6922153322738A4D00B0314E /* SmallAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922153222738A4D00B0314E /* SmallAlbumCell.swift */; };
 		694463392270423100FA4282 /* ArtistSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694463382270423100FA4282 /* ArtistSearchViewController.swift */; };
 		6944633B227043B900FA4282 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6944633A227043B900FA4282 /* Artist.swift */; };
 		69D4EB1C2272306100AFB189 /* ArtistSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D4EB1B2272306100AFB189 /* ArtistSearchResults.swift */; };
@@ -51,6 +55,10 @@
 		69179638226CF8FD0034079A /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
 		692215242273260C00B0314E /* LastFMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMService.swift; sourceTree = "<group>"; };
 		692215262273284A00B0314E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6922152822735EE500B0314E /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
+		6922152C2273781400B0314E /* AlbumSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchResults.swift; sourceTree = "<group>"; };
+		6922152E22737D4B00B0314E /* JarvisAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarvisAlbum.swift; sourceTree = "<group>"; };
+		6922153222738A4D00B0314E /* SmallAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallAlbumCell.swift; sourceTree = "<group>"; };
 		694463382270423100FA4282 /* ArtistSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSearchViewController.swift; sourceTree = "<group>"; };
 		6944633A227043B900FA4282 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		69D4EB1B2272306100AFB189 /* ArtistSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSearchResults.swift; sourceTree = "<group>"; };
@@ -111,6 +119,8 @@
 				692215242273260C00B0314E /* LastFMService.swift */,
 				692215262273284A00B0314E /* Constants.swift */,
 				69D4EB212272503200AFB189 /* ArtistCell.swift */,
+				6922152822735EE500B0314E /* ArtistDetailViewController.swift */,
+				6922153222738A4D00B0314E /* SmallAlbumCell.swift */,
 				69179630226CCB0D0034079A /* AlbumStore.swift */,
 				69179617226C97460034079A /* Assets.xcassets */,
 				6917962F226CCA8B0034079A /* Art */,
@@ -128,6 +138,8 @@
 				69179624226C9A420034079A /* Track.swift */,
 				69D4EB1B2272306100AFB189 /* ArtistSearchResults.swift */,
 				6944633A227043B900FA4282 /* Artist.swift */,
+				6922152C2273781400B0314E /* AlbumSearchResults.swift */,
+				6922152E22737D4B00B0314E /* JarvisAlbum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,13 +295,17 @@
 				69D4EB222272503200AFB189 /* ArtistCell.swift in Sources */,
 				69179625226C9A420034079A /* Track.swift in Sources */,
 				6917962A226CA3860034079A /* AlbumCell.swift in Sources */,
+				6922153322738A4D00B0314E /* SmallAlbumCell.swift in Sources */,
 				69179628226C9FDD0034079A /* MainViewController.swift in Sources */,
 				6917960E226C97450034079A /* AppDelegate.swift in Sources */,
+				6922152922735EE500B0314E /* ArtistDetailViewController.swift in Sources */,
 				694463392270423100FA4282 /* ArtistSearchViewController.swift in Sources */,
 				69179639226CF8FD0034079A /* AlbumDetailViewController.swift in Sources */,
 				692215252273260C00B0314E /* LastFMService.swift in Sources */,
 				69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */,
+				6922152D2273781400B0314E /* AlbumSearchResults.swift in Sources */,
 				692215272273284A00B0314E /* Constants.swift in Sources */,
+				6922152F22737D4B00B0314E /* JarvisAlbum.swift in Sources */,
 				6944633B227043B900FA4282 /* Artist.swift in Sources */,
 				69179631226CCB0D0034079A /* AlbumStore.swift in Sources */,
 			);

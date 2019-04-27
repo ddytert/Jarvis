@@ -9,9 +9,7 @@
 import UIKit
 import Alamofire
 
-let lastfmAuthKey = "1f5c01f4a1139c3ccc96eaab9042a83d"
 private let ArtistCellIdentifier = "ArtistCell"
-
 
 final class ArtistSearchViewController: UIViewController {
     
@@ -22,7 +20,7 @@ final class ArtistSearchViewController: UIViewController {
     @IBOutlet weak var searchInfoLabel: UILabel!
     
     // MARK: - Properties
-    var foundArtists:[Artist] = []
+    public var foundArtists:[Artist] = []
     
     // MARK: View lifecycle
     override func viewDidLoad() {
@@ -34,6 +32,18 @@ final class ArtistSearchViewController: UIViewController {
         activityIndicator.isHidden = true
         searchInfoLabel.isHidden = false
         searchBar.becomeFirstResponder()
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ShowArtistDetails",
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+                return
+        }
+        if let artistDetailVC = segue.destination as? ArtistDetailViewController {
+            artistDetailVC.selectedArtist = foundArtists[indexPath.row]
+        }
     }
 }
 
@@ -52,13 +62,17 @@ extension ArtistSearchViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArtistCellIdentifier,
                                                  for: indexPath) as! ArtistCell
         let artist = foundArtists[indexPath.row]
-        cell.nameLabel.text = artist.name
-        // Alternating background colors
-        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 33.0 / 255.0, alpha: 1.0) : UIColor(white: 40.0 / 255.0, alpha: 1.0)
+        cell.artist = artist
+         // Alternating background colors
+        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 33.0/255.0, alpha: 1.0) : UIColor(white: 40.0/255.0, alpha: 1.0)
+        // Set color of selected cell
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(red: 0.0, green: 54.0/255.0, blue: 111.0/255.0, alpha: 1.0)
+        cell.selectedBackgroundView = backgroundView
         
         return cell
     }
-    
+        
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -94,16 +108,6 @@ extension ArtistSearchViewController: UITableViewDataSource {
      }
      */
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 // MARK: - Search bar delegate
@@ -119,7 +123,12 @@ extension ArtistSearchViewController: UISearchBarDelegate {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        LastFMService.shared.searchForArtist(artistName) { artists, message in
+        foundArtists.removeAll()
+        tableView.reloadData()
+        
+        LastFMService.shared.searchForArtist(artistName) { [weak self] artists, message in
+            
+            guard let self = self else { return }
             
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
@@ -130,11 +139,6 @@ extension ArtistSearchViewController: UISearchBarDelegate {
             
             self.foundArtists = artists
             self.tableView.reloadData()
-            if artists.count > 0 {
-                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0),
-                                           at: .top,
-                                           animated: true)
-            }
         }
     }
 }
