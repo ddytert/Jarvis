@@ -8,13 +8,15 @@
 
 import UIKit
 
-class SmallAlbumCell: UITableViewCell {
+final class SmallAlbumCell: UITableViewCell {
 
     // MARK: - IBOutlets
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
     
     // MARK: - Properties
+    
+    // Moved TableViewCell setup logic from VC to cell itself
     public var album:JarvisAlbum? {
         didSet {
             guard let album = album else { return }
@@ -25,11 +27,12 @@ class SmallAlbumCell: UITableViewCell {
         }
     }
     
+    // Asynchronous loading of album image
     private func requestImageForAlbum(_ album: JarvisAlbum) {
         // Get url to thumbnail image
-        guard let image = album.images.first(where: { $0.size == "large" && !$0.imageURL.isEmpty }) else { return }
+        guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }) else { return }
         
-        LastFMService.shared.imageForURL(image.imageURL) { [weak self] image in
+        LastFMService.shared.imageForURL(imageInfo.url) { [weak self] image in
             guard let self = self,
                 let albumImage = image else { return }
             self.albumImageView.image = albumImage

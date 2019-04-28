@@ -12,12 +12,12 @@ import Foundation
 
 class Artist: Decodable {
     let name: String
-    let images: [ArtistImage]
+    let imageInfos: [ArtistImageInfo]
     let url: String
     
     private enum CodingKeys: String, CodingKey {
         case name
-        case images = "image"
+        case imageInfos = "image"
         case url
     }
 }

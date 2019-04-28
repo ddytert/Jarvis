@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct AlbumImage: Decodable {
-    let imageURL: String
+struct AlbumImageInfo: Decodable {
+    let url: String
     let size: String
     
     private enum CodingKeys: String, CodingKey {
-        case imageURL = "#text"
+        case url = "#text"
         case size
     }
 }

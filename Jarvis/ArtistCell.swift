@@ -15,6 +15,8 @@ final class ArtistCell: UITableViewCell {
     @IBOutlet weak var artistImageView: UIImageView!
     
     // MARK: - Properties
+    
+    // Moved TableViewCell setup logic from VC to cell itself
     public var artist:Artist? {
         didSet {
             guard let artist = artist else { return }
@@ -24,12 +26,12 @@ final class ArtistCell: UITableViewCell {
             requestImageForArtist(artist)
         }
     }
-    
+    // Asynchronous loading of artist image 
     private func requestImageForArtist(_ artist: Artist) {
         // Get url to thumbnail image
-        guard let image = artist.images.first(where: { $0.size == "large" && !$0.imageURL.isEmpty }) else { return }
+        guard let imageInfo = artist.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }) else { return }
         
-        LastFMService.shared.imageForURL(image.imageURL) { [weak self] image in
+        LastFMService.shared.imageForURL(imageInfo.url) { [weak self] image in
             guard let self = self,
                 let artistImage = image else { return }
             self.artistImageView.image = artistImage

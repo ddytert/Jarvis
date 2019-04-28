@@ -12,12 +12,12 @@ import Foundation
 
 struct JarvisAlbum: Decodable {
     let title: String
-    let images: [AlbumImage]
+    let imageInfos: [AlbumImageInfo]
     let url: String
     
     private enum CodingKeys: String, CodingKey {
         case title = "name"
-        case images = "image"
+        case imageInfos = "image"
         case url
     }
 }

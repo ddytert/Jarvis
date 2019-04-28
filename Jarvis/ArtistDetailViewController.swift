@@ -29,6 +29,7 @@ final class ArtistDetailViewController: UIViewController {
         
         // Hide separator line
         tableView.separatorStyle = .none
+        
         activityIndicator.isHidden = true
 
         populateUI()
@@ -38,15 +39,15 @@ final class ArtistDetailViewController: UIViewController {
         guard let artist = selectedArtist else { return }
         artistNameLabel.text = artist.name
         
-        // Get big artist image
-        guard let image = artist.images.first(where: { $0.size == "extralarge" && !$0.imageURL.isEmpty }) else { return }
-        LastFMService.shared.imageForURL(image.imageURL) { [weak self] image in
+        // Asynchronous loading of big artist image
+        guard let imageInfo = artist.imageInfos.first(where: { $0.size == "extralarge" && !$0.url.isEmpty }) else { return }
+        LastFMService.shared.imageForURL(imageInfo.url) { [weak self] image in
             guard let self = self,
                 let artistImage = image else { return }
             self.artistImageView.image = artistImage
         }
         
-        // Load top albums of artist
+        // Asynchronous loading of top albums of artist
         numberAlbumsLabel.isHidden = true
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
