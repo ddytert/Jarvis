@@ -120,14 +120,14 @@
 			isa = PBXGroup;
 			children = (
 				6917960D226C97450034079A /* AppDelegate.swift */,
-				69179626226C9AA60034079A /* Model */,
+				692215262273284A00B0314E /* Constants.swift */,
 				69179611226C97450034079A /* Main.storyboard */,
+				69179626226C9AA60034079A /* Model */,
 				69179627226C9FDD0034079A /* MainViewController.swift */,
 				69179638226CF8FD0034079A /* AlbumDetailViewController.swift */,
 				69179629226CA3860034079A /* AlbumCell.swift */,
 				694463382270423100FA4282 /* ArtistSearchViewController.swift */,
 				692215242273260C00B0314E /* LastFMService.swift */,
-				692215262273284A00B0314E /* Constants.swift */,
 				69D4EB212272503200AFB189 /* ArtistCell.swift */,
 				6922152822735EE500B0314E /* ArtistDetailViewController.swift */,
 				6922153222738A4D00B0314E /* SmallAlbumCell.swift */,

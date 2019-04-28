@@ -94,6 +94,7 @@ extension ArtistDetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: AlbumCellIdentifier,
                                                  for: indexPath) as! SmallAlbumCell
         let album = topAlbums[indexPath.row]
+        // Let the cell itself do the setup
         cell.album = album
         // Alternating background colors
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 33.0/255.0, alpha: 1.0) : UIColor(white: 40.0/255.0, alpha: 1.0)

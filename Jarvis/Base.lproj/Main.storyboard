@@ -522,8 +522,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IconUnknownAlbum" width="62" height="62"/>
-        <image name="IconUnknownArtist" width="62" height="62"/>
+        <image name="IconUnknownAlbum" width="200" height="200"/>
+        <image name="IconUnknownArtist" width="200" height="200"/>
         <image name="imageView:Exg-fc-WKs:image" width="62" height="62">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGaWpYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QGAcI
