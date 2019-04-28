@@ -35,7 +35,7 @@ final class ArtistDetailViewController: UIViewController {
         populateUI()
     }
     
-    func populateUI() {
+    private func populateUI() {
         guard let artist = selectedArtist else { return }
         artistNameLabel.text = artist.name
         
@@ -66,16 +66,18 @@ final class ArtistDetailViewController: UIViewController {
         }
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ShowAlbumDetails",
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) else {
+                return
+        }
+        if let albumDetailsVC = segue.destination as? AlbumDetailsViewController {
+            albumDetailsVC.selectedAlbumTitle = topAlbums[indexPath.row].title
+            albumDetailsVC.selectedArtistName = selectedArtist!.name
+        }
+    }
     
 }
 
@@ -104,26 +106,5 @@ extension ArtistDetailViewController: UITableViewDataSource {
         cell.selectedBackgroundView = backgroundView
         
         return cell
-    }
-}
-
-// MARK: - Table view delegate
-extension ArtistDetailViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let artist = selectedArtist else { return }
-        let album = topAlbums[indexPath.row]
-        LastFMService.shared.fetchDetailsForAlbum(album.title, artist.name) { album, message in
-            print(message)
-            if let album = album {
-                print(album.title)
-                var count = 0
-                for track in album.tracks.tracks {
-                    count = count + 1
-                    print("\(count). \(track.name) (\(track.duration))")
-                }
-            }
-
-        }
     }
 }
