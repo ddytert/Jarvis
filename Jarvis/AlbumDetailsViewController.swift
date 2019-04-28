@@ -42,6 +42,9 @@ final class AlbumDetailsViewController: UIViewController {
         activityIndicator.isHidden = true
         // Put content view into scroll view
         scrollView.addSubview(contentView)
+        // Set album and artist text label
+        albumTitleLabel.text = selectedAlbumTitle
+        artistNameLabel.text = selectedArtistName
         // Get additional infos of selected album
         loadAlbumDetails()
     }
@@ -52,16 +55,13 @@ final class AlbumDetailsViewController: UIViewController {
             guard let self = self,
                 let album = album  else { return }
             self.selectedAlbum = album
-            self.populateUI()
+            self.fillTracklistLabel()
+            self.loadBigAlbumImage()
         }
     }
     
-    private func populateUI() {
+    private func loadBigAlbumImage() {
         guard let album = selectedAlbum else { return }
-        
-        albumTitleLabel.text = album.title
-        artistNameLabel.text = album.artist
-        
         // Asynchronous loading of big album image
         guard let imageInfo = album.imageInfos.first(where: { $0.size == "extralarge" && !$0.url.isEmpty }) else { return }
         
@@ -77,13 +77,15 @@ final class AlbumDetailsViewController: UIViewController {
             
             self.albumImageView.image = albumImage
         }
-        fillTracklistLabel()
     }
     
     private func fillTracklistLabel() {
-        guard let album = selectedAlbum,
-            !album.tracks.tracks.isEmpty else { return }
+        guard let album = selectedAlbum else { return }
         
+        guard !album.tracks.tracks.isEmpty else {
+            tracklistLabel.text = "No tracks found"
+            return
+        }
         let tracks = album.tracks.tracks
         var stringValue = String()
         var count = 0
@@ -91,9 +93,9 @@ final class AlbumDetailsViewController: UIViewController {
         for track in tracks {
             count = count + 1
             // Check, if track name is too long, otherwise truncate it
-            // Calculate max number of characters from screen.width
-            let maxChars = Int(contentView.frame.width / 14)
             var trackName = track.name
+            // Calculate max number of characters
+            let maxChars = Int(contentView.frame.width / 14)
             if trackName.count > maxChars {
                 trackName = String(trackName.prefix(maxChars) + "...")
             }

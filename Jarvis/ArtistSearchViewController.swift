@@ -65,7 +65,7 @@ extension ArtistSearchViewController: UITableViewDataSource {
         // Let the cell itself do the setup
         cell.artist = artist
          // Alternating background colors
-        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 33.0/255.0, alpha: 1.0) : UIColor(white: 40.0/255.0, alpha: 1.0)
+        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 24.0/255.0, alpha: 1.0) : UIColor(white: 32.0/255.0, alpha: 1.0)
         // Set color of selected cell
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor(red: 0.0, green: 54.0/255.0, blue: 111.0/255.0, alpha: 1.0)
