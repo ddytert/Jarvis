@@ -12,7 +12,7 @@ import Foundation
 
 struct JarvisAlbum: Decodable {
     let title: String
-    let imageInfos: [AlbumImageInfo]
+    let imageInfos: [ImageInfo]
     let url: String
     
     private enum CodingKeys: String, CodingKey {

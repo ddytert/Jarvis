@@ -1,5 +1,5 @@
 //
-//  AlbumImageInfo.swift
+//  ImageInfo.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 27.04.19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AlbumImageInfo: Decodable {
+struct ImageInfo: Decodable {
     let url: String
     let size: String
     

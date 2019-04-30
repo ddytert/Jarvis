@@ -20,7 +20,7 @@ final class MainViewController: UICollectionViewController {
     private let itemsPerRow: CGFloat = 3.0
     private var cellAspectRatio: CGFloat = 174.0 / 150.0    // Values taken from storyboard
 
-    private var albums: [Album] = AlbumStore.generateAlbumsData()
+    private var albums: [TestAlbum] = AlbumStore.generateAlbumsData()
     
     override func viewDidLoad() {
         super.viewDidLoad()

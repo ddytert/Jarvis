@@ -8,18 +8,18 @@
 
 import UIKit
 
-class Album {
+class TestAlbum {
     
     let lastfmID: String
     let name: String
     let artist: String
-    let tracks: [Track]
+    let tracks: [TestTrack]
     let imageURL: String
     let year: Int
     var image: UIImage?
     
     init (lastfmID: String, name: String, artist: String, year: Int,
-          tracks: [Track], imageURL: String, image: UIImage?) {
+          tracks: [TestTrack], imageURL: String, image: UIImage?) {
         self.lastfmID = lastfmID
         self.name = name
         self.artist = artist

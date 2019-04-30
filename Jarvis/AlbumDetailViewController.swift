@@ -11,7 +11,7 @@ import UIKit
 final class AlbumDetailViewController: UIViewController {
     
     // MARK: - Properties
-    public var selectedAlbum: Album?
+    public var selectedAlbum: TestAlbum?
 
     // MARK: - IBOutlets
     @IBOutlet weak var albumTitleLabel: UILabel!
@@ -57,7 +57,7 @@ final class AlbumDetailViewController: UIViewController {
 //        scrollView.contentSize = contentRect.size
     }
     
-    private func fillTracklistLabel(_ tracks: [Track]) {
+    private func fillTracklistLabel(_ tracks: [TestTrack]) {
         var stringValue = String()
         var count = 0
         // Build multiline string

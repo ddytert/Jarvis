@@ -1,14 +1,14 @@
 //
-//  AlbumTrack.swift
+//  Track.swift
 //  Jarvis
 //
-//  Created by Daniel Dytert on 27.04.19.
+//  Created by Daniel Dytert on 21.04.19.
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
 import Foundation
 
-struct AlbumTrack: Decodable {
+struct TestTrack: Codable {
     let name: String
-    let duration: String
+    let length: TimeInterval
 }

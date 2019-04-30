@@ -14,7 +14,7 @@ final class AlbumDetailsViewController: UIViewController {
     public var selectedAlbumTitle: String = ""
     public var selectedArtistName: String = ""
     
-    private var selectedAlbum: DetailedAlbum?
+    private var selectedAlbum: Album?
     
     private var dateComponentFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()

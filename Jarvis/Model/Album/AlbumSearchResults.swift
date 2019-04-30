@@ -6,9 +6,9 @@
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
-import Foundation
+/// Hierarchical data model which corresponds to search result returned from lastfm (get artists topalbums)
 
-/// Hierarchical data model which corresponds to search result returned from lastfm
+import Foundation
 
 struct AlbumSearchResults: Decodable {
     let topAlbums: TopAlbums

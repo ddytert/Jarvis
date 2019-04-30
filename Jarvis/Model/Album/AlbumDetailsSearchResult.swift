@@ -6,8 +6,10 @@
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
+/// Hierarchical data model which corresponds to search result returned from lastfm (get album details)
+
 import Foundation
 
 struct AlbumDetailSearchResults: Decodable {
-    let album: DetailedAlbum
+    let album: Album
 }

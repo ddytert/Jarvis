@@ -2,9 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="UserAlbum" representedClassName="UserAlbum" syncable="YES" codeGenerationType="class">
         <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="UserAlbum" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="UserAlbum" positionX="-636.3361206054688" positionY="13.3636474609375" width="128" height="90"/>
     </elements>
 </model>

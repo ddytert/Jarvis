@@ -12,7 +12,7 @@ import Foundation
 
 class Artist: Decodable {
     let name: String
-    let imageInfos: [ArtistImageInfo]
+    let imageInfos: [ImageInfo]
     let url: String
     
     private enum CodingKeys: String, CodingKey {

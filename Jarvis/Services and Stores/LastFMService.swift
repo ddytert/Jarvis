@@ -93,7 +93,7 @@ final class LastFMService {
     
     public func fetchDetailsForAlbum(_ albumTitle: String,
                                      _ artistName: String,
-                                     completion: @escaping (DetailedAlbum?, String) -> Void) {
+                                     completion: @escaping (Album?, String) -> Void) {
         
         Alamofire.request(Constants.URL.LastFM,
                           parameters: ["method": "album.getInfo",
@@ -142,6 +142,14 @@ final class LastFMService {
                 self.imageCache.setObject(image, forKey: urlString as AnyObject)
                 completion(image)
             }
+        }
+    }
+    
+    public func imageForURL(_ urlString: String) -> UIImage?{
+        if let image = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
+            return image
+        } else {
+            return nil
         }
     }
 }

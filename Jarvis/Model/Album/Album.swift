@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct DetailedAlbum: Decodable {
+struct Album: Decodable {
     let artist: String
     let title: String
-    let imageInfos: [AlbumImageInfo]
+    let imageInfos: [ImageInfo]
     let tracks: Tracks
     let url: String
     
@@ -25,7 +25,7 @@ struct DetailedAlbum: Decodable {
 }
 // Due to the strange json format received from lastfm we need an outer 'Tracks' struct
 struct Tracks: Decodable {
-    let tracks: [AlbumTrack]
+    let tracks: [Track]
     
     private enum CodingKeys: String, CodingKey {
         case tracks = "track"
