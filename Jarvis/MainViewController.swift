@@ -19,24 +19,31 @@ final class MainViewController: UICollectionViewController {
                                              right: 15.0)
     private let itemsPerRow: CGFloat = 3.0
     private var cellAspectRatio: CGFloat = 174.0 / 150.0    // Values taken from storyboard
-
-    private var albums: [TestAlbum] = AlbumStore.generateAlbumsData()
+    
+    private var userAlbums: [UserAlbum] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Populate UserAlbum array
+        if let albums = UserAlbumStore.shared.getUserAlbums() {
+            userAlbums = albums
+        }
     }
     
-     // MARK: - Navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         guard segue.identifier == "ShowAlbumDetails",
             let cell = sender as? UICollectionViewCell,
-            let indexPath = collectionView.indexPath(for: cell) else {
-                return
-        }
-        if let albumDetailVC = segue.destination as? AlbumDetailViewController {
-            albumDetailVC.selectedAlbum = albums[indexPath.row]
-        }
-     }
+            let indexPath = collectionView.indexPath(for: cell),
+            let albumDetailsVC = segue.destination as? AlbumDetailsViewController,
+            let title = userAlbums[indexPath.row].title,
+            let artist = userAlbums[indexPath.row].artist else { return }
+        
+        albumDetailsVC.selectedAlbumTitle = title
+        albumDetailsVC.selectedArtistName = artist
+    }
 }
 
 // MARK: UICollectionViewDataSource
@@ -46,10 +53,9 @@ extension MainViewController {
         return 1
     }
     
-    
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return albums.count
+        return userAlbums.count
     }
     
     override func collectionView(_ collectionView: UICollectionView,
@@ -57,9 +63,14 @@ extension MainViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCellIdentifier,
                                                       for: indexPath) as! AlbumCell
-        let album = albums[indexPath.row]
-        cell.imageView.image = album.image
-        cell.nameLabel.text = album.name
+        let album = userAlbums[indexPath.row]
+        cell.nameLabel.text = album.title
+        
+        // Get thumbnail image from thumbnail data stored in UserAlbum
+        if let data = album.thumbnail,
+            let image = UIImage(data: data) {
+            cell.imageView.image = image
+        }
         return cell
     }
 }

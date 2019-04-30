@@ -18,8 +18,6 @@ final class UserAlbumStore {
     // Return singleton instance
     public static let shared = UserAlbumStore()
     
-    var userAlbums: [NSManagedObject] = []
-    
     private var managedContext:NSManagedObjectContext? = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return nil
@@ -48,7 +46,7 @@ final class UserAlbumStore {
         
         do {
             try managedContext.save()
-            userAlbums.append(userAlbum)
+            
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -61,7 +59,7 @@ final class UserAlbumStore {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "UserAlbum")
         
         do {
-            userAlbums = try managedContext.fetch(fetchRequest)
+            let userAlbums = try managedContext.fetch(fetchRequest)
             return userAlbums as? [UserAlbum]
             
         } catch let error as NSError {
