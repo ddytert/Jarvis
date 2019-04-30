@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ArtistImageInfo: Decodable {
+struct ImageInfo: Decodable {
     let url: String
     let size: String
     

@@ -25,6 +25,13 @@ final class MainViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Receive notifications from UserAlbumStore about successful
+        // saved albumm So it can uppdate the collection view
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(onDidSaveUserAlbum),
+                       name: .didSaveUserAlbum,
+                       object: nil)
+        
         // Populate UserAlbum array
         if let albums = UserAlbumStore.shared.getUserAlbums() {
             userAlbums = albums
@@ -66,7 +73,7 @@ extension MainViewController {
         let album = userAlbums[indexPath.row]
         cell.nameLabel.text = album.title
         
-        // Get thumbnail image from thumbnail data stored in UserAlbum
+        // Get thumbnail image from thumbnail data stored in UserAlbum object
         if let data = album.thumbnail,
             let image = UIImage(data: data) {
             cell.imageView.image = image
@@ -132,5 +139,16 @@ extension MainViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
+    }
+}
+
+// MARK: - Notification handling
+extension MainViewController {
+    
+    @objc func onDidSaveUserAlbum(_ notification: Notification) {
+        if let albums = UserAlbumStore.shared.getUserAlbums() {
+            userAlbums = albums
+            collectionView.reloadData()
+        }
     }
 }

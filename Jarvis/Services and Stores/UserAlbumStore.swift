@@ -29,10 +29,17 @@ final class UserAlbumStore {
     private init() {
     }
     
-    public func saveAlbum(_ album: Album) {
+    public func saveAlbum(_ album: Album,
+                          completion: (Bool, String) -> Void) {
         
-        guard let managedContext = managedContext else { return }
-        
+        guard let managedContext = managedContext else {
+            completion(false, "Missing data store")
+            return
+        }
+        if isAlbumStored(title: album.title, artist: album.artist) {
+            completion(false, "Album already saved")
+            return
+        }
         let entity = NSEntityDescription.entity(forEntityName: "UserAlbum",
                                                 in: managedContext)!
         let userAlbum = NSManagedObject(entity: entity,
@@ -46,14 +53,21 @@ final class UserAlbumStore {
         
         do {
             try managedContext.save()
+            // Inform other objects about successful saving of album
+            // (especially MainViewController which then updates its collection view)
+            let nc = NotificationCenter.default
+            nc.post(name: .didSaveUserAlbum, object: nil)
+            
+            completion(true, "")
             
         } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
+            completion(false, "\(error), \(error.userInfo)")
+            return
         }
     }
     
     public func getUserAlbums() -> [UserAlbum]? {
-
+        
         guard let managedContext = managedContext else { return nil }
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "UserAlbum")
@@ -68,12 +82,30 @@ final class UserAlbumStore {
         }
     }
     
-    // MARK: Helper functions
-    private func getThumbnailImageDataForAlbum(_ album: Album) -> Data? {
+    public func isAlbumStored(title: String, artist: String) -> Bool {
         
-        guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }),
-        let thumbnailImage = LastFMService.shared.imageForURL(imageInfo.url) else { return nil }
-        return thumbnailImage.jpegData(compressionQuality: 1.0)
+        guard let managedContext = managedContext else { return false }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAlbum")
+        fetchRequest.predicate = NSPredicate(format: "title = %@ AND artist == %@", title, artist)
+        fetchRequest.includesSubentities = false
+                
+        var entitiesCount = 0
+        do {
+            entitiesCount = try managedContext.count(for: fetchRequest)
+        }
+        catch {
+            return false
+        }
+        return entitiesCount > 0
     }
-    
 }
+
+// MARK: Helper functions
+private func getThumbnailImageDataForAlbum(_ album: Album) -> Data? {
+    
+    guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }),
+        let thumbnailImage = LastFMService.shared.imageForURL(imageInfo.url) else { return nil }
+    return thumbnailImage.jpegData(compressionQuality: 1.0)
+}
+

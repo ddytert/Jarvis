@@ -77,7 +77,6 @@ extension ArtistSearchViewController: UITableViewDataSource {
 }
 
 // MARK: - Search bar delegate
-
 extension ArtistSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

@@ -22,7 +22,7 @@ final class AlbumDetailsViewController: UIViewController {
         formatter.unitsStyle = .abbreviated
         formatter.maximumUnitCount = 2
         return formatter
-        }()
+    }()
     
     // MARK: - IBOutlets
     @IBOutlet weak var albumTitleLabel: UILabel!
@@ -30,6 +30,7 @@ final class AlbumDetailsViewController: UIViewController {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var tracklistLabel: UILabel!
     @IBOutlet weak var tracklistHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var saveAlbumButton: UIBarButtonItem!
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -45,6 +46,13 @@ final class AlbumDetailsViewController: UIViewController {
         // Set album and artist text label
         albumTitleLabel.text = selectedAlbumTitle
         artistNameLabel.text = selectedArtistName
+        
+        // If album is already stored deactivate save album button
+        let isStored = UserAlbumStore.shared.isAlbumStored(title: selectedAlbumTitle,
+                                                           artist: selectedArtistName)
+        if isStored {
+            saveAlbumButton.isEnabled = false
+        }
         // Get additional infos of selected album
         loadAlbumDetails()
     }
@@ -138,4 +146,26 @@ final class AlbumDetailsViewController: UIViewController {
         
     }
     
+    // MARK: - IBActions
+    @IBAction func saveAlbum(_ sender: UIBarButtonItem) {
+        
+        guard let selectedAlbum = selectedAlbum else { return }
+        
+        UserAlbumStore.shared.saveAlbum(selectedAlbum) { [weak self] success, message in
+            
+            guard let self = self else { return }
+            
+            let alertTitle = success ? "Album saved" : "Couldn't save album"
+            // Show success or failure message
+            let alert = UIAlertController(title: alertTitle,
+                                          message: message,
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok",
+                                         style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+            // Deactivate save album button in case of successful saving
+            self.saveAlbumButton.isEnabled = !success
+        }
+    }
 }

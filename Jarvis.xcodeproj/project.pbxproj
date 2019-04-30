@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B009F9F2278B7EE00EC8D32 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B009F9E2278B7EE00EC8D32 /* NotificationNames.swift */; };
 		6917960E226C97450034079A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6917960D226C97450034079A /* AppDelegate.swift */; };
 		69179613226C97450034079A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69179611226C97450034079A /* Main.storyboard */; };
 		69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69179614226C97450034079A /* Jarvis.xcdatamodeld */; };
@@ -17,11 +18,9 @@
 		69179628226C9FDD0034079A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179627226C9FDD0034079A /* MainViewController.swift */; };
 		6917962A226CA3860034079A /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179629226CA3860034079A /* AlbumCell.swift */; };
 		6917962E226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6917962D226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg */; };
-		69179631226CCB0D0034079A /* AlbumStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179630226CCB0D0034079A /* AlbumStore.swift */; };
 		69179633226CE5E60034079A /* CS679029-01A-BIG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179632226CE5E60034079A /* CS679029-01A-BIG.jpg */; };
 		69179635226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */; };
 		69179637226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */; };
-		69179639226CF8FD0034079A /* AlbumDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179638226CF8FD0034079A /* AlbumDetailViewController.swift */; };
 		692215252273260C00B0314E /* LastFMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215242273260C00B0314E /* LastFMService.swift */; };
 		692215272273284A00B0314E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215262273284A00B0314E /* Constants.swift */; };
 		6922152922735EE500B0314E /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152822735EE500B0314E /* ArtistDetailViewController.swift */; };
@@ -42,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B009F9E2278B7EE00EC8D32 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		6917960A226C97450034079A /* Jarvis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jarvis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6917960D226C97450034079A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69179612226C97450034079A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,11 +54,9 @@
 		69179627226C9FDD0034079A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		69179629226CA3860034079A /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		6917962D226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "OutKast-Aquemini-1537995335-640x634.jpg"; sourceTree = "<group>"; };
-		69179630226CCB0D0034079A /* AlbumStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumStore.swift; sourceTree = "<group>"; };
 		69179632226CE5E60034079A /* CS679029-01A-BIG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "CS679029-01A-BIG.jpg"; sourceTree = "<group>"; };
 		69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg"; sourceTree = "<group>"; };
 		69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = A1hIUHqDK3L._SS500_.jpg; sourceTree = "<group>"; };
-		69179638226CF8FD0034079A /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
 		692215242273260C00B0314E /* LastFMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMService.swift; sourceTree = "<group>"; };
 		692215262273284A00B0314E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6922152822735EE500B0314E /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
@@ -132,18 +130,17 @@
 			children = (
 				6917960D226C97450034079A /* AppDelegate.swift */,
 				692215262273284A00B0314E /* Constants.swift */,
+				3B009F9E2278B7EE00EC8D32 /* NotificationNames.swift */,
 				69179611226C97450034079A /* Main.storyboard */,
-				69179630226CCB0D0034079A /* AlbumStore.swift */,
 				69179626226C9AA60034079A /* Model */,
 				3B40321A22785CE400D88148 /* Services and Stores */,
 				69179627226C9FDD0034079A /* MainViewController.swift */,
-				69179638226CF8FD0034079A /* AlbumDetailViewController.swift */,
-				692AFFBB22759DAB0030C094 /* AlbumDetailsViewController.swift */,
 				69179629226CA3860034079A /* AlbumCell.swift */,
 				694463382270423100FA4282 /* ArtistSearchViewController.swift */,
 				69D4EB212272503200AFB189 /* ArtistCell.swift */,
 				6922152822735EE500B0314E /* ArtistDetailViewController.swift */,
 				6922153222738A4D00B0314E /* SmallAlbumCell.swift */,
+				692AFFBB22759DAB0030C094 /* AlbumDetailsViewController.swift */,
 				69179617226C97460034079A /* Assets.xcassets */,
 				6917962F226CCA8B0034079A /* Art */,
 				69179619226C97460034079A /* LaunchScreen.storyboard */,
@@ -338,13 +335,13 @@
 				69179625226C9A420034079A /* TestTrack.swift in Sources */,
 				6917962A226CA3860034079A /* AlbumCell.swift in Sources */,
 				6922153322738A4D00B0314E /* SmallAlbumCell.swift in Sources */,
+				3B009F9F2278B7EE00EC8D32 /* NotificationNames.swift in Sources */,
 				69179628226C9FDD0034079A /* MainViewController.swift in Sources */,
 				692215372274E13000B0314E /* Album.swift in Sources */,
 				6917960E226C97450034079A /* AppDelegate.swift in Sources */,
 				692AFFBC22759DAB0030C094 /* AlbumDetailsViewController.swift in Sources */,
 				6922152922735EE500B0314E /* ArtistDetailViewController.swift in Sources */,
 				694463392270423100FA4282 /* ArtistSearchViewController.swift in Sources */,
-				69179639226CF8FD0034079A /* AlbumDetailViewController.swift in Sources */,
 				692215252273260C00B0314E /* LastFMService.swift in Sources */,
 				69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */,
 				6922153B2274E21D00B0314E /* Track.swift in Sources */,
@@ -355,7 +352,6 @@
 				6922152F22737D4B00B0314E /* JarvisAlbum.swift in Sources */,
 				6944633B227043B900FA4282 /* Artist.swift in Sources */,
 				6922153F2274E3FC00B0314E /* ImageInfo.swift in Sources */,
-				69179631226CCB0D0034079A /* AlbumStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

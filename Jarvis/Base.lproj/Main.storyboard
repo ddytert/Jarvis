@@ -391,12 +391,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K8g-E5-54k"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="kch-Yl-iyU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="fpp-mf-M9c">
+                            <connections>
+                                <action selector="saveAlbum:" destination="GqV-Ej-nzM" id="0XH-yD-yAo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="M3Q-Fc-jDV" id="RD8-8a-hAC"/>
                         <outlet property="albumImageView" destination="Tho-7r-GGK" id="dLZ-BS-FqS"/>
                         <outlet property="albumTitleLabel" destination="4iC-yf-Kwz" id="SV5-2z-rpm"/>
                         <outlet property="artistNameLabel" destination="JkI-g9-1D6" id="LQW-oA-8Fi"/>
                         <outlet property="contentView" destination="bvO-GP-Cq7" id="B7R-aC-03F"/>
+                        <outlet property="saveAlbumButton" destination="fpp-mf-M9c" id="F9o-aR-jge"/>
                         <outlet property="scrollView" destination="bTp-f8-qtu" id="HlC-wh-jSa"/>
                         <outlet property="tracklistHeightConstraint" destination="mMf-zd-lUS" id="BOa-Qn-Nt0"/>
                         <outlet property="tracklistLabel" destination="MgS-KJ-XXd" id="JyU-eY-ejO"/>
