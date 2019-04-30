@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import AlamofireImage
 
-class LastFMService {
+final class LastFMService {
     
     // MARK: - Properties
     // Return singleton instance

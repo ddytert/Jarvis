@@ -1,5 +1,5 @@
 //
-//  AlbumImage.swift
+//  AlbumImageInfo.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 27.04.19.
