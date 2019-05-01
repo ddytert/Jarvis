@@ -10,8 +10,9 @@ import UIKit
 
 private let AlbumCellIdentifier = "AlbumCell"
 
-final class MainViewController: UICollectionViewController {
+final class UserAlbumsViewController: UICollectionViewController {
     
+    @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
     // MARK: - Properties
     private let sectionInsets = UIEdgeInsets(top: 20.0,
                                              left: 15.0,
@@ -24,6 +25,8 @@ final class MainViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem = editButtonItem
         
         // Receive notifications from UserAlbumStore about successful
         // saved albumm So it can uppdate the collection view
@@ -50,11 +53,13 @@ final class MainViewController: UICollectionViewController {
         
         albumDetailsVC.selectedAlbumTitle = title
         albumDetailsVC.selectedArtistName = artist
+        // End editing mode
+        isEditing = false
     }
 }
 
 // MARK: UICollectionViewDataSource
-extension MainViewController {
+extension UserAlbumsViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -71,55 +76,32 @@ extension MainViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCellIdentifier,
                                                       for: indexPath) as! AlbumCell
         let album = userAlbums[indexPath.row]
-        cell.nameLabel.text = album.title
+        cell.userAlbum = album
+        cell.delegate = self
         
-        // Get thumbnail image from thumbnail data stored in UserAlbum object
-        if let data = album.thumbnail,
-            let image = UIImage(data: data) {
-            cell.imageView.image = image
-        }
         return cell
     }
 }
 
-// MARK: UICollectionViewDelegate
-extension MainViewController {
+// MARK: Editing
+extension UserAlbumsViewController {
     
-     // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-    
-     // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView,
-                                  shouldSelectItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-    
-     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-     override func collectionView(_ collectionView: UICollectionView,
-                                  shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView,
-                                  canPerformAction action: Selector,
-                                  forItemAt indexPath: IndexPath,
-                                  withSender sender: Any?) -> Bool {
-     return false
-     }
-     
-     override func collectionView(_ collectionView: UICollectionView,
-                                  performAction action: Selector,
-                                  forItemAt indexPath: IndexPath,
-                                  withSender sender: Any?) {
-     
-     }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        // Hide search bar button item
+        searchBarButtonItem.isEnabled = !editing
+        if let indexPaths = collectionView?.indexPathsForVisibleItems {
+            for indexPath in indexPaths {
+                if let cell = collectionView?.cellForItem(at: indexPath) as? AlbumCell {
+                    cell.isEditing = editing
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Collection View Flow Layout Delegate
-extension MainViewController : UICollectionViewDelegateFlowLayout {
+extension UserAlbumsViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -145,8 +127,40 @@ extension MainViewController : UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - AlbumCell delegate methods
+extension UserAlbumsViewController: AlbumCellDelegate {
+    func deleteCell(_ cell: AlbumCell) {
+        
+        // Try to delete User album from Core Data store and if it succeeded update collection viwew
+        if let indexPath = collectionView?.indexPath(for: cell) {
+            
+            UserAlbumStore.shared.deleteAlbum(userAlbums[indexPath.row]) { [weak self] success, message in
+                
+                guard let self = self else { return }
+                
+                if success {
+                    // Updata user albums array
+                    if let albums = UserAlbumStore.shared.getUserAlbums() {
+                        userAlbums = albums
+                        self.collectionView?.deleteItems(at: [indexPath])
+                    }
+                } else {
+                    // Show failure message to user
+                    let alert = UIAlertController(title: "Couldn't delete album",
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok",
+                                                 style: .default)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+    }
+}
+
 // MARK: - Notification handling
-extension MainViewController {
+extension UserAlbumsViewController {
     
     @objc func onDidSaveUserAlbum(_ notification: Notification) {
         if let albums = UserAlbumStore.shared.getUserAlbums() {

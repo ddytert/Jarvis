@@ -13,7 +13,7 @@
         <!--My Albums-->
         <scene sceneID="p2S-x0-dxY">
             <objects>
-                <collectionViewController id="8hA-fG-rTJ" customClass="MainViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="8hA-fG-rTJ" customClass="UserAlbumsViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mJ4-Gd-8UX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,6 +51,9 @@
                                                 <constraint firstAttribute="height" constant="25" id="eSh-eG-uXM"/>
                                             </constraints>
                                             <state key="normal" image="IconDelete"/>
+                                            <connections>
+                                                <action selector="deleteButtonTapped:" destination="4Dv-bL-Oyq" eventType="touchUpInside" id="sWg-vG-NJw"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </view>
@@ -73,6 +76,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="deleteButton" destination="keS-KK-WjS" id="v7e-3C-yrM"/>
                                     <outlet property="imageView" destination="CvZ-f4-kvt" id="CWv-uh-UA1"/>
                                     <outlet property="nameLabel" destination="Di7-SO-zqH" id="3Ml-Wp-n1d"/>
                                     <segue destination="GqV-Ej-nzM" kind="show" identifier="ShowAlbumDetails" id="n4n-SG-3lj"/>
@@ -91,6 +95,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBarButtonItem" destination="FkN-2C-eA1" id="zZW-HM-ihT"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HMv-3U-eXa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -436,8 +443,8 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="M3Q-Fc-jDV">
-                            <rect key="frame" x="197" y="197" width="20" height="20"/>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="M3Q-Fc-jDV">
+                            <rect key="frame" x="188.5" y="188.5" width="37" height="37"/>
                         </activityIndicatorView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TR1-bE-EZw" userLabel="Info View">
                             <rect key="frame" x="12" y="420" width="390" height="224"/>
@@ -532,7 +539,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IconDelete" width="25.333333969116211" height="25.333333969116211"/>
+        <image name="IconDelete" width="22" height="22"/>
         <image name="IconUnknownAlbum" width="200" height="200"/>
         <image name="IconUnknownArtist" width="200" height="200"/>
         <image name="imageView:Exg-fc-WKs:image" width="62" height="62">

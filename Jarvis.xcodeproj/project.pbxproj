@@ -13,7 +13,7 @@
 		69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69179614226C97450034079A /* Jarvis.xcdatamodeld */; };
 		69179618226C97460034079A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69179617226C97460034079A /* Assets.xcassets */; };
 		6917961B226C97460034079A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69179619226C97460034079A /* LaunchScreen.storyboard */; };
-		69179628226C9FDD0034079A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179627226C9FDD0034079A /* MainViewController.swift */; };
+		69179628226C9FDD0034079A /* UserAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179627226C9FDD0034079A /* UserAlbumsViewController.swift */; };
 		6917962A226CA3860034079A /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179629226CA3860034079A /* AlbumCell.swift */; };
 		692215252273260C00B0314E /* LastFMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215242273260C00B0314E /* LastFMService.swift */; };
 		692215272273284A00B0314E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215262273284A00B0314E /* Constants.swift */; };
@@ -43,7 +43,7 @@
 		69179617226C97460034079A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6917961A226C97460034079A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6917961C226C97460034079A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69179627226C9FDD0034079A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		69179627226C9FDD0034079A /* UserAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAlbumsViewController.swift; sourceTree = "<group>"; };
 		69179629226CA3860034079A /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		692215242273260C00B0314E /* LastFMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMService.swift; sourceTree = "<group>"; };
 		692215262273284A00B0314E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -90,8 +90,8 @@
 		3B009FA122797D6400EC8D32 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				69179611226C97450034079A /* Main.storyboard */,
 				69179619226C97460034079A /* LaunchScreen.storyboard */,
+				69179611226C97450034079A /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -99,7 +99,7 @@
 		3B009FA222797D8100EC8D32 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				69179627226C9FDD0034079A /* MainViewController.swift */,
+				69179627226C9FDD0034079A /* UserAlbumsViewController.swift */,
 				69179629226CA3860034079A /* AlbumCell.swift */,
 				694463382270423100FA4282 /* ArtistSearchViewController.swift */,
 				69D4EB212272503200AFB189 /* ArtistCell.swift */,
@@ -336,7 +336,7 @@
 				6917962A226CA3860034079A /* AlbumCell.swift in Sources */,
 				6922153322738A4D00B0314E /* SmallAlbumCell.swift in Sources */,
 				3B009F9F2278B7EE00EC8D32 /* NotificationNames.swift in Sources */,
-				69179628226C9FDD0034079A /* MainViewController.swift in Sources */,
+				69179628226C9FDD0034079A /* UserAlbumsViewController.swift in Sources */,
 				692215372274E13000B0314E /* Album.swift in Sources */,
 				6917960E226C97450034079A /* AppDelegate.swift in Sources */,
 				692AFFBC22759DAB0030C094 /* AlbumDetailsViewController.swift in Sources */,

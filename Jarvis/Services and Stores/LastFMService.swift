@@ -153,19 +153,3 @@ final class LastFMService {
         }
     }
 }
-
-
-//.responseJSON { response in
-//    guard response.result.isSuccess else {
-//        print("Error while fetching")
-//        completion(nil, "Error")
-//        return
-//    }
-//
-//    guard let value = response.result.value as? [String: Any] else {
-//        print("Malformed data received from fetchAllRooms service")
-//        completion(nil, "Error")
-//        return
-//    }
-//    print(value)
-//}

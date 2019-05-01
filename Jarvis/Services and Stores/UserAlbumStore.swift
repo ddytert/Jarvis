@@ -1,5 +1,5 @@
 //
-//  AlbumStoreReloaded.swift
+//  UserAlbumStore.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 29.04.19.
@@ -62,6 +62,31 @@ final class UserAlbumStore {
             
         } catch let error as NSError {
             completion(false, "\(error), \(error.userInfo)")
+            return
+        }
+    }
+    
+    public func deleteAlbum(_ album: UserAlbum,
+                            completion: (Bool, String) -> Void) {
+        
+        guard let managedContext = managedContext,
+        let title = album.title,
+        let artist = album.artist else {
+            completion(false, "Deletion failed")
+            return
+        }
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAlbum")
+        fetchRequest.predicate = NSPredicate(format: "title = %@ AND artist == %@", title, artist)
+        fetchRequest.includesSubentities = false
+
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedContext.execute(deleteRequest)
+            try managedContext.save()
+            completion(true, "Album deleted")
+        } catch {
+            completion(false, "Deletion failed")
             return
         }
     }
