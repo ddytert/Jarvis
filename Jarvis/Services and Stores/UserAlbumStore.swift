@@ -66,14 +66,12 @@ final class UserAlbumStore {
         }
     }
     
-    public func deleteAlbum(_ album: UserAlbum,
-                            completion: (Bool, String) -> Void) {
+    public func deleteAlbum(_ album: UserAlbum) -> Bool {
         
         guard let managedContext = managedContext,
         let title = album.title,
         let artist = album.artist else {
-            completion(false, "Deletion failed")
-            return
+            return false
         }
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAlbum")
         fetchRequest.predicate = NSPredicate(format: "title = %@ AND artist == %@", title, artist)
@@ -84,10 +82,9 @@ final class UserAlbumStore {
         do {
             try managedContext.execute(deleteRequest)
             try managedContext.save()
-            completion(true, "Album deleted")
+            return true
         } catch {
-            completion(false, "Deletion failed")
-            return
+            return false
         }
     }
     

@@ -77,7 +77,9 @@ extension UserAlbumsViewController {
                                                       for: indexPath) as! AlbumCell
         let album = userAlbums[indexPath.row]
         cell.userAlbum = album
+        cell.isEditing = self.isEditing
         cell.delegate = self
+        
         
         return cell
     }
@@ -87,16 +89,12 @@ extension UserAlbumsViewController {
 extension UserAlbumsViewController {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
+        
         super.setEditing(editing, animated: animated)
         // Hide search bar button item
         searchBarButtonItem.isEnabled = !editing
-        if let indexPaths = collectionView?.indexPathsForVisibleItems {
-            for indexPath in indexPaths {
-                if let cell = collectionView?.cellForItem(at: indexPath) as? AlbumCell {
-                    cell.isEditing = editing
-                }
-            }
-        }
+        // Refresh collection view
+        collectionView?.reloadData()
     }
 }
 
@@ -129,31 +127,27 @@ extension UserAlbumsViewController : UICollectionViewDelegateFlowLayout {
 
 // MARK: - AlbumCell delegate methods
 extension UserAlbumsViewController: AlbumCellDelegate {
+    
     func deleteCell(_ cell: AlbumCell) {
-        
-        // Try to delete User album from Core Data store and if it succeeded update collection viwew
+        // Try to delete User album from Core Data store and in case it succeeded update collection viwew
         if let indexPath = collectionView?.indexPath(for: cell) {
             
-            UserAlbumStore.shared.deleteAlbum(userAlbums[indexPath.row]) { [weak self] success, message in
-                
-                guard let self = self else { return }
-                
-                if success {
-                    // Updata user albums array
-                    if let albums = UserAlbumStore.shared.getUserAlbums() {
-                        userAlbums = albums
-                        self.collectionView?.deleteItems(at: [indexPath])
-                    }
-                } else {
-                    // Show failure message to user
-                    let alert = UIAlertController(title: "Couldn't delete album",
-                                                  message: message,
-                                                  preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok",
-                                                 style: .default)
-                    alert.addAction(okAction)
-                    self.present(alert, animated: true)
+            let success = UserAlbumStore.shared.deleteAlbum(userAlbums[indexPath.row])
+            if success {
+                // Updata user albums array
+                if let albums = UserAlbumStore.shared.getUserAlbums() {
+                    userAlbums = albums
+                    self.collectionView?.deleteItems(at: [indexPath])
                 }
+            } else {
+                // Show failure message to user
+                let alert = UIAlertController(title: "Couldn't delete album",
+                                              message: "",
+                                              preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Ok",
+                                             style: .default)
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
             }
         }
     }
