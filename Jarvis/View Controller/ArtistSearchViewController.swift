@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 private let ArtistCellIdentifier = "ArtistCell"
 

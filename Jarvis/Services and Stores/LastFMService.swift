@@ -39,7 +39,8 @@ final class LastFMService {
                         return
                 }
                 do {
-                    let searchResult = try JSONDecoder().decode(ArtistSearchResults.self, from: data)
+                    let searchResult = try JSONDecoder().decode(ArtistSearchResults.self,
+                                                                from: data)
                     let artists = searchResult.results.artistMatches.artists
                     let numberResults = Int(searchResult.results.total) ?? 0
                     let successMessage = "\(numberResults) artists found"
@@ -71,7 +72,8 @@ final class LastFMService {
                         return
                 }
                 do {
-                    let searchResult = try JSONDecoder().decode(TopAlbumSearchResults.self, from: data)
+                    let searchResult = try JSONDecoder().decode(TopAlbumSearchResults.self,
+                                                                from: data)
                     let albums = searchResult.topAlbums.albums
                     let numberResults = Int(searchResult.topAlbums.attributes.total) ?? 0
                     if numberResults > 0 {
@@ -102,8 +104,6 @@ final class LastFMService {
                                        "artist": artistName,
                                        "api_key": Constants.Key.LastFMAPI,
                                        "format": "json"])
-
-
             .responseData { response in
 
                 guard response.result.isSuccess,
@@ -113,7 +113,8 @@ final class LastFMService {
                         return
                 }
                 do {
-                    let searchResult = try JSONDecoder().decode(AlbumSearchResults.self, from: data)
+                    let searchResult = try JSONDecoder().decode(AlbumSearchResults.self,
+                                                                from: data)
                     let album = searchResult.album
                     completion(album, "Success")
                 } catch {
@@ -131,7 +132,6 @@ final class LastFMService {
         
         // First check if image is already stored in the cache
         if let image = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
-            print("Image already in cache!")
             completion(image)
             return
         }
@@ -139,7 +139,6 @@ final class LastFMService {
         Alamofire.request(urlString).responseImage { response in
             //debugPrint(response)
             if let image = response.result.value {
-                print("image downloaded: \(image)")
                 // Store image in cache
                 self.imageCache.setObject(image, forKey: urlString as AnyObject)
                 completion(image)
@@ -147,7 +146,7 @@ final class LastFMService {
         }
     }
     
-    public func cachedImageForURL(_ urlString: String) -> UIImage? {
+    public func getCachedImageForURL(_ urlString: String) -> UIImage? {
         if let image = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
             return image
         } else {

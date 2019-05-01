@@ -1,5 +1,5 @@
 //
-//  JarvisAlbum.swift
+//  TopAlbum.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 26.04.19.

@@ -10,6 +10,18 @@ import UIKit
 
 final class AlbumDetailsViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var albumTitleLabel: UILabel!
+    @IBOutlet weak var albumImageView: UIImageView!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var tracklistLabel: UILabel!
+    @IBOutlet weak var tracklistHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var saveAlbumButton: UIBarButtonItem!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     // MARK: - Properties
     public var selectedAlbumTitle: String = ""
     public var selectedArtistName: String = ""
@@ -23,18 +35,6 @@ final class AlbumDetailsViewController: UIViewController {
         formatter.maximumUnitCount = 2
         return formatter
     }()
-    
-    // MARK: - IBOutlets
-    @IBOutlet weak var albumTitleLabel: UILabel!
-    @IBOutlet weak var albumImageView: UIImageView!
-    @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var tracklistLabel: UILabel!
-    @IBOutlet weak var tracklistHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var saveAlbumButton: UIBarButtonItem!
-    
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -53,13 +53,13 @@ final class AlbumDetailsViewController: UIViewController {
         if isStored {
             saveAlbumButton.isEnabled = false
         }
-        // Get additional infos of selected album
+        // Get additional infos for selected album
         loadAlbumDetails()
     }
     
     private func loadAlbumDetails() {
         LastFMService.shared.fetchDetailsForAlbum(selectedAlbumTitle, selectedArtistName) { [weak self] album, message in
-            print(message)
+            
             guard let self = self,
                 let album = album  else { return }
             self.selectedAlbum = album
@@ -84,7 +84,6 @@ final class AlbumDetailsViewController: UIViewController {
             guard let albumImage = image else { return }
             
             self.albumImageView.image = albumImage
-            print("Big album image loaded")
         }
     }
     
@@ -116,7 +115,6 @@ final class AlbumDetailsViewController: UIViewController {
             }
             stringValue = stringValue + "\(count). \(trackName) (\(duration))\n"
         }
-        print(stringValue)
         let attrString = NSMutableAttributedString(string: stringValue)
         let style = NSMutableParagraphStyle()
         style.alignment = .center
@@ -129,9 +127,8 @@ final class AlbumDetailsViewController: UIViewController {
         tracklistLabel.numberOfLines = tracks.count
         // Set height of tracklist label
         let labelSize = attrString.size()
-        print("Info label height: \(labelSize.height)")
         tracklistHeightConstraint.constant = ceil(labelSize.height * 1.2) // arbitrary scale factor
-        // force 'viewDidLayoutSubviews' to be called
+        // Force 'viewDidLayoutSubviews' to be called
         view.layoutIfNeeded()
     }
     
@@ -146,8 +143,6 @@ final class AlbumDetailsViewController: UIViewController {
                                     height: contentRect.height)
         contentView.frame.size = newContentSize
         scrollView.contentSize = newContentSize
-        
-        print("VdlS: Height of content view: \(newContentSize.height)")
     }
     
     // MARK: - IBActions

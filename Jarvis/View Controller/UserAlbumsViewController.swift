@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  UserAlbumsViewController.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 21.04.19.
@@ -13,7 +13,10 @@ private let AlbumCellIdentifier = "AlbumCell"
 final class UserAlbumsViewController: UICollectionViewController {
     
     @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
+    
     // MARK: - Properties
+    private var userAlbums: [UserAlbum] = []
+
     private let sectionInsets = UIEdgeInsets(top: 20.0,
                                              left: 15.0,
                                              bottom: 20.0,
@@ -21,15 +24,12 @@ final class UserAlbumsViewController: UICollectionViewController {
     private let itemsPerRow: CGFloat = 3.0
     private var cellAspectRatio: CGFloat = 174.0 / 150.0    // Values taken from storyboard
     
-    private var userAlbums: [UserAlbum] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = editButtonItem
-        
         // Receive notifications from UserAlbumStore about successful
-        // saved albumm So it can uppdate the collection view
+        // saved album so it can uppdate the collection view
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(onDidSaveUserAlbum),
                        name: .didSaveUserAlbum,
@@ -76,10 +76,10 @@ extension UserAlbumsViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCellIdentifier,
                                                       for: indexPath) as! AlbumCell
         let album = userAlbums[indexPath.row]
-        cell.userAlbum = album
-        cell.isEditing = self.isEditing
-        cell.delegate = self
         
+        cell.delegate = self
+        cell.isEditing = self.isEditing
+        cell.userAlbum = album
         
         return cell
     }
@@ -129,7 +129,7 @@ extension UserAlbumsViewController : UICollectionViewDelegateFlowLayout {
 extension UserAlbumsViewController: AlbumCellDelegate {
     
     func deleteCell(_ cell: AlbumCell) {
-        // Try to delete User album from Core Data store and in case it succeeded update collection viwew
+        // Try to delete User album from Core Data store and in case it succeeded update collection view
         if let indexPath = collectionView?.indexPath(for: cell) {
             
             let success = UserAlbumStore.shared.deleteAlbum(userAlbums[indexPath.row])

@@ -21,10 +21,10 @@ final class AlbumTableViewCell: UITableViewCell {
     @IBOutlet weak var savedMarkImageView: UIImageView!
     
     // MARK: - Properties
-    weak var delegate:AlbumTableViewCellDelegate?
+    weak var delegate: AlbumTableViewCellDelegate?
     
     // Moved TableViewCell setup
-    public var album:TopAlbum? {
+    public var album: TopAlbum? {
         didSet {
             guard let album = album else { return }
             albumTitleLabel.text = album.title

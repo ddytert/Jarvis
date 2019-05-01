@@ -1,5 +1,5 @@
 //
-//  SearchResults.swift
+//  ArtistSearchResults.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 25.04.19.

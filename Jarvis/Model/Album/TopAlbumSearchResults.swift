@@ -1,5 +1,5 @@
 //
-//  AlbumSearchResults.swift
+//  TopAlbumSearchResults.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 26.04.19.

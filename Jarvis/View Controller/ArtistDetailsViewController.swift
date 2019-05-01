@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let AlbumCellIdentifier = "SmallAlbumCell"
+private let AlbumCellIdentifier = "AlbumTableViewCell"
 
 final class ArtistDetailsViewController: UIViewController {
     

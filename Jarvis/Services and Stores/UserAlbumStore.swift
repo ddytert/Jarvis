@@ -36,7 +36,8 @@ final class UserAlbumStore {
             completion(false, "Missing data store")
             return
         }
-        if isAlbumStored(title: album.title, artist: album.artist) {
+        if isAlbumStored(title: album.title,
+                         artist: album.artist) {
             completion(false, "Album already saved")
             return
         }
@@ -44,9 +45,10 @@ final class UserAlbumStore {
                                                 in: managedContext)!
         let userAlbum = NSManagedObject(entity: entity,
                                         insertInto: managedContext)
-        
-        userAlbum.setValue(album.title, forKeyPath: "title")
-        userAlbum.setValue(album.artist, forKeyPath: "artist")
+        userAlbum.setValue(album.title,
+                           forKeyPath: "title")
+        userAlbum.setValue(album.artist,
+                           forKeyPath: "artist")
         
         let thumbnailImage = getThumbnailImageDataForAlbum(album)
         userAlbum.setValue(thumbnailImage, forKeyPath: "thumbnail")
@@ -54,7 +56,7 @@ final class UserAlbumStore {
         do {
             try managedContext.save()
             // Inform other objects about successful saving of album
-            // (especially MainViewController which then updates its collection view)
+            // (View controller which then updates their collection/table views)
             let nc = NotificationCenter.default
             nc.post(name: .didSaveUserAlbum, object: nil)
             
@@ -98,8 +100,7 @@ final class UserAlbumStore {
             let userAlbums = try managedContext.fetch(fetchRequest)
             return userAlbums as? [UserAlbum]
             
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+        } catch {
             return nil
         }
     }
@@ -126,7 +127,7 @@ final class UserAlbumStore {
     private func getThumbnailImageDataForAlbum(_ album: Album) -> Data? {
         
         guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }),
-            let thumbnailImage = LastFMService.shared.cachedImageForURL(imageInfo.url) else { return nil }
+            let thumbnailImage = LastFMService.shared.getCachedImageForURL(imageInfo.url) else { return nil }
         return thumbnailImage.jpegData(compressionQuality: 1.0)
     }
 }

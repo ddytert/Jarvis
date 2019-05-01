@@ -19,9 +19,9 @@ final class AlbumCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     
-    weak var delegate:AlbumCellDelegate?
+    weak var delegate: AlbumCellDelegate?
     
-    public var userAlbum:UserAlbum? {
+    public var userAlbum: UserAlbum? {
         didSet {
             guard let userAlbum = userAlbum else { return }
             nameLabel.text = userAlbum.title
@@ -33,7 +33,7 @@ final class AlbumCell: UICollectionViewCell {
             deleteButton.isHidden = !isEditing
         }
     }
-    public var isEditing:Bool = false {
+    public var isEditing: Bool = false {
         didSet {
             deleteButton.isHidden = !isEditing
         }

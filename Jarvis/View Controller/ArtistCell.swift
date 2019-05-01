@@ -19,10 +19,10 @@ final class ArtistCell: UITableViewCell {
     @IBOutlet weak var artistImageView: UIImageView!
     
     // MARK: - Properties
-    weak var delegate:ArtistCellDelegate?
+    weak var delegate: ArtistCellDelegate?
     
     // Moved TableViewCell setup logic from VC to cell itself
-    public var artist:Artist? {
+    public var artist: Artist? {
         didSet {
             guard let artist = artist else { return }
             artistNameLabel.text = artist.name
