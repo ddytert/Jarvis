@@ -10,7 +10,7 @@ import UIKit
 
 private let AlbumCellIdentifier = "SmallAlbumCell"
 
-final class ArtistDetailViewController: UIViewController {
+final class ArtistDetailsViewController: UIViewController {
     
     // MARK: - Properties
     public var selectedArtist: Artist?
@@ -82,7 +82,7 @@ final class ArtistDetailViewController: UIViewController {
 }
 
 // MARK: - Table view data source
-extension ArtistDetailViewController: UITableViewDataSource {
+extension ArtistDetailsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -94,8 +94,10 @@ extension ArtistDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AlbumCellIdentifier,
-                                                 for: indexPath) as! SmallAlbumCell
+                                                 for: indexPath) as! AlbumTableViewCell
         let album = topAlbums[indexPath.row]
+        // Set VC as a delegate of the cell
+        cell.delegate = self
         // Let the cell itself do the setup
         cell.album = album
         // Alternating background colors
@@ -106,5 +108,22 @@ extension ArtistDetailViewController: UITableViewDataSource {
         cell.selectedBackgroundView = backgroundView
         
         return cell
+    }
+}
+
+extension ArtistDetailsViewController: AlbumTableViewCellDelegate {
+    
+    // Asynchronous loading of album image
+    func requestImageForAlbumTableViewCell(_ cell: AlbumTableViewCell) {
+        // Get url to thumbnail image
+        guard let album = cell.album,
+            let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }) else { return }
+        
+        LastFMService.shared.imageForURL(imageInfo.url) { image in
+            
+            if let albumImage = image {
+                cell.albumImageView.image = albumImage
+            }
+        }
     }
 }

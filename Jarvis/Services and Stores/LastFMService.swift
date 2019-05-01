@@ -27,7 +27,7 @@ final class LastFMService {
         
         Alamofire.request(Constants.URL.LastFM,
                           parameters: ["method": "artist.search",
-                                       "limit": 200,
+                                       "limit": 300,
                                        "artist": artistName,
                                        "api_key": Constants.Key.LastFMAPI,
                                        "format": "json"])
@@ -58,7 +58,7 @@ final class LastFMService {
         
         Alamofire.request(Constants.URL.LastFM,
                           parameters: ["method": "artist.getTopAlbums",
-                                       "limit": 200,
+                                       "limit": 300,
                                        "artist": artistName,
                                        "api_key": Constants.Key.LastFMAPI,
                                        "format": "json"])
@@ -97,7 +97,7 @@ final class LastFMService {
         
         Alamofire.request(Constants.URL.LastFM,
                           parameters: ["method": "album.getInfo",
-                                       "limit": 200,
+                                       "limit": 300,
                                        "album": albumTitle,
                                        "artist": artistName,
                                        "api_key": Constants.Key.LastFMAPI,
@@ -123,6 +123,8 @@ final class LastFMService {
                 }
         }
     }
+    
+    // MARK: Image fetching
     
     public func imageForURL(_ urlString: String,
                             completion: @escaping (UIImage?) -> Void) {

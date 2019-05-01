@@ -41,7 +41,7 @@ final class ArtistSearchViewController: UIViewController {
             let indexPath = tableView.indexPath(for: cell) else {
                 return
         }
-        if let artistDetailVC = segue.destination as? ArtistDetailViewController {
+        if let artistDetailVC = segue.destination as? ArtistDetailsViewController {
             artistDetailVC.selectedArtist = foundArtists[indexPath.row]
         }
     }
@@ -62,9 +62,11 @@ extension ArtistSearchViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArtistCellIdentifier,
                                                  for: indexPath) as! ArtistCell
         let artist = foundArtists[indexPath.row]
+        // Set VC as a delegate of the cell
+        cell.delegate = self
         // Let the cell itself do the setup
         cell.artist = artist
-         // Alternating background colors
+        // Alternating background colors
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 24.0/255.0, alpha: 1.0) : UIColor(white: 32.0/255.0, alpha: 1.0)
         // Set color of selected cell
         let backgroundView = UIView()
@@ -87,7 +89,7 @@ extension ArtistSearchViewController: UISearchBarDelegate {
         searchInfoLabel.isHidden = true
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        
+        // Clear table view
         foundArtists.removeAll()
         tableView.reloadData()
         
@@ -104,6 +106,23 @@ extension ArtistSearchViewController: UISearchBarDelegate {
             
             self.foundArtists = artists
             self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - ArtistCell delegate methods
+extension ArtistSearchViewController: ArtistCellDelegate {
+    
+    // Asynchronous loading of artist image
+    func requestImageForArtistCell(_ cell: ArtistCell) {
+        // Get url to thumbnail image
+        guard let artist = cell.artist,
+            let imageInfo = artist.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }) else { return }
+        
+        LastFMService.shared.imageForURL(imageInfo.url) { image in
+            if let artistImage = image {
+                cell.artistImageView.image = artistImage
+            }
         }
     }
 }

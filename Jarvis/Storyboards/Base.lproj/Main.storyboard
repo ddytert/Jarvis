@@ -229,7 +229,7 @@
         <!--Artist Details-->
         <scene sceneID="6LI-3c-aaJ">
             <objects>
-                <viewController title="Artist Details" id="uDJ-5u-4Jd" customClass="ArtistDetailViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Artist Details" id="uDJ-5u-4Jd" customClass="ArtistDetailsViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rwx-n5-2U7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -288,7 +288,7 @@
                                 <rect key="frame" x="0.0" y="318" width="414" height="578"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SmallAlbumCell" rowHeight="76" id="Vy2-9f-ORx" userLabel="SmallAlbumCell" customClass="SmallAlbumCell" customModule="Jarvis" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SmallAlbumCell" rowHeight="76" id="Vy2-9f-ORx" userLabel="SmallAlbumCell" customClass="AlbumTableViewCell" customModule="Jarvis" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vy2-9f-ORx" id="RCm-8h-ka9">

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ArtistCellDelegate: class {
+    func requestImageForArtistCell(_ cell: ArtistCell)
+}
+
 final class ArtistCell: UITableViewCell {
     
     // MARK: - IBOutlets
@@ -15,6 +19,7 @@ final class ArtistCell: UITableViewCell {
     @IBOutlet weak var artistImageView: UIImageView!
     
     // MARK: - Properties
+    weak var delegate:ArtistCellDelegate?
     
     // Moved TableViewCell setup logic from VC to cell itself
     public var artist:Artist? {
@@ -23,30 +28,8 @@ final class ArtistCell: UITableViewCell {
             artistNameLabel.text = artist.name
             // Set image to default image first
             artistImageView.image = UIImage(named: "IconUnknownArtist.png")
-            requestImageForArtist(artist)
+            // Let the view controller communicate with the model
+            delegate?.requestImageForArtistCell(self)
         }
     }
-    // Asynchronous loading of artist image 
-    private func requestImageForArtist(_ artist: Artist) {
-        // Get url to thumbnail image
-        guard let imageInfo = artist.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }) else { return }
-        
-        LastFMService.shared.imageForURL(imageInfo.url) { [weak self] image in
-            guard let self = self,
-                let artistImage = image else { return }
-            self.artistImageView.image = artistImage
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
 }

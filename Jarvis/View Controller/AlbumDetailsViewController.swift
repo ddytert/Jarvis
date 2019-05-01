@@ -84,6 +84,7 @@ final class AlbumDetailsViewController: UIViewController {
             guard let albumImage = image else { return }
             
             self.albumImageView.image = albumImage
+            print("Big album image loaded")
         }
     }
     
@@ -130,6 +131,8 @@ final class AlbumDetailsViewController: UIViewController {
         let labelSize = attrString.size()
         print("Info label height: \(labelSize.height)")
         tracklistHeightConstraint.constant = ceil(labelSize.height * 1.2) // arbitrary scale factor
+        // force 'viewDidLayoutSubviews' to be called
+        view.layoutIfNeeded()
     }
     
     override func viewDidLayoutSubviews() {
@@ -144,6 +147,7 @@ final class AlbumDetailsViewController: UIViewController {
         contentView.frame.size = newContentSize
         scrollView.contentSize = newContentSize
         
+        print("VdlS: Height of content view: \(newContentSize.height)")
     }
     
     // MARK: - IBActions
