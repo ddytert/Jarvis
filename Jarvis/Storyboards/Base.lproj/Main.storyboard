@@ -266,13 +266,13 @@
                                 <constraints>
                                     <constraint firstItem="JLG-CM-WHH" firstAttribute="top" secondItem="zbX-kZ-AbJ" secondAttribute="top" constant="12" id="8Fl-bc-kLU"/>
                                     <constraint firstAttribute="height" constant="194" id="EB8-bq-weG"/>
+                                    <constraint firstItem="lrD-2n-C2U" firstAttribute="centerX" secondItem="yzj-pe-0k5" secondAttribute="centerX" id="KOm-OT-WWb"/>
                                     <constraint firstItem="zbX-kZ-AbJ" firstAttribute="bottom" secondItem="gsi-Ef-2Q0" secondAttribute="bottom" id="WDp-Vy-lC8"/>
                                     <constraint firstItem="gsi-Ef-2Q0" firstAttribute="leading" secondItem="zbX-kZ-AbJ" secondAttribute="leading" id="YbD-Cq-uvk"/>
                                     <constraint firstItem="lrD-2n-C2U" firstAttribute="centerY" secondItem="gsi-Ef-2Q0" secondAttribute="centerY" multiplier="4:3" id="YtV-qW-Xbl"/>
                                     <constraint firstItem="yzj-pe-0k5" firstAttribute="leading" secondItem="gsi-Ef-2Q0" secondAttribute="trailing" constant="12" id="e9P-dy-Fxz"/>
                                     <constraint firstAttribute="trailing" secondItem="JLG-CM-WHH" secondAttribute="trailing" constant="6" id="gLV-Wo-n6N"/>
                                     <constraint firstItem="zbX-kZ-AbJ" firstAttribute="bottom" secondItem="yzj-pe-0k5" secondAttribute="bottom" constant="12" id="h16-uV-iJC"/>
-                                    <constraint firstItem="lrD-2n-C2U" firstAttribute="centerX" secondItem="yzj-pe-0k5" secondAttribute="centerX" id="r4u-aa-vrY"/>
                                     <constraint firstItem="JLG-CM-WHH" firstAttribute="leading" secondItem="gsi-Ef-2Q0" secondAttribute="trailing" constant="12" id="yhC-NI-U21"/>
                                     <constraint firstItem="gsi-Ef-2Q0" firstAttribute="top" secondItem="zbX-kZ-AbJ" secondAttribute="top" id="zpR-c0-ZUR"/>
                                     <constraint firstAttribute="trailing" secondItem="yzj-pe-0k5" secondAttribute="trailing" constant="6" id="zwa-2G-wSn"/>
