@@ -418,7 +418,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K8g-E5-54k"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Album" id="kch-Yl-iyU">
+                    <navigationItem key="navigationItem" title="Album Details" id="kch-Yl-iyU">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="fpp-mf-M9c">
                             <connections>
                                 <action selector="saveAlbum:" destination="GqV-Ej-nzM" id="0XH-yD-yAo"/>

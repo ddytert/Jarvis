@@ -8,7 +8,6 @@
 
 import Foundation
 
-// Here we can store our keys
 struct Constants {
     
     struct URL {
