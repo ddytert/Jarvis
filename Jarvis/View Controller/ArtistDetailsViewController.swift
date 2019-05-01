@@ -27,6 +27,13 @@ final class ArtistDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Receive notifications from UserAlbumStore about successful
+        // saved albumm So it can update the table view (show the blue saved album mark)
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(onDidSaveUserAlbum),
+                       name: .didSaveUserAlbum,
+                       object: nil)
+        
         // Hide separator line
         tableView.separatorStyle = .none
         
@@ -125,5 +132,24 @@ extension ArtistDetailsViewController: AlbumTableViewCellDelegate {
                 cell.albumImageView.image = albumImage
             }
         }
+    }
+    
+    func checkIfAlbumIsAlreadySaved(_ cell: AlbumTableViewCell) {
+        
+        guard let album = cell.album,
+            let artist = selectedArtist else { return }
+        
+        let isStored = UserAlbumStore.shared.isAlbumStored(title: album.title,
+                                                           artist: artist.name)
+        let imageName = isStored ? "IconAlbumStoredBlue.png" : ""
+        cell.savedMarkImageView.image = UIImage(named: imageName)
+    }
+}
+
+// MARK: - Notification handling
+extension ArtistDetailsViewController {
+    
+    @objc func onDidSaveUserAlbum(_ notification: Notification) {
+        tableView.reloadData()
     }
 }

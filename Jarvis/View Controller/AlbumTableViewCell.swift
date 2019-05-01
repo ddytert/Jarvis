@@ -10,6 +10,7 @@ import UIKit
 
 protocol AlbumTableViewCellDelegate: class {
     func requestImageForAlbumTableViewCell(_ cell: AlbumTableViewCell)
+    func checkIfAlbumIsAlreadySaved(_ cell: AlbumTableViewCell)
 }
 
 final class AlbumTableViewCell: UITableViewCell {
@@ -17,6 +18,7 @@ final class AlbumTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
+    @IBOutlet weak var savedMarkImageView: UIImageView!
     
     // MARK: - Properties
     weak var delegate:AlbumTableViewCellDelegate?
@@ -28,6 +30,7 @@ final class AlbumTableViewCell: UITableViewCell {
             albumTitleLabel.text = album.title
             // Set album image to default image first
             albumImageView.image = UIImage(named: "IconUnknownAlbum.png")
+            delegate?.checkIfAlbumIsAlreadySaved(self)
             delegate?.requestImageForAlbumTableViewCell(self)
         }
     }
