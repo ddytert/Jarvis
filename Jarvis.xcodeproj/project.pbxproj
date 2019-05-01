@@ -13,21 +13,15 @@
 		69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69179614226C97450034079A /* Jarvis.xcdatamodeld */; };
 		69179618226C97460034079A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69179617226C97460034079A /* Assets.xcassets */; };
 		6917961B226C97460034079A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69179619226C97460034079A /* LaunchScreen.storyboard */; };
-		69179623226C98110034079A /* TestAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179622226C98110034079A /* TestAlbum.swift */; };
-		69179625226C9A420034079A /* TestTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179624226C9A420034079A /* TestTrack.swift */; };
 		69179628226C9FDD0034079A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179627226C9FDD0034079A /* MainViewController.swift */; };
 		6917962A226CA3860034079A /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69179629226CA3860034079A /* AlbumCell.swift */; };
-		6917962E226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6917962D226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg */; };
-		69179633226CE5E60034079A /* CS679029-01A-BIG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179632226CE5E60034079A /* CS679029-01A-BIG.jpg */; };
-		69179635226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */; };
-		69179637226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */; };
 		692215252273260C00B0314E /* LastFMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215242273260C00B0314E /* LastFMService.swift */; };
 		692215272273284A00B0314E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215262273284A00B0314E /* Constants.swift */; };
 		6922152922735EE500B0314E /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152822735EE500B0314E /* ArtistDetailViewController.swift */; };
-		6922152D2273781400B0314E /* AlbumSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152C2273781400B0314E /* AlbumSearchResults.swift */; };
-		6922152F22737D4B00B0314E /* JarvisAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152E22737D4B00B0314E /* JarvisAlbum.swift */; };
+		6922152D2273781400B0314E /* TopAlbumSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152C2273781400B0314E /* TopAlbumSearchResults.swift */; };
+		6922152F22737D4B00B0314E /* TopAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922152E22737D4B00B0314E /* TopAlbum.swift */; };
 		6922153322738A4D00B0314E /* SmallAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922153222738A4D00B0314E /* SmallAlbumCell.swift */; };
-		692215352274DA3E00B0314E /* AlbumDetailsSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215342274DA3E00B0314E /* AlbumDetailsSearchResult.swift */; };
+		692215352274DA3E00B0314E /* AlbumSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215342274DA3E00B0314E /* AlbumSearchResult.swift */; };
 		692215372274E13000B0314E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692215362274E13000B0314E /* Album.swift */; };
 		6922153B2274E21D00B0314E /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922153A2274E21D00B0314E /* Track.swift */; };
 		6922153F2274E3FC00B0314E /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6922153E2274E3FC00B0314E /* ImageInfo.swift */; };
@@ -49,21 +43,15 @@
 		69179617226C97460034079A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6917961A226C97460034079A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6917961C226C97460034079A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69179622226C98110034079A /* TestAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAlbum.swift; sourceTree = "<group>"; };
-		69179624226C9A420034079A /* TestTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTrack.swift; sourceTree = "<group>"; };
 		69179627226C9FDD0034079A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		69179629226CA3860034079A /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
-		6917962D226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "OutKast-Aquemini-1537995335-640x634.jpg"; sourceTree = "<group>"; };
-		69179632226CE5E60034079A /* CS679029-01A-BIG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "CS679029-01A-BIG.jpg"; sourceTree = "<group>"; };
-		69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg"; sourceTree = "<group>"; };
-		69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = A1hIUHqDK3L._SS500_.jpg; sourceTree = "<group>"; };
 		692215242273260C00B0314E /* LastFMService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMService.swift; sourceTree = "<group>"; };
 		692215262273284A00B0314E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6922152822735EE500B0314E /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
-		6922152C2273781400B0314E /* AlbumSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchResults.swift; sourceTree = "<group>"; };
-		6922152E22737D4B00B0314E /* JarvisAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarvisAlbum.swift; sourceTree = "<group>"; };
+		6922152C2273781400B0314E /* TopAlbumSearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbumSearchResults.swift; sourceTree = "<group>"; };
+		6922152E22737D4B00B0314E /* TopAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbum.swift; sourceTree = "<group>"; };
 		6922153222738A4D00B0314E /* SmallAlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallAlbumCell.swift; sourceTree = "<group>"; };
-		692215342274DA3E00B0314E /* AlbumDetailsSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsSearchResult.swift; sourceTree = "<group>"; };
+		692215342274DA3E00B0314E /* AlbumSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchResult.swift; sourceTree = "<group>"; };
 		692215362274E13000B0314E /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		6922153A2274E21D00B0314E /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		6922153E2274E3FC00B0314E /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
@@ -90,6 +78,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B009FA022797A6400EC8D32 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				692215262273284A00B0314E /* Constants.swift */,
+				3B009F9E2278B7EE00EC8D32 /* NotificationNames.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		3B009FA122797D6400EC8D32 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				69179611226C97450034079A /* Main.storyboard */,
+				69179619226C97460034079A /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		3B009FA222797D8100EC8D32 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				69179627226C9FDD0034079A /* MainViewController.swift */,
+				69179629226CA3860034079A /* AlbumCell.swift */,
+				694463382270423100FA4282 /* ArtistSearchViewController.swift */,
+				69D4EB212272503200AFB189 /* ArtistCell.swift */,
+				6922152822735EE500B0314E /* ArtistDetailViewController.swift */,
+				6922153222738A4D00B0314E /* SmallAlbumCell.swift */,
+				692AFFBB22759DAB0030C094 /* AlbumDetailsViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		3B009FA32279823300EC8D32 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				69179614226C97450034079A /* Jarvis.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		3B40321A22785CE400D88148 /* Services and Stores */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,23 +157,14 @@
 			isa = PBXGroup;
 			children = (
 				6917960D226C97450034079A /* AppDelegate.swift */,
-				692215262273284A00B0314E /* Constants.swift */,
-				3B009F9E2278B7EE00EC8D32 /* NotificationNames.swift */,
-				69179611226C97450034079A /* Main.storyboard */,
+				3B009FA022797A6400EC8D32 /* Support */,
+				3B009FA122797D6400EC8D32 /* Storyboards */,
 				69179626226C9AA60034079A /* Model */,
 				3B40321A22785CE400D88148 /* Services and Stores */,
-				69179627226C9FDD0034079A /* MainViewController.swift */,
-				69179629226CA3860034079A /* AlbumCell.swift */,
-				694463382270423100FA4282 /* ArtistSearchViewController.swift */,
-				69D4EB212272503200AFB189 /* ArtistCell.swift */,
-				6922152822735EE500B0314E /* ArtistDetailViewController.swift */,
-				6922153222738A4D00B0314E /* SmallAlbumCell.swift */,
-				692AFFBB22759DAB0030C094 /* AlbumDetailsViewController.swift */,
+				3B009FA222797D8100EC8D32 /* View Controller */,
+				3B009FA32279823300EC8D32 /* Core Data */,
 				69179617226C97460034079A /* Assets.xcassets */,
-				6917962F226CCA8B0034079A /* Art */,
-				69179619226C97460034079A /* LaunchScreen.storyboard */,
 				6917961C226C97460034079A /* Info.plist */,
-				69179614226C97450034079A /* Jarvis.xcdatamodeld */,
 			);
 			path = Jarvis;
 			sourceTree = "<group>";
@@ -153,31 +172,18 @@
 		69179626226C9AA60034079A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				69179622226C98110034079A /* TestAlbum.swift */,
-				69179624226C9A420034079A /* TestTrack.swift */,
 				6922153D2274E24900B0314E /* Artist */,
 				6922153C2274E23400B0314E /* Album */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		6917962F226CCA8B0034079A /* Art */ = {
-			isa = PBXGroup;
-			children = (
-				69179636226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg */,
-				69179634226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg */,
-				6917962D226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg */,
-				69179632226CE5E60034079A /* CS679029-01A-BIG.jpg */,
-			);
-			path = Art;
-			sourceTree = "<group>";
-		};
 		6922153C2274E23400B0314E /* Album */ = {
 			isa = PBXGroup;
 			children = (
-				6922152C2273781400B0314E /* AlbumSearchResults.swift */,
-				692215342274DA3E00B0314E /* AlbumDetailsSearchResult.swift */,
-				6922152E22737D4B00B0314E /* JarvisAlbum.swift */,
+				6922152C2273781400B0314E /* TopAlbumSearchResults.swift */,
+				692215342274DA3E00B0314E /* AlbumSearchResult.swift */,
+				6922152E22737D4B00B0314E /* TopAlbum.swift */,
 				692215362274E13000B0314E /* Album.swift */,
 				6922153A2274E21D00B0314E /* Track.swift */,
 			);
@@ -264,11 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6917961B226C97460034079A /* LaunchScreen.storyboard in Resources */,
-				69179635226CE7790034079A /* jimi-hendrix-electric-ladyland-crop-c0-5__0-5-600x600-70.jpg in Resources */,
-				69179633226CE5E60034079A /* CS679029-01A-BIG.jpg in Resources */,
 				69179618226C97460034079A /* Assets.xcassets in Resources */,
-				69179637226CEA500034079A /* A1hIUHqDK3L._SS500_.jpg in Resources */,
-				6917962E226CCA7C0034079A /* OutKast-Aquemini-1537995335-640x634.jpg in Resources */,
 				69179613226C97450034079A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,9 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69D4EB1C2272306100AFB189 /* ArtistSearchResults.swift in Sources */,
-				69179623226C98110034079A /* TestAlbum.swift in Sources */,
 				69D4EB222272503200AFB189 /* ArtistCell.swift in Sources */,
-				69179625226C9A420034079A /* TestTrack.swift in Sources */,
 				6917962A226CA3860034079A /* AlbumCell.swift in Sources */,
 				6922153322738A4D00B0314E /* SmallAlbumCell.swift in Sources */,
 				3B009F9F2278B7EE00EC8D32 /* NotificationNames.swift in Sources */,
@@ -345,11 +345,11 @@
 				692215252273260C00B0314E /* LastFMService.swift in Sources */,
 				69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */,
 				6922153B2274E21D00B0314E /* Track.swift in Sources */,
-				6922152D2273781400B0314E /* AlbumSearchResults.swift in Sources */,
+				6922152D2273781400B0314E /* TopAlbumSearchResults.swift in Sources */,
 				692AFFDF227707370030C094 /* UserAlbumStore.swift in Sources */,
-				692215352274DA3E00B0314E /* AlbumDetailsSearchResult.swift in Sources */,
+				692215352274DA3E00B0314E /* AlbumSearchResult.swift in Sources */,
 				692215272273284A00B0314E /* Constants.swift in Sources */,
-				6922152F22737D4B00B0314E /* JarvisAlbum.swift in Sources */,
+				6922152F22737D4B00B0314E /* TopAlbum.swift in Sources */,
 				6944633B227043B900FA4282 /* Artist.swift in Sources */,
 				6922153F2274E3FC00B0314E /* ImageInfo.swift in Sources */,
 			);

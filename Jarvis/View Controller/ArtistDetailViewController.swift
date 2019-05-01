@@ -14,7 +14,7 @@ final class ArtistDetailViewController: UIViewController {
     
     // MARK: - Properties
     public var selectedArtist: Artist?
-    public var topAlbums: [JarvisAlbum] = []
+    public var topAlbums: [TopAlbum] = []
     
     // MARK: IBOutlets
     @IBOutlet weak var artistImageView: UIImageView!

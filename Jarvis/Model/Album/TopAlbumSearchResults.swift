@@ -6,11 +6,11 @@
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
-/// Hierarchical data model which corresponds to search result returned from lastfm (get artists topalbums)
+// Hierarchical data model which corresponds to search result returned from lastfm (get artists topalbums)
 
 import Foundation
 
-struct AlbumSearchResults: Decodable {
+struct TopAlbumSearchResults: Decodable {
     let topAlbums: TopAlbums
     
     private enum CodingKeys: String, CodingKey {
@@ -19,7 +19,7 @@ struct AlbumSearchResults: Decodable {
 }
 
 struct TopAlbums: Decodable {
-    let albums: [JarvisAlbum]
+    let albums: [TopAlbum]
     let attributes: Attributes
     
     private enum CodingKeys: String, CodingKey {

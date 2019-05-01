@@ -17,7 +17,7 @@ final class SmallAlbumCell: UITableViewCell {
     // MARK: - Properties
     
     // Moved TableViewCell setup logic from VC to cell itself
-    public var album:JarvisAlbum? {
+    public var album:TopAlbum? {
         didSet {
             guard let album = album else { return }
             albumTitleLabel.text = album.title
@@ -28,7 +28,7 @@ final class SmallAlbumCell: UITableViewCell {
     }
     
     // Asynchronous loading of album image
-    private func requestImageForAlbum(_ album: JarvisAlbum) {
+    private func requestImageForAlbum(_ album: TopAlbum) {
         // Get url to thumbnail image
         guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }) else { return }
         

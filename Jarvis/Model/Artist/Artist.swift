@@ -6,9 +6,11 @@
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
+// Artist data model which corresponds to lastfms json representation of an artist
+
+
 import Foundation
 
-/// Artist data model which corresponds to lastfms json representation of an artist
 
 class Artist: Decodable {
     let name: String

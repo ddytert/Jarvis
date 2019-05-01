@@ -6,9 +6,11 @@
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
+// Hierarchical data model which corresponds to search result returned from lastfm
+
+
 import Foundation
 
-/// Hierarchical data model which corresponds to search result returned from lastfm
 
 struct ArtistSearchResults: Decodable {
     let results: Results

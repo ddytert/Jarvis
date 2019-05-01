@@ -99,13 +99,15 @@ final class UserAlbumStore {
         }
         return entitiesCount > 0
     }
+    
+    // MARK: Helper functions
+    private func getThumbnailImageDataForAlbum(_ album: Album) -> Data? {
+        
+        guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }),
+            let thumbnailImage = LastFMService.shared.cachedImageForURL(imageInfo.url) else { return nil }
+        return thumbnailImage.jpegData(compressionQuality: 1.0)
+    }
 }
 
-// MARK: Helper functions
-private func getThumbnailImageDataForAlbum(_ album: Album) -> Data? {
-    
-    guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }),
-        let thumbnailImage = LastFMService.shared.imageForURL(imageInfo.url) else { return nil }
-    return thumbnailImage.jpegData(compressionQuality: 1.0)
-}
+
 

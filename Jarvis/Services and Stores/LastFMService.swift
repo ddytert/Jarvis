@@ -54,7 +54,7 @@ final class LastFMService {
     }
     
     public func fetchTopAlbumsOfArtist(_ artistName: String,
-                                       completion: @escaping ([JarvisAlbum]?, String) -> Void) {
+                                       completion: @escaping ([TopAlbum]?, String) -> Void) {
         
         Alamofire.request(Constants.URL.LastFM,
                           parameters: ["method": "artist.getTopAlbums",
@@ -71,7 +71,7 @@ final class LastFMService {
                         return
                 }
                 do {
-                    let searchResult = try JSONDecoder().decode(AlbumSearchResults.self, from: data)
+                    let searchResult = try JSONDecoder().decode(TopAlbumSearchResults.self, from: data)
                     let albums = searchResult.topAlbums.albums
                     let numberResults = Int(searchResult.topAlbums.attributes.total) ?? 0
                     if numberResults > 0 {
@@ -113,7 +113,7 @@ final class LastFMService {
                         return
                 }
                 do {
-                    let searchResult = try JSONDecoder().decode(AlbumDetailSearchResults.self, from: data)
+                    let searchResult = try JSONDecoder().decode(AlbumSearchResults.self, from: data)
                     let album = searchResult.album
                     completion(album, "Success")
                 } catch {
@@ -145,7 +145,7 @@ final class LastFMService {
         }
     }
     
-    public func imageForURL(_ urlString: String) -> UIImage?{
+    public func cachedImageForURL(_ urlString: String) -> UIImage? {
         if let image = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
             return image
         } else {

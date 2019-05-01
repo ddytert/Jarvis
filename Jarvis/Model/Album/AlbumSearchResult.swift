@@ -10,6 +10,6 @@
 
 import Foundation
 
-struct AlbumDetailSearchResults: Decodable {
+struct AlbumSearchResults: Decodable {
     let album: Album
 }
