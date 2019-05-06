@@ -134,7 +134,7 @@ final class AlbumDetailsViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
-        // Adapt height of content view to varying height of tracklist
+        // Adjust height of content view to varying height of tracklist
         var contentRect = CGRect.zero
         for view in contentView.subviews {
             contentRect = contentRect.union(view.frame)

@@ -6,7 +6,7 @@
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
-// Class responsible for persistent storage of user albums and album images
+// Class responsible for persistent storage of user albums and thumbnail images of albums
 
 import UIKit
 import CoreData
@@ -45,10 +45,8 @@ final class UserAlbumStore {
                                                 in: managedContext)!
         let userAlbum = NSManagedObject(entity: entity,
                                         insertInto: managedContext)
-        userAlbum.setValue(album.title,
-                           forKeyPath: "title")
-        userAlbum.setValue(album.artist,
-                           forKeyPath: "artist")
+        userAlbum.setValue(album.title, forKeyPath: "title")
+        userAlbum.setValue(album.artist, forKeyPath: "artist")
         
         let thumbnailImage = getThumbnailImageDataForAlbum(album)
         userAlbum.setValue(thumbnailImage, forKeyPath: "thumbnail")
@@ -105,7 +103,8 @@ final class UserAlbumStore {
         }
     }
     
-    public func isAlbumStored(title: String, artist: String) -> Bool {
+    public func isAlbumStored(title: String,
+                              artist: String) -> Bool {
         
         guard let managedContext = managedContext else { return false }
         

@@ -136,7 +136,8 @@ final class LastFMService {
             return
         }
         // Image isn't stored yet so retrieve it from server
-        Alamofire.request(urlString).responseImage { response in
+        Alamofire.request(urlString)
+            .responseImage { response in
             //debugPrint(response)
             if let image = response.result.value {
                 // Store image in cache
