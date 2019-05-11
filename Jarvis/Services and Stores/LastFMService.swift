@@ -25,12 +25,13 @@ final class LastFMService {
     public func searchForArtist(_ artistName: String,
                                 completion: @escaping ([Artist]?, String) -> Void) {
         
-        Alamofire.request(Constants.URL.LastFM,
-                          parameters: ["method": "artist.search",
-                                       "limit": 300,
-                                       "artist": artistName,
-                                       "api_key": Constants.Key.LastFMAPI,
-                                       "format": "json"])
+        Alamofire.request(Constants.URL.Discogs + "database/search",
+                          method: .get,
+                          parameters: ["type": "artist",
+                                       "q": artistName,
+                                       "key": Constants.Key.Discogs,
+                                       "secret": Constants.Secret.Discogs],
+                          headers: ["User-Agent": UserAgentString()])
             .responseData { response in
                 guard response.result.isSuccess,
                     let data = response.data else {
@@ -38,6 +39,7 @@ final class LastFMService {
                         completion(nil, errorMessage)
                         return
                 }
+                debugPrint(response)
                 do {
                     let searchResult = try JSONDecoder().decode(ArtistSearchResults.self,
                                                                 from: data)
@@ -57,11 +59,11 @@ final class LastFMService {
     public func fetchTopAlbumsOfArtist(_ artistName: String,
                                        completion: @escaping ([TopAlbum]?, String) -> Void) {
         
-        Alamofire.request(Constants.URL.LastFM,
+        Alamofire.request(Constants.URL.Discogs,
                           parameters: ["method": "artist.getTopAlbums",
                                        "limit": 300,
                                        "artist": artistName,
-                                       "api_key": Constants.Key.LastFMAPI,
+                                       "api_key": Constants.Key.Discogs,
                                        "format": "json"])
             .responseData { response in
                 
@@ -97,12 +99,12 @@ final class LastFMService {
                                      _ artistName: String,
                                      completion: @escaping (Album?, String) -> Void) {
         
-        Alamofire.request(Constants.URL.LastFM,
+        Alamofire.request(Constants.URL.Discogs,
                           parameters: ["method": "album.getInfo",
                                        "limit": 300,
                                        "album": albumTitle,
                                        "artist": artistName,
-                                       "api_key": Constants.Key.LastFMAPI,
+                                       "api_key": Constants.Key.Discogs,
                                        "format": "json"])
             .responseData { response in
 

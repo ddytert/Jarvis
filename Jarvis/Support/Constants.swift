@@ -11,9 +11,12 @@ import Foundation
 struct Constants {
     
     struct URL {
-        static let LastFM = "http://ws.audioscrobbler.com/2.0/"
+        static let Discogs = "https://api.discogs.com/"
     }
     struct Key {
-        static let LastFMAPI = "1f5c01f4a1139c3ccc96eaab9042a83d"
+        static let Discogs = "hssapXpogmUQyvHDmMnr"
+    }
+    struct Secret {
+        static let Discogs = "hlxKzbtTVIdTsKdFCsHRMJIaEsdLpPrJ"
     }
 }

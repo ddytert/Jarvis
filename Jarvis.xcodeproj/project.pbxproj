@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B009F9F2278B7EE00EC8D32 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B009F9E2278B7EE00EC8D32 /* NotificationNames.swift */; };
+		3B024EE22287107900BA93F8 /* UserAgentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B024EE12287107900BA93F8 /* UserAgentBuilder.swift */; };
 		6917960E226C97450034079A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6917960D226C97450034079A /* AppDelegate.swift */; };
 		69179613226C97450034079A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69179611226C97450034079A /* Main.storyboard */; };
 		69179616226C97450034079A /* Jarvis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 69179614226C97450034079A /* Jarvis.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		3B009F9E2278B7EE00EC8D32 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
+		3B024EE12287107900BA93F8 /* UserAgentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgentBuilder.swift; sourceTree = "<group>"; };
 		6917960A226C97450034079A /* Jarvis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jarvis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6917960D226C97450034079A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69179612226C97450034079A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				692215262273284A00B0314E /* Constants.swift */,
 				3B009F9E2278B7EE00EC8D32 /* NotificationNames.swift */,
+				3B024EE12287107900BA93F8 /* UserAgentBuilder.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				692215272273284A00B0314E /* Constants.swift in Sources */,
 				6922152F22737D4B00B0314E /* TopAlbum.swift in Sources */,
 				6944633B227043B900FA4282 /* Artist.swift in Sources */,
+				3B024EE22287107900BA93F8 /* UserAgentBuilder.swift in Sources */,
 				6922153F2274E3FC00B0314E /* ImageInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
