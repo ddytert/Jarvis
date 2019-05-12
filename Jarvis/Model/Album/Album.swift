@@ -31,3 +31,13 @@ struct Tracks: Decodable {
         case tracks = "track"
     }
 }
+
+struct ImageInfo: Decodable {
+    let url: String
+    let size: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case url = "#text"
+        case size
+    }
+}

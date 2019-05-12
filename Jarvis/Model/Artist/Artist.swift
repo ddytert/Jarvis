@@ -14,12 +14,29 @@ import Foundation
 
 class Artist: Decodable {
     let name: String
-    let imageInfos: [ImageInfo]
+    let thumbURL: String
+    let imageURL: String
     let url: String
+    let id: Int
     
     private enum CodingKeys: String, CodingKey {
-        case name
-        case imageInfos = "image"
-        case url
+        case name = "title"
+        case thumbURL = "thumb"
+        case imageURL = "cover_image"
+        case url = "resource_url"
+        case id
     }
 }
+
+
+/*
+"thumb": "",
+"title": "Raphael (19)",
+"uri": "\/artist\/2235371-Raphael-19",
+"master_url": null,
+"cover_image": "https:\/\/img.discogs.com\/9fa42e92ed5be1e53e98fd57aec8732bbe8f9a7f\/images\/spacer.gif",
+"resource_url": "https:\/\/api.discogs.com\/artists\/2235371",
+"master_id": null,
+"type": "artist",
+"id": 2235371
+*/

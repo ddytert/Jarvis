@@ -92,7 +92,7 @@ extension ArtistSearchViewController: UISearchBarDelegate {
         foundArtists.removeAll()
         tableView.reloadData()
         
-        LastFMService.shared.searchForArtist(artistName) { [weak self] artists, message in
+        DiscogsService.shared.searchForArtist(artistName) { [weak self] artists, message in
             
             guard let self = self else { return }
             
@@ -116,9 +116,9 @@ extension ArtistSearchViewController: ArtistCellDelegate {
     func requestImageForArtistCell(_ cell: ArtistCell) {
         // Get url to thumbnail image
         guard let artist = cell.artist,
-            let imageInfo = artist.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }) else { return }
+            !artist.imageURL.isEmpty else { return }
         
-        LastFMService.shared.imageForURL(imageInfo.url) { image in
+        DiscogsService.shared.imageForURL(artist.imageURL) { image in
             if let artistImage = image {
                 cell.artistImageView.image = artistImage
             }

@@ -10,11 +10,11 @@ import Foundation
 import Alamofire
 import AlamofireImage
 
-final class LastFMService {
+final class DiscogsService {
     
     // MARK: - Properties
     // Return singleton instance
-    public static let shared = LastFMService()
+    public static let shared = DiscogsService()
     
     private let imageCache = NSCache<AnyObject, AnyObject>()
     
@@ -39,12 +39,11 @@ final class LastFMService {
                         completion(nil, errorMessage)
                         return
                 }
-                debugPrint(response)
                 do {
-                    let searchResult = try JSONDecoder().decode(ArtistSearchResults.self,
+                    let searchResult = try JSONDecoder().decode(ArtistSearchResult.self,
                                                                 from: data)
-                    let artists = searchResult.results.artistMatches.artists
-                    let numberResults = Int(searchResult.results.total) ?? 0
+                    let artists = searchResult.results
+                    let numberResults = searchResult.pagination.items
                     let successMessage = "\(numberResults) artists found"
                     completion(artists, successMessage)
                     return
@@ -56,17 +55,16 @@ final class LastFMService {
         }
     }
     
-    public func fetchTopAlbumsOfArtist(_ artistName: String,
-                                       completion: @escaping ([TopAlbum]?, String) -> Void) {
+    public func fetchReleasesOfArtist(_ artistId: Int,
+                                       completion: @escaping ([Release]?, String) -> Void) {
         
-        Alamofire.request(Constants.URL.Discogs,
-                          parameters: ["method": "artist.getTopAlbums",
-                                       "limit": 300,
-                                       "artist": artistName,
-                                       "api_key": Constants.Key.Discogs,
-                                       "format": "json"])
+        Alamofire.request(Constants.URL.Discogs + "artists/\(artistId)/releases",
+                          parameters: ["sort": "year",
+                                       "key": Constants.Key.Discogs,
+                                       "secret": Constants.Secret.Discogs],
+                          headers: ["User-Agent": UserAgentString()])
             .responseData { response in
-                
+                debugPrint(response.request!)
                 guard response.result.isSuccess,
                     let data = response.data else {
                         let errorMessage = "Error while fetching albums: \(String(describing: response.result.error))"
@@ -74,16 +72,16 @@ final class LastFMService {
                         return
                 }
                 do {
-                    let searchResult = try JSONDecoder().decode(TopAlbumSearchResults.self,
+                    let searchResult = try JSONDecoder().decode(ReleaseSearchResults.self,
                                                                 from: data)
-                    let albums = searchResult.topAlbums.albums
-                    let numberResults = Int(searchResult.topAlbums.attributes.total) ?? 0
+                    let releases = searchResult.releases
+                    let numberResults = searchResult.pagination.items
                     if numberResults > 0 {
-                        let successMessage = "\(numberResults) albums found"
-                        completion(albums, successMessage)
+                        let successMessage = "\(numberResults) releases found"
+                        completion(releases, successMessage)
                         return
                     } else {
-                        let errorMessage = "No albums found"
+                        let errorMessage = "No releases found"
                         completion(nil, errorMessage)
                         return
                     }

@@ -58,7 +58,7 @@ final class AlbumDetailsViewController: UIViewController {
     }
     
     private func loadAlbumDetails() {
-        LastFMService.shared.fetchDetailsForAlbum(selectedAlbumTitle, selectedArtistName) { [weak self] album, message in
+        DiscogsService.shared.fetchDetailsForAlbum(selectedAlbumTitle, selectedArtistName) { [weak self] album, message in
             
             guard let self = self,
                 let album = album  else { return }
@@ -75,7 +75,7 @@ final class AlbumDetailsViewController: UIViewController {
         
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
-        LastFMService.shared.imageForURL(imageInfo.url) { [weak self] image in
+        DiscogsService.shared.imageForURL(imageInfo.url) { [weak self] image in
             guard let self = self else { return }
             
             self.activityIndicator.stopAnimating()

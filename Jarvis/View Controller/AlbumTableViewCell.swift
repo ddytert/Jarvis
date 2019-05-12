@@ -24,7 +24,7 @@ final class AlbumTableViewCell: UITableViewCell {
     weak var delegate: AlbumTableViewCellDelegate?
     
     // Moved TableViewCell setup
-    public var album: TopAlbum? {
+    public var album: Release? {
         didSet {
             guard let album = album else { return }
             albumTitleLabel.text = album.title

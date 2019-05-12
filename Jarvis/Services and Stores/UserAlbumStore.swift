@@ -126,7 +126,7 @@ final class UserAlbumStore {
     private func getThumbnailImageDataForAlbum(_ album: Album) -> Data? {
         
         guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }),
-            let thumbnailImage = LastFMService.shared.getCachedImageForURL(imageInfo.url) else { return nil }
+            let thumbnailImage = DiscogsService.shared.getCachedImageForURL(imageInfo.url) else { return nil }
         return thumbnailImage.jpegData(compressionQuality: 1.0)
     }
 }

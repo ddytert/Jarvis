@@ -8,12 +8,16 @@
 
 import Foundation
 
-struct ImageInfo: Decodable {
-    let url: String
-    let size: String
+struct Pagination: Decodable {
+    let perPage: Int
+    let items: Int
+    let page: Int
+    let pages: Int
     
     private enum CodingKeys: String, CodingKey {
-        case url = "#text"
-        case size
+        case perPage = "per_page"
+        case items
+        case page
+        case pages
     }
 }

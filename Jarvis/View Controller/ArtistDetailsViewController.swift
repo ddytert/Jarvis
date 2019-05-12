@@ -14,7 +14,7 @@ final class ArtistDetailsViewController: UIViewController {
     
     // MARK: - Properties
     public var selectedArtist: Artist?
-    public var topAlbums: [TopAlbum] = []
+    public var topAlbums: [Release] = []
     
     // MARK: IBOutlets
     @IBOutlet weak var artistImageView: UIImageView!
@@ -47,8 +47,8 @@ final class ArtistDetailsViewController: UIViewController {
         artistNameLabel.text = artist.name
         
         // Asynchronous loading of big artist image
-        guard let imageInfo = artist.imageInfos.first(where: { $0.size == "extralarge" && !$0.url.isEmpty }) else { return }
-        LastFMService.shared.imageForURL(imageInfo.url) { [weak self] image in
+        guard !artist.thumbURL.isEmpty else { return }
+        DiscogsService.shared.imageForURL(artist.thumbURL) { [weak self] image in
             guard let self = self,
                 let artistImage = image else { return }
             self.artistImageView.image = artistImage
@@ -59,7 +59,7 @@ final class ArtistDetailsViewController: UIViewController {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        LastFMService.shared.fetchTopAlbumsOfArtist(artist.name) { [weak self] albums, message in
+        DiscogsService.shared.fetchReleasesOfArtist(artist.id) { [weak self] albums, message in
             guard let self = self else { return }
             
             self.activityIndicator.stopAnimating()
@@ -124,9 +124,9 @@ extension ArtistDetailsViewController: AlbumTableViewCellDelegate {
     func requestImageForAlbumTableViewCell(_ cell: AlbumTableViewCell) {
         // Get url to thumbnail image
         guard let album = cell.album,
-            let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }) else { return }
+            !album.thumbURL.isEmpty else { return }
         
-        LastFMService.shared.imageForURL(imageInfo.url) { image in
+        DiscogsService.shared.imageForURL(album.thumbURL) { image in
             
             if let albumImage = image {
                 cell.albumImageView.image = albumImage
