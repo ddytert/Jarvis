@@ -138,7 +138,7 @@ final class DiscogsService {
         // Image isn't stored yet so retrieve it from server
         Alamofire.request(urlString)
             .responseImage { response in
-            //debugPrint(response)
+//            debugPrint(response)
             if let image = response.result.value {
                 // Store image in cache
                 self.imageCache.setObject(image, forKey: urlString as AnyObject)

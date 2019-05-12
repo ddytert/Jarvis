@@ -38,7 +38,7 @@ final class ArtistDetailsViewController: UIViewController {
         tableView.separatorStyle = .none
         
         activityIndicator.isHidden = true
-
+        
         populateUI()
     }
     
@@ -46,14 +46,26 @@ final class ArtistDetailsViewController: UIViewController {
         guard let artist = selectedArtist else { return }
         artistNameLabel.text = artist.name
         
-        // Asynchronous loading of big artist image
-        guard !artist.thumbURL.isEmpty else { return }
-        DiscogsService.shared.imageForURL(artist.thumbURL) { [weak self] image in
-            guard let self = self,
-                let artistImage = image else { return }
-            self.artistImageView.image = artistImage
+        // If available load big artist image asynchronously
+        if !artist.imageURL.isEmpty {
+            print("Big artist image found")
+            DiscogsService.shared.imageForURL(artist.imageURL) { [weak self] image in
+                guard let self = self,
+                    let artistImage = image else { return }
+                self.artistImageView.image = artistImage
+            }
+            // Otherwise load thumbnail image
+        } else if !artist.thumbURL.isEmpty {
+            print("Thumbnail artist image found")
+            DiscogsService.shared.imageForURL(artist.thumbURL) { [weak self] image in
+                guard let self = self,
+                    let artistImage = image else { return }
+                self.artistImageView.image = artistImage
+            }
+        } else {
+            print("No artist image found")
+
         }
-        
         // Asynchronous loading of top albums of artist
         numberAlbumsLabel.isHidden = true
         activityIndicator.isHidden = false
@@ -66,7 +78,7 @@ final class ArtistDetailsViewController: UIViewController {
             self.activityIndicator.isHidden = true
             self.numberAlbumsLabel.isHidden = false
             self.numberAlbumsLabel.text = message
-
+            
             guard let albums = albums else { return }
             self.topAlbums = albums
             self.tableView.reloadData()
@@ -141,7 +153,7 @@ extension ArtistDetailsViewController: AlbumTableViewCellDelegate {
         
         let isStored = UserAlbumStore.shared.isAlbumStored(title: album.title,
                                                            artist: artist.name)
-        let imageName = isStored ? "IconAlbumStoredBlue.png" : ""
+        let imageName = isStored ? "IconAlbumStoredBlue.png" : "IconAlbumStoredBlank.png"
         cell.savedMarkImageView.image = UIImage(named: imageName)
     }
 }
