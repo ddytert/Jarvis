@@ -14,6 +14,7 @@ final class AlbumDetailsViewController: UIViewController {
     @IBOutlet weak var albumTitleLabel: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var releaseYearLabel: UILabel!
     @IBOutlet weak var tracklistLabel: UILabel!
     @IBOutlet weak var tracklistHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var saveAlbumButton: UIBarButtonItem!
@@ -23,8 +24,10 @@ final class AlbumDetailsViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
-    public var selectedAlbumTitle: String = ""
+    public var selectedAlbumTitle: String = ""  // TODO: Get rid of these
     public var selectedArtistName: String = ""
+    
+    public var selectedRelease: Release?
     
     private var selectedAlbum: Album?
     
@@ -43,9 +46,15 @@ final class AlbumDetailsViewController: UIViewController {
         activityIndicator.isHidden = true
         // Put content view into scroll view
         scrollView.addSubview(contentView)
-        // Set album and artist text label
-        albumTitleLabel.text = selectedAlbumTitle
-        artistNameLabel.text = selectedArtistName
+        // Set album, artist and year text label
+        guard let release = selectedRelease else { return }
+        
+        albumTitleLabel.text = release.title
+        artistNameLabel.text = release.artist
+        
+        if let year = selectedRelease?.year {
+            releaseYearLabel.text = String(year)
+        }
         
         // If album is already stored deactivate save album button
         let isStored = UserAlbumStore.shared.isAlbumStored(title: selectedAlbumTitle,

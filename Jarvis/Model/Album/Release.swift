@@ -13,14 +13,17 @@ import Foundation
 struct Release: Decodable {
     let title: String
     let thumbURL: String
-    let year: Int
+    let artist: String
     let id: Int
+    var year: Int?
+
 
     private enum CodingKeys: String, CodingKey {
         case title
         case thumbURL = "thumb"
-        case year
+        case artist
         case id
+        case year
     }
 }
 

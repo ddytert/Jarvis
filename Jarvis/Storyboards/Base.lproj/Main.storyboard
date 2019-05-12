@@ -126,7 +126,7 @@
                                             <outlet property="delegate" destination="6B7-wU-1eq" id="uNV-Hz-3vU"/>
                                         </connections>
                                     </searchBar>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDJ-bj-8Io">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDJ-bj-8Io">
                                         <rect key="frame" x="12" y="68" width="390" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.61960784313725492" green="0.61960784313725492" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -246,7 +246,7 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzj-pe-0k5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzj-pe-0k5">
                                         <rect key="frame" x="206" y="166" width="178" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -431,6 +431,7 @@
                         <outlet property="albumTitleLabel" destination="4iC-yf-Kwz" id="SV5-2z-rpm"/>
                         <outlet property="artistNameLabel" destination="JkI-g9-1D6" id="LQW-oA-8Fi"/>
                         <outlet property="contentView" destination="bvO-GP-Cq7" id="B7R-aC-03F"/>
+                        <outlet property="releaseYearLabel" destination="Gkr-E2-3zC" id="dNe-J1-nRL"/>
                         <outlet property="saveAlbumButton" destination="fpp-mf-M9c" id="F9o-aR-jge"/>
                         <outlet property="scrollView" destination="bTp-f8-qtu" id="HlC-wh-jSa"/>
                         <outlet property="tracklistHeightConstraint" destination="mMf-zd-lUS" id="BOa-Qn-Nt0"/>
@@ -475,25 +476,37 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mh1-C3-gcY">
-                                    <rect key="frame" x="0.0" y="82" width="390" height="16"/>
+                                    <rect key="frame" x="0.0" y="76" width="390" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkI-g9-1D6">
-                                    <rect key="frame" x="6" y="100" width="378" height="20.5"/>
+                                    <rect key="frame" x="6" y="94" width="378" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vt-fd-zqi" userLabel="Year">
+                                    <rect key="frame" x="0.0" y="120.5" width="390" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkr-E2-3zC" userLabel="Year Label">
+                                    <rect key="frame" x="6" y="138.5" width="378" height="21"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPU-LO-Byg" userLabel="Tracks">
-                                    <rect key="frame" x="0.0" y="142.5" width="390" height="16"/>
+                                    <rect key="frame" x="0.0" y="165.5" width="390" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgS-KJ-XXd" userLabel="Tracklist">
-                                    <rect key="frame" x="6" y="158.5" width="378" height="24"/>
+                                    <rect key="frame" x="6" y="181.5" width="378" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="mMf-zd-lUS"/>
                                     </constraints>
@@ -505,24 +518,31 @@
                             <color key="backgroundColor" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="zPU-LO-Byg" secondAttribute="trailing" id="2Qi-MO-6yv"/>
+                                <constraint firstItem="NLe-CS-UAi" firstAttribute="trailing" secondItem="Gkr-E2-3zC" secondAttribute="trailing" constant="6" id="2V6-kR-8hV"/>
+                                <constraint firstItem="6Vt-fd-zqi" firstAttribute="leading" secondItem="NLe-CS-UAi" secondAttribute="leading" id="3On-iD-0Xy"/>
                                 <constraint firstItem="MgS-KJ-XXd" firstAttribute="top" secondItem="zPU-LO-Byg" secondAttribute="bottom" id="8UB-QP-5Av"/>
                                 <constraint firstItem="HIH-3g-mXi" firstAttribute="leading" secondItem="TR1-bE-EZw" secondAttribute="leading" id="D58-XM-W4g"/>
+                                <constraint firstItem="6Vt-fd-zqi" firstAttribute="top" secondItem="JkI-g9-1D6" secondAttribute="bottom" constant="6" id="GHU-W8-sGM"/>
                                 <constraint firstItem="JkI-g9-1D6" firstAttribute="top" secondItem="Mh1-C3-gcY" secondAttribute="bottom" constant="2" id="HxK-OG-ot0"/>
+                                <constraint firstItem="Gkr-E2-3zC" firstAttribute="top" secondItem="6Vt-fd-zqi" secondAttribute="bottom" constant="2" id="IMd-5r-i6y"/>
                                 <constraint firstAttribute="trailing" secondItem="Mh1-C3-gcY" secondAttribute="trailing" id="JmW-jt-cuD"/>
                                 <constraint firstItem="JkI-g9-1D6" firstAttribute="leading" secondItem="TR1-bE-EZw" secondAttribute="leading" constant="6" id="QdT-6i-W9q"/>
                                 <constraint firstItem="MgS-KJ-XXd" firstAttribute="leading" secondItem="TR1-bE-EZw" secondAttribute="leading" constant="6" id="RU2-za-e3S"/>
-                                <constraint firstItem="zPU-LO-Byg" firstAttribute="top" secondItem="JkI-g9-1D6" secondAttribute="bottom" constant="22" id="TSc-uH-cDN"/>
                                 <constraint firstItem="4iC-yf-Kwz" firstAttribute="top" secondItem="HIH-3g-mXi" secondAttribute="bottom" id="U9f-fI-xCz"/>
                                 <constraint firstAttribute="trailing" secondItem="MgS-KJ-XXd" secondAttribute="trailing" constant="6" id="WZ0-0Z-4QU"/>
                                 <constraint firstItem="zPU-LO-Byg" firstAttribute="leading" secondItem="TR1-bE-EZw" secondAttribute="leading" id="bEw-kt-aWr"/>
-                                <constraint firstItem="Mh1-C3-gcY" firstAttribute="top" secondItem="4iC-yf-Kwz" secondAttribute="bottom" constant="6" id="lhB-yT-0sm"/>
+                                <constraint firstItem="Gkr-E2-3zC" firstAttribute="leading" secondItem="NLe-CS-UAi" secondAttribute="leading" constant="6" id="iir-U2-MIo"/>
+                                <constraint firstItem="Mh1-C3-gcY" firstAttribute="top" secondItem="4iC-yf-Kwz" secondAttribute="bottom" id="lhB-yT-0sm"/>
                                 <constraint firstAttribute="height" secondItem="MgS-KJ-XXd" secondAttribute="height" constant="200" id="m0Q-ID-hoi"/>
+                                <constraint firstItem="6Vt-fd-zqi" firstAttribute="trailing" secondItem="NLe-CS-UAi" secondAttribute="trailing" id="n7T-D0-ebJ"/>
                                 <constraint firstItem="Mh1-C3-gcY" firstAttribute="leading" secondItem="TR1-bE-EZw" secondAttribute="leading" id="ndv-an-NuD"/>
                                 <constraint firstItem="4iC-yf-Kwz" firstAttribute="leading" secondItem="TR1-bE-EZw" secondAttribute="leading" constant="6" id="ogm-t9-rGn"/>
                                 <constraint firstAttribute="trailing" secondItem="JkI-g9-1D6" secondAttribute="trailing" constant="6" id="rgc-Ri-qHe"/>
                                 <constraint firstItem="HIH-3g-mXi" firstAttribute="top" secondItem="TR1-bE-EZw" secondAttribute="top" constant="12" id="rxY-mo-b4a"/>
                                 <constraint firstAttribute="trailing" secondItem="HIH-3g-mXi" secondAttribute="trailing" id="u03-lL-wvB"/>
+                                <constraint firstItem="Gkr-E2-3zC" firstAttribute="top" secondItem="6Vt-fd-zqi" secondAttribute="bottom" constant="2" id="wAS-a3-gnm"/>
                                 <constraint firstAttribute="trailing" secondItem="4iC-yf-Kwz" secondAttribute="trailing" constant="6" id="x4I-Gc-Jjx"/>
+                                <constraint firstItem="zPU-LO-Byg" firstAttribute="top" secondItem="Gkr-E2-3zC" secondAttribute="bottom" constant="6" id="yo7-sH-nan"/>
                             </constraints>
                             <viewLayoutGuide key="safeArea" id="NLe-CS-UAi"/>
                             <userDefinedRuntimeAttributes>

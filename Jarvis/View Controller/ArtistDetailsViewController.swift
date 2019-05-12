@@ -14,7 +14,7 @@ final class ArtistDetailsViewController: UIViewController {
     
     // MARK: - Properties
     public var selectedArtist: Artist?
-    public var topAlbums: [Release] = []
+    public var topReleases: [Release] = []
     
     // MARK: IBOutlets
     @IBOutlet weak var artistImageView: UIImageView!
@@ -45,7 +45,7 @@ final class ArtistDetailsViewController: UIViewController {
     private func populateUI() {
         guard let artist = selectedArtist else { return }
         artistNameLabel.text = artist.name
-        
+                
         // If available load big artist image asynchronously
         if !artist.imageURL.isEmpty {
             print("Big artist image found")
@@ -80,7 +80,7 @@ final class ArtistDetailsViewController: UIViewController {
             self.numberAlbumsLabel.text = message
             
             guard let albums = albums else { return }
-            self.topAlbums = albums
+            self.topReleases = albums
             self.tableView.reloadData()
         }
     }
@@ -93,8 +93,9 @@ final class ArtistDetailsViewController: UIViewController {
                 return
         }
         if let albumDetailsVC = segue.destination as? AlbumDetailsViewController {
-            albumDetailsVC.selectedAlbumTitle = topAlbums[indexPath.row].title
+            albumDetailsVC.selectedAlbumTitle = topReleases[indexPath.row].title
             albumDetailsVC.selectedArtistName = selectedArtist!.name
+            albumDetailsVC.selectedRelease = topReleases[indexPath.row]
         }
     }
     
@@ -108,13 +109,13 @@ extension ArtistDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return topAlbums.count
+        return topReleases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AlbumCellIdentifier,
                                                  for: indexPath) as! AlbumTableViewCell
-        let album = topAlbums[indexPath.row]
+        let album = topReleases[indexPath.row]
         // Set VC as a delegate of the cell
         cell.delegate = self
         // Let the cell itself do the setup

@@ -47,9 +47,8 @@ final class DiscogsService {
                     let successMessage = "\(numberResults) artists found"
                     completion(artists, successMessage)
                     return
-                } catch {
-                    let errorMessage = "Error: JSON decoding failed"
-                    completion(nil, errorMessage)
+                } catch  let error {
+                    completion(nil, error.localizedDescription)
                     return
                 }
         }
@@ -85,9 +84,8 @@ final class DiscogsService {
                         completion(nil, errorMessage)
                         return
                     }
-                } catch {
-                    let errorMessage = "Error: JSON decoding failed"
-                    completion(nil, errorMessage)
+                } catch  let error {
+                    completion(nil, error.localizedDescription)
                     return
                 }
         }
@@ -117,9 +115,8 @@ final class DiscogsService {
                                                                 from: data)
                     let album = searchResult.album
                     completion(album, "Success")
-                } catch {
-                    let errorMessage = "Error: JSON decoding failed"
-                    completion(nil, errorMessage)
+                } catch let error {
+                    completion(nil, error.localizedDescription)
                     return
                 }
         }
