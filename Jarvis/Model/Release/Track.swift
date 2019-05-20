@@ -1,5 +1,5 @@
 //
-//  AlbumTrack.swift
+//  Track.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 27.04.19.
@@ -9,6 +9,6 @@
 import Foundation
 
 struct Track: Decodable {
-    let name: String
+    let title: String
     let duration: String
 }

@@ -55,18 +55,17 @@ final class DiscogsService {
     }
     
     public func fetchReleasesOfArtist(_ artistId: Int,
-                                       completion: @escaping ([Release]?, String) -> Void) {
+                                      completion: @escaping ([Release]?, String) -> Void) {
         
         Alamofire.request(Constants.URL.Discogs + "artists/\(artistId)/releases",
-                          parameters: ["sort": "year",
-                                       "key": Constants.Key.Discogs,
-                                       "secret": Constants.Secret.Discogs],
-                          headers: ["User-Agent": UserAgentString()])
+            parameters: ["sort": "year",
+                         "key": Constants.Key.Discogs,
+                         "secret": Constants.Secret.Discogs],
+            headers: ["User-Agent": UserAgentString()])
             .responseData { response in
-                debugPrint(response.request!)
                 guard response.result.isSuccess,
                     let data = response.data else {
-                        let errorMessage = "Error while fetching albums: \(String(describing: response.result.error))"
+                        let errorMessage = "Error while fetching releases: \(String(describing: response.result.error))"
                         completion(nil, errorMessage)
                         return
                 }
@@ -91,30 +90,26 @@ final class DiscogsService {
         }
     }
     
-    public func fetchDetailsForAlbum(_ albumTitle: String,
-                                     _ artistName: String,
-                                     completion: @escaping (Album?, String) -> Void) {
+    public func fetchDetailsForRelease(_ releaseId: Int,
+                                       type: String,
+                                       completion: @escaping (Release?, String) -> Void) {
         
-        Alamofire.request(Constants.URL.Discogs,
-                          parameters: ["method": "album.getInfo",
-                                       "limit": 300,
-                                       "album": albumTitle,
-                                       "artist": artistName,
-                                       "api_key": Constants.Key.Discogs,
-                                       "format": "json"])
+        Alamofire.request(Constants.URL.Discogs + "\(type)s/\(releaseId)",
+            parameters: ["key": Constants.Key.Discogs,
+                         "secret": Constants.Secret.Discogs],
+            headers: ["User-Agent": UserAgentString()])
             .responseData { response in
-
                 guard response.result.isSuccess,
                     let data = response.data else {
-                        let errorMessage = "Error while fetching album details: \(String(describing: response.result.error))"
+                        let errorMessage = "Error while fetching release details: \(String(describing: response.result.error))"
                         completion(nil, errorMessage)
                         return
                 }
                 do {
-                    let searchResult = try JSONDecoder().decode(AlbumSearchResults.self,
-                                                                from: data)
-                    let album = searchResult.album
-                    completion(album, "Success")
+                    var release = try JSONDecoder().decode(Release.self,
+                                                           from: data)
+                    release.type = type
+                    completion(release, "Success")
                 } catch let error {
                     completion(nil, error.localizedDescription)
                     return
@@ -135,12 +130,12 @@ final class DiscogsService {
         // Image isn't stored yet so retrieve it from server
         Alamofire.request(urlString)
             .responseImage { response in
-//            debugPrint(response)
-            if let image = response.result.value {
-                // Store image in cache
-                self.imageCache.setObject(image, forKey: urlString as AnyObject)
-                completion(image)
-            }
+                //            debugPrint(response)
+                if let image = response.result.value {
+                    // Store image in cache
+                    self.imageCache.setObject(image, forKey: urlString as AnyObject)
+                    completion(image)
+                }
         }
     }
     

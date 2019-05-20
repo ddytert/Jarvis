@@ -1,5 +1,5 @@
 //
-//  UserAlbumsViewController.swift
+//  UserReleasesViewController.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 21.04.19.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-private let AlbumCellIdentifier = "AlbumCell"
+private let ReleaseCellIdentifier = "ReleaseCell"
 
-final class UserAlbumsViewController: UICollectionViewController {
+final class UserReleasesViewController: UICollectionViewController {
     
     @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
     
     // MARK: - Properties
-    private var userAlbums: [UserAlbum] = []
+    private var userReleases: [UserRelease] = []
 
     private let sectionInsets = UIEdgeInsets(top: 20.0,
                                              left: 15.0,
@@ -28,38 +28,49 @@ final class UserAlbumsViewController: UICollectionViewController {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = editButtonItem
-        // Receive notifications from UserAlbumStore about successful
-        // saved album so it can uppdate the collection view
+        // Receive notifications from UserReleaseStore about successful
+        // saved release so it can uppdate the collection view
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(onDidSaveUserAlbum),
-                       name: .didSaveUserAlbum,
+        nc.addObserver(self, selector: #selector(onDidSaveUserRelease),
+                       name: .didSaveUserRelease,
                        object: nil)
         
-        // Populate UserAlbum array
-        if let albums = UserAlbumStore.shared.getUserAlbums() {
-            userAlbums = albums
+        // Populate UserReleases array
+        if let releases = UserReleaseStore.shared.getUserReleases() {
+            userReleases = releases
         }
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard segue.identifier == "ShowAlbumDetails",
+        guard segue.identifier == "ShowReleaseDetails",
             let cell = sender as? UICollectionViewCell,
             let indexPath = collectionView.indexPath(for: cell),
-            let albumDetailsVC = segue.destination as? AlbumDetailsViewController,
-            let title = userAlbums[indexPath.row].title,
-            let artist = userAlbums[indexPath.row].artist else { return }
-        
-        albumDetailsVC.selectedAlbumTitle = title
-        albumDetailsVC.selectedArtistName = artist
+            let releaseDetailsVC = segue.destination as? ReleaseDetailsViewController else { return }
+        let userRelease = userReleases[indexPath.row]
+        let selectedRelease = Release(title: userRelease.title!,
+                                      id: Int(userRelease.id),
+                                      type: userRelease.type,
+                                      artist: userRelease.artist,
+                                      artists: nil,
+                                      year: Int(userRelease.year),
+                                      thumbURL: nil,
+                                      images: nil,
+                                      tracklist: nil,
+                                      genres: nil)
+        releaseDetailsVC.selectedRelease = selectedRelease
+        // Set release image if available
+        if let imageData = userRelease.imageData {
+            releaseDetailsVC.releaseImageView.image = UIImage(data: imageData)
+        }
         // End editing mode
         isEditing = false
     }
 }
 
 // MARK: UICollectionViewDataSource
-extension UserAlbumsViewController {
+extension UserReleasesViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -67,26 +78,26 @@ extension UserAlbumsViewController {
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return userAlbums.count
+        return userReleases.count
     }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCellIdentifier,
-                                                      for: indexPath) as! AlbumCell
-        let album = userAlbums[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReleaseCellIdentifier,
+                                                      for: indexPath) as! ReleaseCell
+        let release = userReleases[indexPath.row]
         
         cell.delegate = self
         cell.isEditing = self.isEditing
-        cell.userAlbum = album
+        cell.userRelease = release
         
         return cell
     }
 }
 
 // MARK: Editing
-extension UserAlbumsViewController {
+extension UserReleasesViewController {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         
@@ -99,7 +110,7 @@ extension UserAlbumsViewController {
 }
 
 // MARK: - Collection View Flow Layout Delegate
-extension UserAlbumsViewController : UICollectionViewDelegateFlowLayout {
+extension UserReleasesViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -125,23 +136,23 @@ extension UserAlbumsViewController : UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - AlbumCell delegate methods
-extension UserAlbumsViewController: AlbumCellDelegate {
+// MARK: - ReleaseCell delegate methods
+extension UserReleasesViewController: ReleaseCellDelegate {
     
-    func deleteCell(_ cell: AlbumCell) {
-        // Try to delete User album from Core Data store and in case it succeeded update collection view
+    func deleteCell(_ cell: ReleaseCell) {
+        // Try to delete User release from Core Data store and in case it succeeded update collection view
         if let indexPath = collectionView?.indexPath(for: cell) {
             
-            let success = UserAlbumStore.shared.deleteAlbum(userAlbums[indexPath.row])
+            let success = UserReleaseStore.shared.deleteRelease(userReleases[indexPath.row])
             if success {
-                // Updata user albums array
-                if let albums = UserAlbumStore.shared.getUserAlbums() {
-                    userAlbums = albums
+                // Update user releases array
+                if let releases = UserReleaseStore.shared.getUserReleases() {
+                    userReleases = releases
                     self.collectionView?.deleteItems(at: [indexPath])
                 }
             } else {
                 // Show failure message to user
-                let alert = UIAlertController(title: "Couldn't delete album",
+                let alert = UIAlertController(title: "Couldn't delete release",
                                               message: "",
                                               preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok",
@@ -154,11 +165,11 @@ extension UserAlbumsViewController: AlbumCellDelegate {
 }
 
 // MARK: - Notification handling
-extension UserAlbumsViewController {
+extension UserReleasesViewController {
     
-    @objc func onDidSaveUserAlbum(_ notification: Notification) {
-        if let albums = UserAlbumStore.shared.getUserAlbums() {
-            userAlbums = albums
+    @objc func onDidSaveUserRelease(_ notification: Notification) {
+        if let releases = UserReleaseStore.shared.getUserReleases() {
+            userReleases = releases
             collectionView.reloadData()
         }
     }

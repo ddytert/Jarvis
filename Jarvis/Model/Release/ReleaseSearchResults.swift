@@ -1,12 +1,12 @@
 //
-//  TopAlbumSearchResults.swift
+//  ReleaseSearchResults.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 26.04.19.
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
-// Hierarchical data model which corresponds to search result returned from lastfm (get artists topalbums)
+// Hierarchical data model which corresponds to search result returned from lastfm (get artists top releases)
 
 import Foundation
 

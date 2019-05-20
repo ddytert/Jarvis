@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Albums-->
+        <!--My Releases-->
         <scene sceneID="p2S-x0-dxY">
             <objects>
-                <collectionViewController id="8hA-fG-rTJ" customClass="UserAlbumsViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="8hA-fG-rTJ" customClass="UserReleasesViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mJ4-Gd-8UX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,20 +25,20 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumCell" id="4Dv-bL-Oyq" customClass="AlbumCell" customModule="Jarvis" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReleaseCell" id="4Dv-bL-Oyq" customClass="ReleaseCell" customModule="Jarvis" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="174"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconUnknownAlbum" translatesAutoresizingMaskIntoConstraints="NO" id="CvZ-f4-kvt">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconUnknownRelease" translatesAutoresizingMaskIntoConstraints="NO" id="CvZ-f4-kvt">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" secondItem="CvZ-f4-kvt" secondAttribute="width" id="eOh-ub-oEz"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di7-SO-zqH">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di7-SO-zqH">
                                             <rect key="frame" x="6" y="150" width="138" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,7 +79,7 @@
                                     <outlet property="deleteButton" destination="keS-KK-WjS" id="v7e-3C-yrM"/>
                                     <outlet property="imageView" destination="CvZ-f4-kvt" id="CWv-uh-UA1"/>
                                     <outlet property="nameLabel" destination="Di7-SO-zqH" id="3Ml-Wp-n1d"/>
-                                    <segue destination="GqV-Ej-nzM" kind="show" identifier="ShowAlbumDetails" id="n4n-SG-3lj"/>
+                                    <segue destination="GqV-Ej-nzM" kind="show" identifier="ShowReleaseDetails" id="n4n-SG-3lj"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -88,7 +88,7 @@
                             <outlet property="delegate" destination="8hA-fG-rTJ" id="PvK-wJ-tta"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="My Albums" id="F5D-zh-ta0">
+                    <navigationItem key="navigationItem" title="My Releases" id="F5D-zh-ta0">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="FkN-2C-eA1">
                             <connections>
                                 <segue destination="6B7-wU-1eq" kind="show" id="hdh-bu-GIM"/>
@@ -288,20 +288,20 @@
                                 <rect key="frame" x="0.0" y="318" width="414" height="578"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AlbumTableViewCell" rowHeight="76" id="Vy2-9f-ORx" userLabel="AlbumTableViewCell" customClass="AlbumTableViewCell" customModule="Jarvis" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ReleaseTableViewCell" rowHeight="76" id="Vy2-9f-ORx" userLabel="ReleaseTableViewCell" customClass="ReleaseTableViewCell" customModule="Jarvis" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vy2-9f-ORx" id="RCm-8h-ka9">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="75.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="525-Op-tVk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="525-Op-tVk">
                                                     <rect key="frame" x="86" y="29" width="260" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconUnknownAlbum" translatesAutoresizingMaskIntoConstraints="NO" id="hoL-Q1-AeQ" userLabel="Album Image View">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconUnknownRelease" translatesAutoresizingMaskIntoConstraints="NO" id="hoL-Q1-AeQ" userLabel="Releae Image View">
                                                     <rect key="frame" x="12" y="7" width="62" height="62"/>
                                                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -335,10 +335,10 @@
                                         <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <inset key="separatorInset" minX="32" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <outlet property="albumImageView" destination="hoL-Q1-AeQ" id="Hiw-M3-cyz"/>
-                                            <outlet property="albumTitleLabel" destination="525-Op-tVk" id="GVD-6F-4gS"/>
+                                            <outlet property="releaseImageView" destination="hoL-Q1-AeQ" id="Hiw-M3-cyz"/>
+                                            <outlet property="releaseTitleLabel" destination="525-Op-tVk" id="GVD-6F-4gS"/>
                                             <outlet property="savedMarkImageView" destination="V4b-zz-TFj" id="TQN-TA-hKH"/>
-                                            <segue destination="GqV-Ej-nzM" kind="show" identifier="ShowAlbumDetails" id="vyb-bH-qiC"/>
+                                            <segue destination="GqV-Ej-nzM" kind="show" identifier="ShowReleaseDetails" id="vyb-bH-qiC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -364,7 +364,7 @@
                         <outlet property="activityIndicator" destination="lrD-2n-C2U" id="GG2-nZ-yWI"/>
                         <outlet property="artistImageView" destination="gsi-Ef-2Q0" id="gVF-MA-lb4"/>
                         <outlet property="artistNameLabel" destination="JLG-CM-WHH" id="4FZ-sl-Kfe"/>
-                        <outlet property="numberAlbumsLabel" destination="yzj-pe-0k5" id="yMj-Qv-5y2"/>
+                        <outlet property="numberReleasessLabel" destination="yzj-pe-0k5" id="yMj-Qv-5y2"/>
                         <outlet property="tableView" destination="egM-zJ-492" id="4XP-MS-Mlp"/>
                     </connections>
                 </viewController>
@@ -400,7 +400,7 @@
         <!--Details-->
         <scene sceneID="6gw-OW-90p">
             <objects>
-                <viewController title="Details" id="GqV-Ej-nzM" customClass="AlbumDetailsViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Details" id="GqV-Ej-nzM" customClass="ReleaseDetailsViewController" customModule="Jarvis" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fyr-JG-dlG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -418,21 +418,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K8g-E5-54k"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Album Details" id="kch-Yl-iyU">
+                    <navigationItem key="navigationItem" title="Release Details" id="kch-Yl-iyU">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="fpp-mf-M9c">
                             <connections>
-                                <action selector="saveAlbum:" destination="GqV-Ej-nzM" id="0XH-yD-yAo"/>
+                                <action selector="saveRelease:" destination="GqV-Ej-nzM" id="0XH-yD-yAo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="M3Q-Fc-jDV" id="RD8-8a-hAC"/>
-                        <outlet property="albumImageView" destination="Tho-7r-GGK" id="dLZ-BS-FqS"/>
-                        <outlet property="albumTitleLabel" destination="4iC-yf-Kwz" id="SV5-2z-rpm"/>
                         <outlet property="artistNameLabel" destination="JkI-g9-1D6" id="LQW-oA-8Fi"/>
                         <outlet property="contentView" destination="bvO-GP-Cq7" id="B7R-aC-03F"/>
+                        <outlet property="releaseImageView" destination="Tho-7r-GGK" id="dLZ-BS-FqS"/>
+                        <outlet property="releaseTitleLabel" destination="4iC-yf-Kwz" id="SV5-2z-rpm"/>
                         <outlet property="releaseYearLabel" destination="Gkr-E2-3zC" id="dNe-J1-nRL"/>
-                        <outlet property="saveAlbumButton" destination="fpp-mf-M9c" id="F9o-aR-jge"/>
+                        <outlet property="saveReleaseButton" destination="fpp-mf-M9c" id="F9o-aR-jge"/>
                         <outlet property="scrollView" destination="bTp-f8-qtu" id="HlC-wh-jSa"/>
                         <outlet property="tracklistHeightConstraint" destination="mMf-zd-lUS" id="BOa-Qn-Nt0"/>
                         <outlet property="tracklistLabel" destination="MgS-KJ-XXd" id="JyU-eY-ejO"/>
@@ -443,7 +443,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="850"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconUnknownAlbum" translatesAutoresizingMaskIntoConstraints="NO" id="Tho-7r-GGK">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconUnknownRelease" translatesAutoresizingMaskIntoConstraints="NO" id="Tho-7r-GGK">
                             <rect key="frame" x="12" y="12" width="390" height="390"/>
                             <constraints>
                                 <constraint firstAttribute="height" secondItem="Tho-7r-GGK" secondAttribute="width" multiplier="1:1" id="O1S-Eh-aZM"/>
@@ -466,7 +466,7 @@
                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iC-yf-Kwz">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iC-yf-Kwz">
                                     <rect key="frame" x="6" y="28" width="378" height="48"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="48" id="Ncg-t2-nqO"/>
@@ -570,10 +570,10 @@
     </scenes>
     <resources>
         <image name="IconDelete" width="20" height="20"/>
-        <image name="IconUnknownAlbum" width="200" height="200"/>
         <image name="IconUnknownArtist" width="200" height="200"/>
+        <image name="IconUnknownRelease" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vyb-bH-qiC"/>
+        <segue reference="n4n-SG-3lj"/>
     </inferredMetricsTieBreakers>
 </document>

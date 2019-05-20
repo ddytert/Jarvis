@@ -29,6 +29,7 @@ class Artist: Decodable {
 }
 
 
+
 /*
 "thumb": "",
 "title": "Raphael (19)",

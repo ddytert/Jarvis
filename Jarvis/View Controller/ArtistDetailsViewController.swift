@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let AlbumCellIdentifier = "AlbumTableViewCell"
+private let ReleaseCellIdentifier = "ReleaseTableViewCell"
 
 final class ArtistDetailsViewController: UIViewController {
     
@@ -20,18 +20,18 @@ final class ArtistDetailsViewController: UIViewController {
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var numberAlbumsLabel: UILabel!
+    @IBOutlet weak var numberReleasessLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Receive notifications from UserAlbumStore about successful
-        // saved albumm So it can update the table view (show the blue saved album mark)
+        // Receive notifications from UserReleasesStore about successful
+        // saved release So it can update the table view (show the blue saved release mark)
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(onDidSaveUserAlbum),
-                       name: .didSaveUserAlbum,
+        nc.addObserver(self, selector: #selector(onDidSaveUserRelease),
+                       name: .didSaveUserRelease,
                        object: nil)
         
         // Hide separator line
@@ -66,36 +66,39 @@ final class ArtistDetailsViewController: UIViewController {
             print("No artist image found")
 
         }
-        // Asynchronous loading of top albums of artist
-        numberAlbumsLabel.isHidden = true
+        // Asynchronous loading of top releases of artist
+        numberReleasessLabel.isHidden = true
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        DiscogsService.shared.fetchReleasesOfArtist(artist.id) { [weak self] albums, message in
+        DiscogsService.shared.fetchReleasesOfArtist(artist.id) { [weak self] releases, message in
             guard let self = self else { return }
             
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
-            self.numberAlbumsLabel.isHidden = false
-            self.numberAlbumsLabel.text = message
+            self.numberReleasessLabel.isHidden = false
+            self.numberReleasessLabel.text = message
             
-            guard let albums = albums else { return }
-            self.topReleases = albums
+            guard let releases = releases else { return }
+            self.topReleases = releases
             self.tableView.reloadData()
         }
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "ShowAlbumDetails",
+        guard segue.identifier == "ShowReleaseDetails",
             let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell) else {
                 return
         }
-        if let albumDetailsVC = segue.destination as? AlbumDetailsViewController {
-            albumDetailsVC.selectedAlbumTitle = topReleases[indexPath.row].title
-            albumDetailsVC.selectedArtistName = selectedArtist!.name
-            albumDetailsVC.selectedRelease = topReleases[indexPath.row]
+        if let releaseDetailsVC = segue.destination as? ReleaseDetailsViewController {
+            let release = topReleases[indexPath.row]
+            releaseDetailsVC.selectedRelease = release
+            if let thumbURL = release.thumbURL {
+                let image = DiscogsService.shared.getCachedImageForURL(thumbURL)
+                releaseDetailsVC.releaseImageView.image = image
+            }
         }
     }
     
@@ -113,13 +116,13 @@ extension ArtistDetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AlbumCellIdentifier,
-                                                 for: indexPath) as! AlbumTableViewCell
-        let album = topReleases[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReleaseCellIdentifier,
+                                                 for: indexPath) as! ReleaseTableViewCell
+        let release = topReleases[indexPath.row]
         // Set VC as a delegate of the cell
         cell.delegate = self
         // Let the cell itself do the setup
-        cell.album = album
+        cell.release = release
         // Alternating background colors
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(white: 24.0/255.0, alpha: 1.0) : UIColor(white: 32.0/255.0, alpha: 1.0)
         // Set color of selected cell
@@ -131,30 +134,29 @@ extension ArtistDetailsViewController: UITableViewDataSource {
     }
 }
 
-extension ArtistDetailsViewController: AlbumTableViewCellDelegate {
+extension ArtistDetailsViewController: ReleaseTableViewCellDelegate {
     
-    // Asynchronous loading of album image
-    func requestImageForAlbumTableViewCell(_ cell: AlbumTableViewCell) {
+    // Asynchronous loading of release image
+    func requestImageForReleaseTableViewCell(_ cell: ReleaseTableViewCell) {
         // Get url to thumbnail image
-        guard let album = cell.album,
-            !album.thumbURL.isEmpty else { return }
+        guard let release = cell.release,
+            let thumbURL = release.thumbURL,
+            !thumbURL.isEmpty else { return }
         
-        DiscogsService.shared.imageForURL(album.thumbURL) { image in
+        DiscogsService.shared.imageForURL(thumbURL) { image in
             
-            if let albumImage = image {
-                cell.albumImageView.image = albumImage
+            if let releaseImage = image {
+                cell.releaseImageView.image = releaseImage
             }
         }
     }
     
-    func checkIfAlbumIsAlreadySaved(_ cell: AlbumTableViewCell) {
+    func checkIfReleaseIsAlreadySaved(_ cell: ReleaseTableViewCell) {
         
-        guard let album = cell.album,
-            let artist = selectedArtist else { return }
+        guard let release = cell.release else { return }
         
-        let isStored = UserAlbumStore.shared.isAlbumStored(title: album.title,
-                                                           artist: artist.name)
-        let imageName = isStored ? "IconAlbumStoredBlue.png" : "IconAlbumStoredBlank.png"
+        let isStored = UserReleaseStore.shared.isReleaseStored(releaseId: release.id)
+        let imageName = isStored ? "IconReleaseStoredBlue.png" : "IconReleaseStoredBlank.png"
         cell.savedMarkImageView.image = UIImage(named: imageName)
     }
 }
@@ -162,7 +164,7 @@ extension ArtistDetailsViewController: AlbumTableViewCellDelegate {
 // MARK: - Notification handling
 extension ArtistDetailsViewController {
     
-    @objc func onDidSaveUserAlbum(_ notification: Notification) {
+    @objc func onDidSaveUserRelease(_ notification: Notification) {
         tableView.reloadData()
     }
 }

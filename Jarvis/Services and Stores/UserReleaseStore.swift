@@ -1,22 +1,22 @@
 //
-//  UserAlbumStore.swift
+//  UserReleaseStore.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 29.04.19.
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
-// Class responsible for persistent storage of user albums and thumbnail images of albums
+// Class responsible for persistent storage of user releases and images of releases
 
 import UIKit
 import CoreData
 
 
-final class UserAlbumStore {
+final class UserReleaseStore {
     
     // MARK: - Properties
     // Return singleton instance
-    public static let shared = UserAlbumStore()
+    public static let shared = UserReleaseStore()
     
     private var managedContext:NSManagedObjectContext? = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -29,34 +29,36 @@ final class UserAlbumStore {
     private init() {
     }
     
-    public func saveAlbum(_ album: Album,
+    public func saveRelease(_ release: Release,
                           completion: (Bool, String) -> Void) {
         
         guard let managedContext = managedContext else {
             completion(false, "Missing data store")
             return
         }
-        if isAlbumStored(title: album.title,
-                         artist: album.artist) {
-            completion(false, "Album already saved")
+        if isReleaseStored(releaseId: release.id) {
+            completion(false, "Release already saved")
             return
-        }
-        let entity = NSEntityDescription.entity(forEntityName: "UserAlbum",
+        }        
+        let entity = NSEntityDescription.entity(forEntityName: "UserRelease",
                                                 in: managedContext)!
-        let userAlbum = NSManagedObject(entity: entity,
+        let userRelease = NSManagedObject(entity: entity,
                                         insertInto: managedContext)
-        userAlbum.setValue(album.title, forKeyPath: "title")
-        userAlbum.setValue(album.artist, forKeyPath: "artist")
-        
-        let thumbnailImage = getThumbnailImageDataForAlbum(album)
-        userAlbum.setValue(thumbnailImage, forKeyPath: "thumbnail")
+        userRelease.setValue(release.title, forKeyPath: "title")
+        userRelease.setValue(release.year, forKeyPath: "year")
+        userRelease.setValue(release.type, forKeyPath: "type")
+        userRelease.setValue(release.artists?.first?.name, forKeyPath: "artist")
+        userRelease.setValue(release.id, forKeyPath: "id")
+        userRelease.setValue(release.images?.first?.uri, forKeyPath: "imageURL")
+        let imageData = getImageDataForRelease(release)
+        userRelease.setValue(imageData, forKeyPath: "imageData")
         
         do {
             try managedContext.save()
-            // Inform other objects about successful saving of album
+            // Inform other objects about successful saving of release
             // (View controller which then updates their collection/table views)
             let nc = NotificationCenter.default
-            nc.post(name: .didSaveUserAlbum, object: nil)
+            nc.post(name: .didSaveUserRelease, object: nil)
             
             completion(true, "")
             
@@ -66,15 +68,13 @@ final class UserAlbumStore {
         }
     }
     
-    public func deleteAlbum(_ album: UserAlbum) -> Bool {
+    public func deleteRelease(_ release: UserRelease) -> Bool {
         
-        guard let managedContext = managedContext,
-        let title = album.title,
-        let artist = album.artist else {
+        guard let managedContext = managedContext else {
             return false
         }
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAlbum")
-        fetchRequest.predicate = NSPredicate(format: "title = %@ AND artist == %@", title, artist)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserRelease")
+        fetchRequest.predicate = NSPredicate(format: "id = %i", release.id)
         fetchRequest.includesSubentities = false
 
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -88,28 +88,27 @@ final class UserAlbumStore {
         }
     }
     
-    public func getUserAlbums() -> [UserAlbum]? {
+    public func getUserReleases() -> [UserRelease]? {
         
         guard let managedContext = managedContext else { return nil }
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "UserAlbum")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "UserRelease")
         
         do {
-            let userAlbums = try managedContext.fetch(fetchRequest)
-            return userAlbums as? [UserAlbum]
+            let userReleases = try managedContext.fetch(fetchRequest)
+            return userReleases as? [UserRelease]
             
         } catch {
             return nil
         }
     }
     
-    public func isAlbumStored(title: String,
-                              artist: String) -> Bool {
+    public func isReleaseStored(releaseId: Int) -> Bool {
         
         guard let managedContext = managedContext else { return false }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAlbum")
-        fetchRequest.predicate = NSPredicate(format: "title = %@ AND artist == %@", title, artist)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserRelease")
+        fetchRequest.predicate = NSPredicate(format: "id = %i", releaseId)
         fetchRequest.includesSubentities = false
                 
         var entitiesCount = 0
@@ -123,11 +122,12 @@ final class UserAlbumStore {
     }
     
     // MARK: Helper functions
-    private func getThumbnailImageDataForAlbum(_ album: Album) -> Data? {
+    
+    private func getImageDataForRelease(_ release: Release) -> Data? {
         
-        guard let imageInfo = album.imageInfos.first(where: { $0.size == "large" && !$0.url.isEmpty }),
-            let thumbnailImage = DiscogsService.shared.getCachedImageForURL(imageInfo.url) else { return nil }
-        return thumbnailImage.jpegData(compressionQuality: 1.0)
+        guard let imageURL = release.images?.first?.uri,
+            let image = DiscogsService.shared.getCachedImageForURL(imageURL) else { return nil }
+        return image.jpegData(compressionQuality: 1.0)
     }
 }
 

@@ -1,31 +1,57 @@
 //
-//  TopAlbum.swift
+//  Release.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 26.04.19.
 //  Copyright © 2019 DanLo Interactive. All rights reserved.
 //
 
-// 'Light' Album data model which corresponds to lastfms json representation of an album (returned by search for an artists top albums)
-
 import Foundation
 
 struct Release: Decodable {
     let title: String
-    let thumbURL: String
-    let artist: String
     let id: Int
+    var type: String?
+    var artist: String?
+    var artists: [ReleaseArtist]?
     var year: Int?
-
+    var thumbURL: String?
+    var images: [Image]?
+    var tracklist: [Track]?
+    var genres: [String]?
 
     private enum CodingKeys: String, CodingKey {
         case title
-        case thumbURL = "thumb"
-        case artist
         case id
+        case type
+        case artist
+        case artists
         case year
+        case thumbURL = "thumb"
+        case images
+        case tracklist
+        case genres
     }
 }
+
+struct ReleaseArtist: Decodable {
+    let name: String
+    let id: Int
+}
+
+struct Image: Decodable {
+    let uri: String
+    let type: String
+}
+
+//{
+//    "uri": "",
+//    "height": 600,
+//    "width": 600,
+//    "resource_url": "",
+//    "type": "primary",
+//    "uri150": ""
+//},
 
 /*
 {

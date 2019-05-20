@@ -1,5 +1,5 @@
 //
-//  AlbumCell.swift
+//  ReleaseCell.swift
 //  Jarvis
 //
 //  Created by Daniel Dytert on 21.04.19.
@@ -8,25 +8,25 @@
 
 import UIKit
 
-protocol AlbumCellDelegate: class {
-    func deleteCell(_ cell: AlbumCell)
+protocol ReleaseCellDelegate: class {
+    func deleteCell(_ cell: ReleaseCell)
 }
 
-final class AlbumCell: UICollectionViewCell {
+final class ReleaseCell: UICollectionViewCell {
     
     // MARK: Properties
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
     
-    weak var delegate: AlbumCellDelegate?
+    weak var delegate: ReleaseCellDelegate?
     
-    public var userAlbum: UserAlbum? {
+    public var userRelease: UserRelease? {
         didSet {
-            guard let userAlbum = userAlbum else { return }
-            nameLabel.text = userAlbum.title
-            // Get thumbnail image from thumbnail data stored in UserAlbum object
-            if let data = userAlbum.thumbnail,
+            guard let userRelease = userRelease else { return }
+            nameLabel.text = userRelease.title
+            // Get thumbnail image from thumbnail data stored in UserRelease object
+            if let data = userRelease.imageData,
                 let image = UIImage(data: data) {
                 imageView.image = image
             }

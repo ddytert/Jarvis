@@ -9,6 +9,6 @@
 import Foundation
 
 extension Notification.Name {
-    static let didSaveUserAlbum = Notification.Name("didSaveUserAlbum")
+    static let didSaveUserRelease = Notification.Name("didSaveUserRelease")
 }
 
