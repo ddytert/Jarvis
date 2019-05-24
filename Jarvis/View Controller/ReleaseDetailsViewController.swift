@@ -60,7 +60,7 @@ final class ReleaseDetailsViewController: UIViewController {
         guard let release = selectedRelease,
             let type = release.type else { return }
         
-        DiscogsService.shared.fetchDetailsForRelease(release.id, type: type) { [weak self] release, message in
+        DiscogsService.shared.fetchDetailsForRelease(release.id, type: type) { [weak self] release in
             guard let self = self,
                 let release = release  else { return }
             self.selectedRelease = release

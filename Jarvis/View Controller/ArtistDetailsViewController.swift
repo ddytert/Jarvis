@@ -71,17 +71,19 @@ final class ArtistDetailsViewController: UIViewController {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        DiscogsService.shared.fetchReleasesOfArtist(artist.id) { [weak self] releases, message in
+        DiscogsService.shared.fetchReleasesOfArtist(artist.id) { [weak self] releases in
             guard let self = self else { return }
             
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
-            self.numberReleasessLabel.isHidden = false
-            self.numberReleasessLabel.text = message
             
-            guard let releases = releases else { return }
-            self.topReleases = releases
-            self.tableView.reloadData()
+            if let releases = releases {
+                self.topReleases = releases
+                self.tableView.reloadData()
+            } else {
+                self.numberReleasessLabel.text = "No releases found"
+                self.numberReleasessLabel.isHidden = false
+            }
         }
     }
     

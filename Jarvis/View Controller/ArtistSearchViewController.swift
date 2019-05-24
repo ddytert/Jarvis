@@ -92,19 +92,20 @@ extension ArtistSearchViewController: UISearchBarDelegate {
         foundArtists.removeAll()
         tableView.reloadData()
         
-        DiscogsService.shared.searchForArtist(artistName) { [weak self] artists, message in
+        DiscogsService.shared.searchForArtist(artistName) { [weak self] artists in
             
             guard let self = self else { return }
             
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
-            self.searchInfoLabel.isHidden = false
-            self.searchInfoLabel.text = message
             
-            guard let artists = artists else { return }
-            
-            self.foundArtists = artists
-            self.tableView.reloadData()
+            if let artists = artists {
+                self.foundArtists = artists
+                self.tableView.reloadData()
+            } else {
+                self.searchInfoLabel.text = "No artists found"
+                self.searchInfoLabel.isHidden = false
+            }
         }
     }
 }

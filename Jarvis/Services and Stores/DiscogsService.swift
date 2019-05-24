@@ -23,7 +23,7 @@ final class DiscogsService {
     }
     
     public func searchForArtist(_ artistName: String,
-                                completion: @escaping ([Artist]?, String) -> Void) {
+                                completion: @escaping ([Artist]?) -> Void) {
         
         Alamofire.request(Constants.URL.Discogs + "database/search",
                           method: .get,
@@ -33,29 +33,16 @@ final class DiscogsService {
                                        "secret": Constants.Secret.Discogs],
                           headers: ["User-Agent": UserAgentString()])
             .responseData { response in
-                guard response.result.isSuccess,
-                    let data = response.data else {
-                        let errorMessage = "Error while fetching artists: \(String(describing: response.result.error))"
-                        completion(nil, errorMessage)
-                        return
-                }
-                do {
-                    let searchResult = try JSONDecoder().decode(ArtistSearchResult.self,
-                                                                from: data)
-                    let artists = searchResult.results
-                    let numberResults = searchResult.pagination.items
-                    let successMessage = "\(numberResults) artists found"
-                    completion(artists, successMessage)
-                    return
-                } catch  let error {
-                    completion(nil, error.localizedDescription)
-                    return
-                }
+                
+                let searchResult: ArtistSearchResult? = self.parseResult(result: response.result)
+                completion(searchResult?.results)
+                //let numberResults = searchResult.pagination.items
+                //let successMessage = "\(numberResults) artists found"
         }
     }
     
     public func fetchReleasesOfArtist(_ artistId: Int,
-                                      completion: @escaping ([Release]?, String) -> Void) {
+                                      completion: @escaping ([Release]?) -> Void) {
         
         Alamofire.request(Constants.URL.Discogs + "artists/\(artistId)/releases",
             parameters: ["sort": "year",
@@ -63,57 +50,25 @@ final class DiscogsService {
                          "secret": Constants.Secret.Discogs],
             headers: ["User-Agent": UserAgentString()])
             .responseData { response in
-                guard response.result.isSuccess,
-                    let data = response.data else {
-                        let errorMessage = "Error while fetching releases: \(String(describing: response.result.error))"
-                        completion(nil, errorMessage)
-                        return
-                }
-                do {
-                    let searchResult = try JSONDecoder().decode(ReleaseSearchResults.self,
-                                                                from: data)
-                    let releases = searchResult.releases
-                    let numberResults = searchResult.pagination.items
-                    if numberResults > 0 {
-                        let successMessage = "\(numberResults) releases found"
-                        completion(releases, successMessage)
-                        return
-                    } else {
-                        let errorMessage = "No releases found"
-                        completion(nil, errorMessage)
-                        return
-                    }
-                } catch  let error {
-                    completion(nil, error.localizedDescription)
-                    return
-                }
+                
+                let searchResult: ReleaseSearchResults? = self.parseResult(result: response.result)
+                completion(searchResult?.releases)
         }
     }
     
     public func fetchDetailsForRelease(_ releaseId: Int,
                                        type: String,
-                                       completion: @escaping (Release?, String) -> Void) {
+                                       completion: @escaping (Release?) -> Void) {
         
         Alamofire.request(Constants.URL.Discogs + "\(type)s/\(releaseId)",
             parameters: ["key": Constants.Key.Discogs,
                          "secret": Constants.Secret.Discogs],
             headers: ["User-Agent": UserAgentString()])
             .responseData { response in
-                guard response.result.isSuccess,
-                    let data = response.data else {
-                        let errorMessage = "Error while fetching release details: \(String(describing: response.result.error))"
-                        completion(nil, errorMessage)
-                        return
-                }
-                do {
-                    var release = try JSONDecoder().decode(Release.self,
-                                                           from: data)
-                    release.type = type
-                    completion(release, "Success")
-                } catch let error {
-                    completion(nil, error.localizedDescription)
-                    return
-                }
+                
+                var release: Release? = self.parseResult(result: response.result)
+                release?.type = type
+                completion(release)
         }
     }
     
@@ -144,6 +99,19 @@ final class DiscogsService {
             return image
         } else {
             return nil
+        }
+    }
+    
+    // MARK: Helper method
+    
+    private func parseResult<T: Decodable>(result: Result<Data>) -> T? {
+        
+        switch result {
+        case .failure(_):
+            return nil
+        case .success(let data):
+            let model = try? JSONDecoder().decode(T.self, from: data)
+            return model
         }
     }
 }
